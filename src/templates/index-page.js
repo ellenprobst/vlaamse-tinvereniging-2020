@@ -159,7 +159,6 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
-        intro={frontmatter.intro}
         about={frontmatter.about}
         tinnewerck={frontmatter.tinnewerck}
       />
@@ -194,19 +193,6 @@ export const pageQuery = graphql`
           description
         }
         description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
-          description
-        }
         about {
           heading
           content
