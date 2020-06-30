@@ -1,129 +1,152 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Fade from 'react-reveal/Fade'
 import Layout from '../components/Layout'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
+import About from '../components/About'
+import Header from '../components/Header'
+import Activities from '../components/Activities'
+import Tinnewerck from '../components/Tinnewerck'
+import pot from '../img/teaser.jpg'
+import kannetje from '../img/kannetje.jpg'
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-export const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  subheading,
-  mainpitch,
-  description,
-  intro,
-}) => (
-  <div>
+export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
+  const triggerRef = useRef(null)
+  const imageRef = useRef(null)
+  useEffect(() => {
+    gsap.from(imageRef.current, {
+      scaleX: 0.8,
+      opacity: 0.3,
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: 'top bottom',
+        end: 'top top',
+        scrub: 0.5,
+      },
+    })
+  }, [])
+
+  return (
     <div
-      className="full-width-image margin-top-0"
       style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
+        color: '#40544E',
+        fontFamily: 'Playfair Display',
+        marginBottom: 500,
+        background: '#fff',
+        position: 'relative',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
-        }}
-      >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
-      </div>
-    </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <Header title={title} image={image} />
+
+      <About
+        heading={about.heading}
+        content={about.content}
+        image={about.image}
+      />
+      <div ref={triggerRef} style={{ margin: '55px 0', height: '100vh' }}>
+        <div style={{ position: 'relative' }} ref={imageRef}>
+          <img
+            src={pot}
+            style={{
+              display: 'block',
+              objectFit: 'cover',
+              height: '100vh',
+              width: '100%',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              backgroundImage:
+                'linear-gradient(to bottom, rgba(48, 49, 51, 0), rgb(12, 13, 13))',
+            }}
+          ></div>
         </div>
       </div>
-    </section>
-  </div>
-)
-
-IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
+      <Activities />
+      {/* banner */}
+      <div style={{ margin: '10vw 0' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: '#f5f5f5',
+            height: 280,
+          }}
+        >
+          <div style={{ maxWidth: 700 }}>
+            <h3 style={{ fontSize: '1.3vw' }}>
+              Heb je zelf tin en ben je benieuwd naar de afkomst van het werk,
+              dan kan je de hulp inroepen van onze experten.
+            </h3>
+            <button
+              style={{
+                border: '2px solid #6f6d6e',
+                borderRadius: 3,
+                background: '#6f6d6e',
+                padding: '10px 20px',
+                color: '#fff',
+                width: 180,
+                marginTop: 25,
+                borderRadius: 25,
+              }}
+            >
+              Stel hier je vraag
+            </button>
+          </div>
+          <img
+            src={kannetje}
+            style={{
+              display: 'block',
+              objectFit: 'cover',
+              height: '350px',
+              width: '350px',
+              borderRadius: '50%',
+              marginLeft: '10vw',
+              border: '12px solid #fff',
+            }}
+          />
+        </div>
+      </div>
+      <Tinnewerck
+        heading={tinnewerck.heading}
+        content={tinnewerck.content}
+        image={tinnewerck.image}
+      />
+      <button
+        aria-label='top'
+        style={{
+          width: 50,
+          height: 50,
+          borderRadius: '50%',
+          position: 'absolute',
+          bottom: '-25px',
+          margin: 'auto',
+          left: 0,
+          right: 0,
+          background: '#8d986e',
+          border: '2px solid #fff',
+        }}
+      >
+        <svg width='24' height='24' fill='#fff'>
+          <path
+            d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z'
+            // strokeWidth='1'
+            // stroke='#fff'
+          />
+        </svg>
+      </button>
+    </div>
+  )
 }
 
 const IndexPage = ({ data }) => {
@@ -134,11 +157,11 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        about={frontmatter.about}
+        tinnewerck={frontmatter.tinnewerck}
       />
     </Layout>
   )
@@ -166,8 +189,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        heading
-        subheading
         mainpitch {
           title
           description
@@ -184,8 +205,29 @@ export const pageQuery = graphql`
             }
             text
           }
-          heading
           description
+        }
+        about {
+          heading
+          content
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+        tinnewerck {
+          heading
+          content
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
