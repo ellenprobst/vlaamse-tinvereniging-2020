@@ -17,7 +17,7 @@ const Activities = ({ heading, content, image }) => {
       opacity: 0,
       duration: 2,
       scrollTrigger: {
-        start: 'top bottom',
+        start: 'top center',
         trigger: sectionRef.current,
       },
     })

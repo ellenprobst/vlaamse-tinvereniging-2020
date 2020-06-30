@@ -7,15 +7,17 @@ const Header = ({ title, image }) => {
   const subtitleRef = useRef(null)
   const buttonRef = useRef(null)
   const lineRef = useRef(null)
+  const sectionRef = useRef(null)
 
   useEffect(() => {
-    let tl = gsap.timeline({ delay: 1 })
-    tl.from(subtitleRef.current, {
-      y: 400,
-      ease: 'power4',
-      duration: 3,
-      opacity: 0,
-    })
+    let tl = gsap.timeline()
+    tl.set(sectionRef.current, { opacity: 1 })
+      .from(subtitleRef.current, {
+        y: 400,
+        ease: 'power4',
+        duration: 3,
+        opacity: 0,
+      })
       .from(
         titleRef.current,
         {
@@ -26,7 +28,6 @@ const Header = ({ title, image }) => {
         },
         0.4
       )
-
       .from(
         introRef.current,
         {
@@ -64,15 +65,17 @@ const Header = ({ title, image }) => {
         {
           top: '100vh',
           ease: 'power4',
-          duration: 3,
+          duration: 2,
         },
-        1.5
+        2
       )
   }, [])
 
   return (
     <header
+      ref={sectionRef}
       style={{
+        opacity: 0,
         position: 'relative',
         display: 'flex',
         alignItems: 'center',

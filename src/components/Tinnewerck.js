@@ -12,13 +12,13 @@ const Tinnewerck = ({ heading, content, image }) => {
   const title3Ref = useRef(null)
   useEffect(() => {
     gsap.from(title3Ref.current, {
-      xPercent: -50,
       scrollTrigger: {
         trigger: trigger3Ref.current,
-        scrub: 0.1,
+        scrub: 2,
         start: 'top bottom',
         end: 'top top',
       },
+      x: -500,
     })
   }, [])
 

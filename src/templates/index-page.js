@@ -20,12 +20,13 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
   useEffect(() => {
     gsap.from(imageRef.current, {
       scaleX: 0.8,
-      opacity: 0.3,
+      backgroundPosition: '50% 0%',
       scrollTrigger: {
         trigger: triggerRef.current,
         start: 'top bottom',
-        end: 'top top',
-        scrub: 0.5,
+        end: 'bottom top',
+        scrub: 0.1,
+        markers: true,
       },
     })
   }, [])
@@ -47,17 +48,18 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
         content={about.content}
         image={about.image}
       />
-      <div ref={triggerRef} style={{ margin: '55px 0', height: '100vh' }}>
-        <div style={{ position: 'relative' }} ref={imageRef}>
-          <img
-            src={pot}
-            style={{
-              display: 'block',
-              objectFit: 'cover',
-              height: '100vh',
-              width: '100%',
-            }}
-          />
+      <div ref={triggerRef} style={{ margin: '55px 0', height: '55vh' }}>
+        <div
+          style={{
+            position: 'relative',
+            backgroundImage: `url(${pot})`,
+            backgroundSize: 'cover',
+            backgroundPosition: '50% 50%',
+            height: '55vh',
+            width: '100%',
+          }}
+          ref={imageRef}
+        >
           <div
             style={{
               position: 'absolute',
