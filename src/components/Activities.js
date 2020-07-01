@@ -16,9 +16,11 @@ const SectionContainer = styled.div`
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   margin: 0 auto;
+  padding: 0 5vw 5vh;
 `
 const SideContainer = styled.div`
   max-width: 500px;
+  margin-right: 35px;
   grid-area: 2 / 1 / 6 / 3;
 `
 const TitleContainer = styled.div`
@@ -49,7 +51,11 @@ const Card = styled.div`
 
 const CardImage = styled.div`
   height: 200px;
-  background-image: linear-gradient(to bottom, rgba(48, 49, 51, 0), #1b1b1b),
+  background-image: linear-gradient(
+      to bottom,
+      rgba(48, 49, 51, 0),
+      rgba(48, 49, 51, 0.8)
+    ),
     url(${museumbezoek});
   background-size: cover;
   background-position: center;
@@ -83,12 +89,25 @@ const Icon = styled.img`
 const Activities = ({ heading, content, image }) => {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
+  const cardsRef = useRef(null)
   useEffect(() => {
     gsap.from(titleRef.current, {
       y: 400,
       ease: 'power4',
       opacity: 0,
       duration: 2,
+      scrollTrigger: {
+        start: 'top bottom',
+        trigger: sectionRef.current,
+      },
+    })
+
+    gsap.from(cardsRef.current, {
+      y: 200,
+      ease: 'power4',
+      opacity: 0,
+      duration: 2,
+      delay: 0.5,
       scrollTrigger: {
         start: 'top bottom',
         trigger: sectionRef.current,
@@ -114,12 +133,12 @@ const Activities = ({ heading, content, image }) => {
           of identificeren.
         </p>
       </SideContainer>
-      <CardsContainer>
+      <CardsContainer ref={cardsRef}>
         <Card>
           <div
             style={{
               height: 200,
-              backgroundImage: `linear-gradient(to bottom,rgba(48, 49, 51, 0),#1b1b1b),url(${ledenvergadering})`,
+              backgroundImage: `linear-gradient(to bottom,rgba(48, 49, 51, 0),rgba(48, 49, 51, 0.8)),url(${ledenvergadering})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               borderRadius: '3px 3px 0 0 ',

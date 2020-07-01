@@ -7,12 +7,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Tinnewerck = ({ heading, content, image }) => {
-  const triggerRef = useRef(null)
+  const sectionRef = useRef(null)
   const titleRef = useRef(null)
+  const cardsRef = useRef(null)
   useEffect(() => {
     gsap.from(titleRef.current, {
       scrollTrigger: {
-        trigger: triggerRef.current,
+        trigger: sectionRef.current,
         scrub: 1,
         start: 'top bottom',
         end: 'top top',
@@ -20,10 +21,22 @@ const Tinnewerck = ({ heading, content, image }) => {
 
       xPercent: -20,
     })
+
+    gsap.from(cardsRef.current, {
+      y: 400,
+      ease: 'power4',
+      opacity: 0,
+      duration: 2,
+      delay: 0.5,
+      scrollTrigger: {
+        start: 'top center',
+        trigger: sectionRef.current,
+      },
+    })
   }, [])
 
   return (
-    <div ref={triggerRef} style={{ minHeight: '100vh', padding: '25px 50px' }}>
+    <div ref={sectionRef} style={{ minHeight: '100vh', padding: '25px 50px' }}>
       <h2
         ref={titleRef}
         style={{
@@ -44,6 +57,7 @@ const Tinnewerck = ({ heading, content, image }) => {
           margin: '55px auto',
           maxWidth: 1250,
         }}
+        ref={cardsRef}
       >
         <div
           style={{

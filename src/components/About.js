@@ -40,13 +40,14 @@ const About = ({ heading, content, image }) => {
       style={{
         maxWidth: 1450,
         margin: '0 auto',
-        padding: '10vw 0',
+        padding: '10vw 5vw',
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'stretch',
+        justifyContent: 'center',
       }}
     >
-      <div style={{ width: '65%', padding: 20 }}>
+      <div style={{ padding: 20 }}>
         <div style={{ margin: '0 auto', maxWidth: 655 }} ref={triggerRef}>
           <div style={{ overflow: 'hidden' }}>
             <h2
@@ -71,18 +72,19 @@ const About = ({ heading, content, image }) => {
       </div>
       <div
         style={{
-          width: '35%',
+          width: 'calc(45% - 4vw)',
+          maxWidth: 800,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-end',
+          marginLeft: '4vw',
         }}
       >
         <div
           ref={imageRef}
           style={{
             width: '100%',
-
             boxShadow:
               '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
           }}

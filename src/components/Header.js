@@ -1,20 +1,22 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import styled from 'styled-components'
+import { nominalTypeHack } from 'prop-types'
 
 const Button = styled.button`
-  border: 2px solid rgb(207, 209, 184);
+  border: 2px solid #8d986e;
   border-radius: 3px;
-  background: rgb(207, 209, 184);
+  background: #8d986e;
   padding: 10px 20px;
   color: #fff;
   width: 180px;
   border-radius: 25px;
-  opacity: 0.8;
+
   transition: all 300ms ease;
 
   :hover {
     opacity: 1;
+    transform: scale(1.1) !important;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
       0 5px 15px 0 rgba(0, 0, 0, 0.08);
   }
@@ -64,9 +66,9 @@ const Header = ({ title, image }) => {
         {
           y: 100,
           opacity: 0,
+          transition: 'none',
           ease: 'power4',
           duration: 3,
-          opacity: 0,
         },
         0.9
       )
