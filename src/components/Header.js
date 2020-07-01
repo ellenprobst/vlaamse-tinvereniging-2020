@@ -1,5 +1,25 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import styled from 'styled-components'
+
+const Button = styled.button`
+  border: 2px solid rgb(207, 209, 184);
+  border-radius: 3px;
+  background: rgb(207, 209, 184);
+  padding: 10px 20px;
+  color: #fff;
+  width: 180px;
+  border-radius: 25px;
+  opacity: 0.8;
+  transition: all 300ms ease;
+
+  :hover {
+    opacity: 1;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+      0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  }
+`
+
 const Header = ({ title, image }) => {
   const overlayRef = useRef(null)
   const introRef = useRef(null)
@@ -102,7 +122,7 @@ const Header = ({ title, image }) => {
             }}
             ref={subtitleRef}
           >
-            <p style={{ fontSize: '3vw', color: '#8e986e' }}>Vlaamse</p>
+            <h2 style={{ fontSize: '3vw', color: '#8e986e' }}>Vlaamse</h2>
             <div
               style={{
                 overflow: 'hidden',
@@ -143,20 +163,7 @@ const Header = ({ title, image }) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
         </p>
-        <button
-          ref={buttonRef}
-          style={{
-            border: '2px solid #8e986e',
-            borderRadius: 3,
-            background: '#fff',
-            padding: '10px 20px',
-            color: '#40544E',
-            width: 180,
-            borderRadius: 25,
-          }}
-        >
-          Activiteiten
-        </button>
+        <Button ref={buttonRef}>Activiteiten</Button>
       </div>
       <div
         style={{

@@ -1,49 +1,115 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import styled from 'styled-components'
+import contactImage from '../img/bord.png'
 
-import logo from '../img/logo.svg'
-import facebook from '../img/social/facebook.svg'
-import instagram from '../img/social/instagram.svg'
-import twitter from '../img/social/twitter.svg'
-import vimeo from '../img/social/vimeo.svg'
-import contactImage from '../img/contact.jpg'
+const Wrapper = styled.footer`
+  position: fixed;
+  height: 500px;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #27282b;
+  display: flex;
+`
+
+const ContentContainer = styled.div`
+  color: #fff;
+  margin: 0 auto;
+  padding: 0px 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const StyledLink = styled.a`
+  text-decoration: underline;
+`
+
+const Title = styled.h2`
+  font-size: 30px;
+  margin-bottom: 15px;
+`
+const SubTitle = styled.h4`
+  font-weight: bold;
+  margin: 30px 0 10px;
+  /* color: #8d976e; */
+`
+
+const Copyright = styled.p`
+  position: absolute;
+  bottom: 10px;
+  opacity: 0.5;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 12px;
+`
 
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer
-        style={{
-          position: 'fixed',
-          height: 500,
-          zIndex: -1,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          background: '#333436',
-          display: 'flex',
-        }}
-      >
-        <div
-          style={{
-            width: '65%',
-            color: '#fff',
-            margin: '0 auto',
-            padding: '50px 10vw',
-          }}
-        >
-          <p>Vlaamse Tinvereniging</p>
-          <p> secretariaat@vlaamsetinvereniging.be</p>
+      <Wrapper>
+        <div style={{ width: '65%' }}>
+          <h2
+            style={{
+              fontSize: '8vw',
+              marginBottom: 35,
+              color: '#8e986e',
+              lineHeight: 1,
+              padding: '35px 35px 35px 70px',
+            }}
+          >
+            Contact
+          </h2>
+          <ContentContainer>
+            {/* <Title>Vlaamse Tinvereniging</Title> */}
+            {/* <SubTitle>Contact:</SubTitle> */}
+            <p>0032 (0) 475 52 80 72</p>
+            <StyledLink href='mailto:secretariaat@vlaamsetinvereniging.be'>
+              secretariaat@vlaamsetinvereniging.be
+            </StyledLink>
+            <SubTitle>Links:</SubTitle>
+            <ul>
+              <li>
+                <a href='#'>Nederlandse Tinvereniging</a>
+              </li>
+              <li>
+                <a href='#'>Pewter Society</a>
+              </li>
+              <li>
+                <a href='#'>Pewters Collectors' Club of America</a>
+              </li>
+            </ul>
+          </ContentContainer>
         </div>
+
         <div
           style={{
             width: '45%',
-            //backgroundImage: `url(${contactImage})`,
+            backgroundImage: `url(${contactImage})`,
             backgroundSize: 'cover',
+            backgroundPosition: 'left center',
+            position: 'relative',
           }}
         >
-          <div></div>
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              backgroundImage:
+                'linear-gradient( to left, rgba(48,49,51,0), #27282b )',
+            }}
+          ></div>
         </div>
-      </footer>
+
+        <Copyright>
+          © {new Date().getFullYear()} - Vlaamse Tinvereniging{' '}
+        </Copyright>
+      </Wrapper>
     )
   }
 }

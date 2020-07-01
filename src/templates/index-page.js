@@ -1,46 +1,85 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-import { gsap } from 'gsap'
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Fade from 'react-reveal/Fade'
+import { graphql } from 'gatsby'
+import styled from 'styled-components'
+
 import Layout from '../components/Layout'
+import Banner from '../components/Banner'
 import About from '../components/About'
 import Header from '../components/Header'
 import Activities from '../components/Activities'
 import Tinnewerck from '../components/Tinnewerck'
 import pot from '../img/teaser.jpg'
-import kannetje from '../img/kannetje.jpg'
+
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+
+const Wrapper = styled.div`
+  color: #40544e;
+  margin-bottom: 500px;
+  position: relative;
+  background-color: #fff;
+`
+const TeaserContainer = styled.div`
+  margin: 55px 0;
+  height: 55vh;
+`
+const Teaser = styled.div`
+  position: relative;
+  background-image: url(${pot});
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 55vh;
+  width: 100%;
+`
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(48, 49, 51, 0),
+    rgb(12, 13, 13)
+  );
+  background-image: linear-gradient(to bottom, rgba(48, 49, 51, 0), #27282b);
+`
+
+const Button = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -25px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  background: #8d986e;
+  border: 2px solid #fff;
+`
 
 export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
   const triggerRef = useRef(null)
   const imageRef = useRef(null)
   useEffect(() => {
     gsap.from(imageRef.current, {
-      scaleX: 0.8,
+      scaleX: 0.9,
       backgroundPosition: '50% 0%',
       scrollTrigger: {
         trigger: triggerRef.current,
         start: 'top bottom',
         end: 'bottom top',
         scrub: 0.1,
-        markers: true,
       },
     })
   }, [])
 
   return (
-    <div
-      style={{
-        color: '#40544E',
-        fontFamily: 'Playfair Display',
-        marginBottom: 500,
-        background: '#fff',
-        position: 'relative',
-      }}
-    >
+    <Wrapper>
       <Header title={title} image={image} />
 
       <About
@@ -48,106 +87,25 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
         content={about.content}
         image={about.image}
       />
-      <div ref={triggerRef} style={{ margin: '55px 0', height: '55vh' }}>
-        <div
-          style={{
-            position: 'relative',
-            backgroundImage: `url(${pot})`,
-            backgroundSize: 'cover',
-            backgroundPosition: '50% 50%',
-            height: '55vh',
-            width: '100%',
-          }}
-          ref={imageRef}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
-              backgroundImage:
-                'linear-gradient(to bottom, rgba(48, 49, 51, 0), rgb(12, 13, 13))',
-            }}
-          ></div>
-        </div>
-      </div>
+      <TeaserContainer ref={triggerRef}>
+        <Teaser ref={imageRef}>
+          <Overlay />
+        </Teaser>
+      </TeaserContainer>
+
       <Activities />
-      {/* banner */}
-      <div style={{ margin: '10vw 0' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            background: '#f5f5f5',
-            height: 280,
-          }}
-        >
-          <div style={{ maxWidth: 700 }}>
-            <h3 style={{ fontSize: '1.3vw' }}>
-              Heb je zelf tin en ben je benieuwd naar de afkomst van het werk,
-              dan kan je de hulp inroepen van onze experten.
-            </h3>
-            <button
-              style={{
-                border: '2px solid #6f6d6e',
-                borderRadius: 3,
-                background: '#6f6d6e',
-                padding: '10px 20px',
-                color: '#fff',
-                width: 180,
-                marginTop: 25,
-                borderRadius: 25,
-              }}
-            >
-              Stel hier je vraag
-            </button>
-          </div>
-          <img
-            src={kannetje}
-            style={{
-              display: 'block',
-              objectFit: 'cover',
-              height: '350px',
-              width: '350px',
-              borderRadius: '50%',
-              marginLeft: '10vw',
-              border: '12px solid #fff',
-            }}
-          />
-        </div>
-      </div>
+      <Banner />
       <Tinnewerck
         heading={tinnewerck.heading}
         content={tinnewerck.content}
         image={tinnewerck.image}
       />
-      <button
-        aria-label='top'
-        style={{
-          width: 50,
-          height: 50,
-          borderRadius: '50%',
-          position: 'absolute',
-          bottom: '-25px',
-          margin: 'auto',
-          left: 0,
-          right: 0,
-          background: '#8d986e',
-          border: '2px solid #fff',
-        }}
-      >
+      <Button aria-label='top'>
         <svg width='24' height='24' fill='#fff'>
-          <path
-            d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z'
-            // strokeWidth='1'
-            // stroke='#fff'
-          />
+          <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
         </svg>
-      </button>
-    </div>
+      </Button>
+    </Wrapper>
   )
 }
 

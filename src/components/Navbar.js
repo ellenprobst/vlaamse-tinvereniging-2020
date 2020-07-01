@@ -1,9 +1,57 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
-
+import styled from 'styled-components'
 import logo from '../img/logo.png'
-//import Fade from 'react-reveal/Fade'
 import { gsap } from 'gsap'
+
+const StyledLink = styled(Link)`
+  margin-left: 30px;
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 5px;
+  :after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    background-color: #8d986e;
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1) all;
+  }
+
+  :hover:after {
+    width: 100%;
+  }
+`
+
+const Nav = styled.nav`
+  font-size: 14px;
+  text-transform: uppercase;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  top: 35px;
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5vw;
+`
+
+const Image = styled.img`
+  width: 50px;
+  display: block;
+  position: absolute;
+  left: 5vw;
+  top: 0;
+  z-index: 1;
+`
+
 const Navbar = () => {
   const navRef = useRef(null)
   const logoRef = useRef(null)
@@ -30,42 +78,10 @@ const Navbar = () => {
   }, [])
 
   return (
-    // <Fade top>
-    <nav
-      role='navigation'
-      aria-label='main-navigation'
-      style={{
-        fontFamily: 'sans-serif',
-        fontSize: '14px',
-        textTransform: 'uppercase',
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        zIndex: 1,
-        top: 35,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          padding: '0 5vw',
-        }}
-      >
+    <Nav role='navigation' aria-label='main-navigation'>
+      <FlexContainer>
         <div>
-          <img
-            ref={logoRef}
-            src={logo}
-            alt='Vlaamse Tinvereniging'
-            style={{
-              width: '50px',
-              display: 'block',
-              position: 'absolute',
-              left: '5vw',
-              top: 0,
-              zIndex: 1,
-            }}
-          />
+          <Image ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
 
           {/* Hamburger menu
             <div data-target='navMenu' onClick={() => this.toggleHamburger()}>
@@ -76,24 +92,14 @@ const Navbar = () => {
         </div>
         <div ref={navRef}>
           <div>
-            <Link style={{ color: '#fff', fontWeight: 'bold' }}>Over Ons</Link>
-            <Link style={{ marginLeft: 30, color: '#fff', fontWeight: 'bold' }}>
-              Activiteiten
-            </Link>
-            <Link style={{ marginLeft: 30, color: '#fff', fontWeight: 'bold' }}>
-              Tinnewerck
-            </Link>
-            <Link style={{ marginLeft: 30, color: '#fff', fontWeight: 'bold' }}>
-              Vragen
-            </Link>
-            <Link style={{ marginLeft: 30, color: '#fff', fontWeight: 'bold' }}>
-              Contact
-            </Link>
+            <StyledLink>Activiteiten</StyledLink>
+            <StyledLink>Tinnewerck</StyledLink>
+            <StyledLink>Vragen</StyledLink>
+            <StyledLink>Contact</StyledLink>
           </div>
         </div>
-      </div>
-    </nav>
-    // </Fade>
+      </FlexContainer>
+    </Nav>
   )
 }
 

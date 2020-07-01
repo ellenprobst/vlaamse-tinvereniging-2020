@@ -38,7 +38,7 @@ const About = ({ heading, content, image }) => {
     <div
       ref={sectionRef}
       style={{
-        maxWidth: 1250,
+        maxWidth: 1450,
         margin: '0 auto',
         padding: '10vw 0',
         display: 'flex',
@@ -46,13 +46,13 @@ const About = ({ heading, content, image }) => {
         alignItems: 'stretch',
       }}
     >
-      <div style={{ width: '50%', padding: 20 }}>
-        <div style={{ margin: '0 auto', maxWidth: 500 }} ref={triggerRef}>
+      <div style={{ width: '65%', padding: 20 }}>
+        <div style={{ margin: '0 auto', maxWidth: 655 }} ref={triggerRef}>
           <div style={{ overflow: 'hidden' }}>
             <h2
               ref={titleRef}
               style={{
-                fontSize: '5vw',
+                fontSize: '8vw',
                 marginBottom: '4rem',
                 lineHeight: '0.7em',
                 color: '#8e986e',
@@ -61,14 +61,17 @@ const About = ({ heading, content, image }) => {
               {heading}
             </h2>
           </div>
-
-          <p style={{ fontWeight: 'bold', margin: '15px 0 25px' }}>{content}</p>
-          <p>{content}</p>
+          <div style={{ maxWidth: 500 }}>
+            <p style={{ fontWeight: 'bold', margin: '15px 0 25px' }}>
+              {content}
+            </p>
+            <p>{content}</p>
+          </div>
         </div>
       </div>
       <div
         style={{
-          width: '50%',
+          width: '35%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -79,7 +82,7 @@ const About = ({ heading, content, image }) => {
           ref={imageRef}
           style={{
             width: '100%',
-            maxWidth: 500,
+
             boxShadow:
               '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
           }}
