@@ -1,14 +1,39 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import styled from 'styled-components'
-import { nominalTypeHack } from 'prop-types'
+
+const Container = styled.header`
+  opacity: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: 795px) {
+    margin-top: 65px;
+  }
+`
+const ContentContainer = styled.div`
+  padding: 5vw;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+`
+const HeroContainer = styled.div`
+  width: 60vw;
+  height: calc(100vh);
+  margin-left: auto;
+
+  @media only screen and (max-width: 795px) {
+    height: calc(100vh - 65px);
+  }
+`
 
 const Button = styled.button`
-  border: 2px solid #8d986e;
+  border: 2px solid var(--theme--color);
   border-radius: 3px;
-  background: #8d986e;
+  background: var(--theme--color);
   padding: 10px 20px;
-  color: #fff;
+  color: var(--white);
   width: 180px;
   border-radius: 25px;
 
@@ -20,6 +45,56 @@ const Button = styled.button`
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
       0 5px 15px 0 rgba(0, 0, 0, 0.08);
   }
+`
+
+const OverflowContainer = styled.div`
+  overflow-y: hidden;
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const SubTitle = styled.h2`
+  font-size: 3vw;
+  color: var(--theme--color);
+`
+
+const SubLineContainer = styled.div`
+  overflow: hidden;
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 5vw 0 15px;
+`
+
+const Subline = styled.div`
+  margin-left: 15px;
+  background-color: var(--theme--color);
+  opacity: 0.4;
+  height: 1px;
+`
+
+const MainTitle = styled.h1`
+  font-size: 6.6vw;
+  color: var(--theme--color);
+  margin-top: -2vw;
+  z-index: 1;
+`
+
+const Intro = styled.p`
+  margin: 55px 0;
+  overflow-y: hidden;
+  max-width: 25vw;
+`
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
 `
 
 const Header = ({ title, image }) => {
@@ -57,7 +132,6 @@ const Header = ({ title, image }) => {
           opacity: 0,
           ease: 'power4',
           duration: 3,
-          opacity: 0,
         },
         0.7
       )
@@ -94,97 +168,27 @@ const Header = ({ title, image }) => {
   }, [])
 
   return (
-    <header
-      ref={sectionRef}
-      style={{
-        opacity: 0,
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <div
-        style={{
-          width: '55vw',
-          padding: '5vw',
-          position: 'absolute',
-          left: 0,
-          zIndex: 1,
-        }}
-      >
-        <div
-          style={{
-            overflowY: 'hidden',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            ref={subtitleRef}
-          >
-            <h2 style={{ fontSize: '3vw', color: '#8e986e' }}>Vlaamse</h2>
-            <div
-              style={{
-                overflow: 'hidden',
-                flexGrow: 1,
-                maxWidth: 800,
-                margin: ' 0 5vw 0 15px',
-              }}
-            >
-              <div
-                ref={lineRef}
-                style={{
-                  marginLeft: 15,
-                  backgroundColor: '#8e986e',
-                  opacity: 0.4,
-                  height: 1,
-                }}
-              ></div>
-            </div>
-          </div>
-        </div>
-        <div style={{ overflowY: 'hidden' }}>
-          <h1
-            ref={titleRef}
-            style={{
-              fontSize: '6.6vw',
-              color: '#8e986e',
-              marginTop: '-2vw',
-              zIndex: 1,
-            }}
-          >
-            {title}
-          </h1>
-        </div>
-        <p
-          ref={introRef}
-          style={{ margin: '55px 0', overflowY: 'hidden', maxWidth: '25vw' }}
-        >
+    <Container ref={sectionRef}>
+      <ContentContainer>
+        <OverflowContainer>
+          <FlexContainer ref={subtitleRef}>
+            <SubTitle>Vlaamse</SubTitle>
+            <SubLineContainer>
+              <Subline ref={lineRef} />
+            </SubLineContainer>
+          </FlexContainer>
+        </OverflowContainer>
+        <OverflowContainer>
+          <MainTitle ref={titleRef}>{title}</MainTitle>
+        </OverflowContainer>
+        <Intro ref={introRef}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
-        </p>
+        </Intro>
         <Button ref={buttonRef}>Activiteiten</Button>
-      </div>
-      <div
-        style={{
-          width: '60vw',
-          height: 'calc(100vh)',
-          marginLeft: 'auto',
-        }}
-      >
-        <div
-          ref={overlayRef}
-          style={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            background: '#fff',
-          }}
-        ></div>
+      </ContentContainer>
+      <HeroContainer>
+        <Overlay ref={overlayRef} />
         <img
           aria-hidden='true'
           src={
@@ -192,8 +196,8 @@ const Header = ({ title, image }) => {
           }
           style={{ objectFit: 'cover', height: '100%' }}
         />
-      </div>
-    </header>
+      </HeroContainer>
+    </Container>
   )
 }
 export default Header

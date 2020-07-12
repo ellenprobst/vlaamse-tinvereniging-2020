@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import contactImage from '../img/bord.png'
+import contactImage from '../img/bord.jpg'
 
 const Wrapper = styled.footer`
   position: fixed;
@@ -9,12 +9,16 @@ const Wrapper = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
-  background: #27282b;
+  background: var(--black);
   display: flex;
+
+  @media only screen and (max-width: 795px) {
+    margin: 16px;
+  }
 `
 
 const ContentContainer = styled.div`
-  color: #fff;
+  color: var(--white);
   margin: 0 auto;
   padding: 0px 8vw;
   display: flex;
@@ -42,7 +46,7 @@ const Copyright = styled.p`
   opacity: 0.5;
   text-align: center;
   width: 100%;
-  color: #fff;
+  color: var(--white);
   font-size: 12px;
 `
 
@@ -55,7 +59,7 @@ const Footer = class extends React.Component {
             style={{
               fontSize: '8vw',
               marginBottom: 35,
-              color: '#8e986e',
+              color: 'var(--theme--color)',
               lineHeight: 1,
               padding: '35px 35px 35px 70px',
             }}
@@ -101,7 +105,7 @@ const Footer = class extends React.Component {
               left: 0,
               right: 0,
               backgroundImage:
-                'linear-gradient( to left, rgba(48,49,51,0), #27282b )',
+                'linear-gradient( to left, rgba(48,49,51,0), var(--black) )',
             }}
           ></div>
         </div>

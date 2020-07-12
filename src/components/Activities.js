@@ -10,41 +10,51 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const SectionContainer = styled.div`
   max-width: 1550px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 3vh 1fr 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   margin: 0 auto;
-  padding: 0 5vw 5vh;
+  padding: 0 3vw 5vh;
+  position: relative;
 `
+
+// const Background = styled.div`
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   width: 38%;
+//   background: var(--grey-bg-color);
+// `
+
 const SideContainer = styled.div`
   max-width: 500px;
   margin-right: 35px;
-  grid-area: 2 / 1 / 6 / 3;
+  position: relative;
 `
 const TitleContainer = styled.div`
   overflow: hidden;
-  grid-area: 1 / 1 / 2 / 4;
 `
 const Title = styled.h2`
   font-size: 8vw;
   margin: 25px 0;
-  color: #8e986e;
+  color: var(--theme--color);
 `
 
 const CardsContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 35px;
+`
 
-  grid-area: 3 / 3 / 6 / 6;
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `
 
 const Card = styled.div`
   height: min-content;
-  border-radius: 3px;
-  margin: 10px;
-  width: 350px;
+  border-radius: 5px;
+  margin: 20px;
+  max-width: 350px;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
     0 5px 15px 0 rgba(0, 0, 0, 0.08);
 `
@@ -59,12 +69,14 @@ const CardImage = styled.div`
     url(${museumbezoek});
   background-size: cover;
   background-position: center;
-  border-radius: 3px 3px 0 0;
+  border-radius: 5px 5px 0 0;
 `
 
 const CardContent = styled.div`
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 25px 25px 45px 25px;
+  font-size: 0.8rem;
+  background: var(--white);
 `
 
 const CardTitle = styled.h3`
@@ -117,60 +129,63 @@ const Activities = ({ heading, content, image }) => {
 
   return (
     <SectionContainer ref={sectionRef}>
+      {/* <Background /> */}
       <TitleContainer>
         <Title ref={titleRef}>Activiteiten</Title>
       </TitleContainer>
-      <SideContainer>
-        <p>
-          Jaarlijks worden twee ledenbijeenkomsten georganiseerd alsook een
-          museumbezoek gericht op antiek en op oude tinnen voorwerpen.
-        </p>
-        <br />
-        <p>
-          Op de ledenbijeenkomsten worden door specialisten voordrachten gegeven
-          over oud tin, de tinnegieters en hun merken. Er wordt tevens de
-          mogelijkheid geboden aan de aanwezigen om hun stukken te laten keuren
-          of identificeren.
-        </p>
-      </SideContainer>
-      <CardsContainer ref={cardsRef}>
-        <Card>
-          <div
-            style={{
-              height: 200,
-              backgroundImage: `linear-gradient(to bottom,rgba(48, 49, 51, 0),rgba(48, 49, 51, 0.8)),url(${ledenvergadering})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              borderRadius: '3px 3px 0 0 ',
-            }}
-          ></div>
-          <CardContent>
-            <CardTitle>Ledenvergadering</CardTitle>
-            <CardDate>
-              <Icon src={calendarIcon} alt='calendar' />
-              25 maart 2020
-            </CardDate>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardImage />
-          <CardContent>
-            <CardTitle>Museumbezoek</CardTitle>
-            <CardDate>
-              <Icon src={calendarIcon} alt='calendar' />
-              10 oktober 2020
-            </CardDate>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </CardContent>
-        </Card>
-      </CardsContainer>
+      <FlexContainer>
+        <SideContainer>
+          <p>
+            Jaarlijks worden twee ledenbijeenkomsten georganiseerd alsook een
+            museumbezoek gericht op antiek en op oude tinnen voorwerpen.
+          </p>
+          <br />
+          <p>
+            Op de ledenbijeenkomsten worden door specialisten voordrachten
+            gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens
+            de mogelijkheid geboden aan de aanwezigen om hun stukken te laten
+            keuren of identificeren.
+          </p>
+        </SideContainer>
+        <CardsContainer ref={cardsRef}>
+          <Card>
+            <div
+              style={{
+                height: 200,
+                backgroundImage: `linear-gradient(to bottom,rgba(48, 49, 51, 0),rgba(48, 49, 51, 0.8)),url(${ledenvergadering})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderRadius: '3px 3px 0 0 ',
+              }}
+            ></div>
+            <CardContent>
+              <CardTitle>Ledenvergadering</CardTitle>
+              <CardDate>
+                <Icon src={calendarIcon} alt='calendar' />
+                25 maart 2020
+              </CardDate>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardImage />
+            <CardContent>
+              <CardTitle>Museumbezoek</CardTitle>
+              <CardDate>
+                <Icon src={calendarIcon} alt='calendar' />
+                10 oktober 2020
+              </CardDate>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </CardContent>
+          </Card>
+        </CardsContainer>
+      </FlexContainer>
     </SectionContainer>
   )
 }

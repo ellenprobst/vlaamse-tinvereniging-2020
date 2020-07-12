@@ -6,7 +6,7 @@ import { gsap } from 'gsap'
 
 const StyledLink = styled(Link)`
   margin-left: 30px;
-  color: #fff;
+  color: var(--white);
   font-weight: bold;
   position: relative;
   padding-bottom: 5px;
@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
     content: '';
     position: absolute;
     height: 1px;
-    background-color: #8d986e;
+    background-color: var(--theme--color);
     width: 0;
     left: 50%;
     bottom: 0;
@@ -25,6 +25,10 @@ const StyledLink = styled(Link)`
   :hover:after {
     width: 100%;
   }
+
+  @media only screen and (max-width: 795px) {
+    color: var(--text-color);
+  }
 `
 
 const Nav = styled.nav`
@@ -34,22 +38,20 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   z-index: 1;
-  top: 35px;
+  top: 0;
+  padding-top: 15px;
 `
 
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 5vw;
 `
 
 const Image = styled.img`
   width: 50px;
   display: block;
-  position: absolute;
-  left: 5vw;
-  top: 0;
-  z-index: 1;
 `
 
 const Navbar = () => {

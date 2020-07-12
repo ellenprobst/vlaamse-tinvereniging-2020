@@ -4,6 +4,7 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Link } from 'gatsby'
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Tinnewerck = ({ heading, content, image }) => {
@@ -16,39 +17,56 @@ const Tinnewerck = ({ heading, content, image }) => {
         trigger: sectionRef.current,
         scrub: 1,
         start: 'top bottom',
-        end: 'top top',
       },
-
-      xPercent: -20,
+      xPercent: -40,
     })
 
     gsap.from(cardsRef.current, {
-      y: 400,
+      y: 100,
       ease: 'power4',
       opacity: 0,
       duration: 2,
       delay: 0.5,
       scrollTrigger: {
-        start: 'top center',
+        start: 'top bottom',
         trigger: sectionRef.current,
       },
     })
   }, [])
 
   return (
-    <div ref={sectionRef} style={{ minHeight: '100vh', padding: '25px 50px' }}>
-      <h2
-        ref={titleRef}
+    <div ref={sectionRef} style={{ padding: '25px 50px', overflow: 'hidden' }}>
+      <div
         style={{
-          fontSize: '8vw',
-          textAlign: 'center',
-          margin: 25,
-          color: '#8e986e',
+          display: 'flex',
+          justifyContent: 'space-between',
+
+          alignItems: 'baseline',
         }}
       >
-        TINnewerck
-      </h2>
-
+        <h2
+          ref={titleRef}
+          style={{
+            fontSize: '8vw',
+            textAlign: 'center',
+            margin: '25px 25px 25px 20vw',
+            color: 'var(--theme--color)',
+          }}
+        >
+          TINnewerck
+        </h2>
+        <Link
+          to='/archief'
+          style={{
+            color: 'var(--theme--color)',
+            marginRight: '3vw',
+            fontSize: 18,
+          }}
+        >
+          <span>-------- </span>
+          Archief
+        </Link>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -56,6 +74,7 @@ const Tinnewerck = ({ heading, content, image }) => {
           width: '100%',
           margin: '55px auto',
           maxWidth: 1250,
+          flexWrap: 'wrap',
         }}
         ref={cardsRef}
       >

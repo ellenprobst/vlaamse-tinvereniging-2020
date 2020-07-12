@@ -18,21 +18,28 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Wrapper = styled.div`
-  color: #40544e;
+  color: var(--text-color);
   margin-bottom: 500px;
   position: relative;
-  background-color: #fff;
+  background-color: var(--white);
+  @media only screen and (max-width: 795px) {
+    margin: 15px 15px 500px;
+  }
 `
 const TeaserContainer = styled.div`
   margin: 55px 0;
   height: 55vh;
+
+  @media only screen and (max-width: 795px) {
+    height: 35vh;
+  }
 `
 const Teaser = styled.div`
   position: relative;
   background-image: url(${pot});
   background-size: cover;
   background-position: 50% 50%;
-  height: 55vh;
+  height: 100%;
   width: 100%;
 `
 const Overlay = styled.div`
@@ -46,7 +53,11 @@ const Overlay = styled.div`
     rgba(48, 49, 51, 0),
     rgb(12, 13, 13)
   );
-  background-image: linear-gradient(to bottom, rgba(48, 49, 51, 0), #27282b);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(48, 49, 51, 0),
+    var(--black)
+  );
 `
 
 const Button = styled.button`
@@ -58,8 +69,8 @@ const Button = styled.button`
   margin: auto;
   left: 0;
   right: 0;
-  background: #8d986e;
-  border: 2px solid #fff;
+  background: var(--theme--color);
+  border: 2px solid var(--white);
 `
 
 export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
@@ -101,7 +112,7 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
         image={tinnewerck.image}
       />
       <Button aria-label='top'>
-        <svg width='24' height='24' fill='#fff'>
+        <svg width='24' height='24' fill='var(--white)'>
           <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
         </svg>
       </Button>

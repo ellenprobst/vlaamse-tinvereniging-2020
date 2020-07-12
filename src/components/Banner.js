@@ -9,22 +9,27 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f5f5f5;
-  height: 280px;
+  background: var(--grey-bg-color);
+  height: 200px;
+  padding: 15px;
+
+  @media only screen and (max-width: 795px) {
+    height: 150px;
+  }
 `
 const ContentContainer = styled.div`
-  max-width: 700px;
+  max-width: 35%;
 `
 const Title = styled.h3`
   font-size: 1vw;
   font-family: 'Montserrat', sans-serif;
 `
 const Button = styled.button`
-  border: 2px solid #8d986e;
+  border: 2px solid var(--theme--color);
   border-radius: 3px;
-  background: #8d986e;
+  background: var(--theme--color);
   padding: 10px 20px;
-  color: #fff;
+  color: var(--white);
   width: 180px;
   margin-top: 25px;
   border-radius: 25px;
@@ -40,11 +45,13 @@ const Button = styled.button`
 const Image = styled.img`
   display: block;
   object-fit: cover;
-  height: 350px;
-  width: 350px;
+  height: 30vw;
+  width: 30vw;
+  max-width: 300px;
+  max-height: 300px;
   border-radius: 50%;
   margin-left: 10vw;
-  border: 12px solid #fff;
+  border: 12px solid var(--white);
 `
 const Banner = () => {
   return (

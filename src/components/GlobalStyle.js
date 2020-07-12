@@ -3,6 +3,19 @@ import reset from 'styled-reset'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+
+  :root {
+  --main-bg-color: #fff;
+  --grey-bg-color: #f4f4f4;
+  --text-color:  #40544e;;
+  --theme--color: #B6BE9D;
+${'' /* --theme--color: #8d986e; */}
+  ${'' /* --black:#27282b; */}
+  --black:#474448;
+  --white:#fff; 
+}
+
+
     *, *:before, *:after {
     box-sizing: border-box;
   }
