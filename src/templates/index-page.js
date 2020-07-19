@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { media } from '../themes'
 
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
@@ -22,15 +23,19 @@ const Wrapper = styled.div`
   margin-bottom: 500px;
   position: relative;
   background-color: var(--white);
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     margin: 15px 15px 500px;
+  }
+
+  @media ${media.mobile} {
+    margin: 0 0 500px;
   }
 `
 const TeaserContainer = styled.div`
   margin: 55px 0;
   height: 55vh;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     height: 35vh;
   }
 `

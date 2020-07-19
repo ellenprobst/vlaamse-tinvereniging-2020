@@ -40,14 +40,14 @@ const Tinnewerck = ({ heading, content, image }) => {
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-
+          flexWrap: 'wrap',
           alignItems: 'baseline',
         }}
       >
         <h2
           ref={titleRef}
           style={{
-            fontSize: '8vw',
+            fontSize: 'calc(16px + 8vw)',
             textAlign: 'center',
             margin: '25px 25px 25px 20vw',
             color: 'var(--theme--color)',

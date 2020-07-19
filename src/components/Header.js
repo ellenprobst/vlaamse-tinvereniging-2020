@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import styled from 'styled-components'
+import { media } from '../themes'
 
 const Container = styled.header`
   opacity: 0;
@@ -8,7 +9,7 @@ const Container = styled.header`
   display: flex;
   align-items: center;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     margin-top: 65px;
   }
 `
@@ -23,8 +24,12 @@ const HeroContainer = styled.div`
   height: calc(100vh);
   margin-left: auto;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     height: calc(100vh - 65px);
+  }
+
+  @media ${media.mobile} {
+    width: 100vw;
   }
 `
 
@@ -57,7 +62,7 @@ const FlexContainer = styled.div`
 `
 
 const SubTitle = styled.h2`
-  font-size: 3vw;
+  font-size: calc(14px + 3vw);
   color: var(--theme--color);
 `
 
@@ -76,7 +81,7 @@ const Subline = styled.div`
 `
 
 const MainTitle = styled.h1`
-  font-size: 6.6vw;
+  font-size: calc(16px + 6.6vw);
   color: var(--theme--color);
   margin-top: -2vw;
   z-index: 1;
@@ -86,6 +91,23 @@ const Intro = styled.p`
   margin: 55px 0;
   overflow-y: hidden;
   max-width: 25vw;
+
+  @media ${media.mobile} {
+    max-width: 300px;
+    color: var(--white);
+    font-size: 14px;
+    margin-bottom: 23px;
+  }
+`
+
+const Image = styled.img`
+  object-fit: cover;
+  height: 100%;
+
+  @media ${media.mobile} {
+    opacity: 0.8;
+    filter: brightness(0.5);
+  }
 `
 
 const Overlay = styled.div`
@@ -189,12 +211,11 @@ const Header = ({ title, image }) => {
       </ContentContainer>
       <HeroContainer>
         <Overlay ref={overlayRef} />
-        <img
+        <Image
           aria-hidden='true'
           src={
             !!image.childImageSharp ? image.childImageSharp.fluid.src : image
           }
-          style={{ objectFit: 'cover', height: '100%' }}
         />
       </HeroContainer>
     </Container>

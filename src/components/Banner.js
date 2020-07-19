@@ -1,6 +1,7 @@
 import React from 'react'
 import kannetje from '../img/kannetje.jpg'
 import styled from 'styled-components'
+import { media } from '../themes'
 
 const Wrapper = styled.div`
   margin: 3vw 0;
@@ -13,7 +14,7 @@ const FlexContainer = styled.div`
   height: 200px;
   padding: 15px;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     height: 150px;
   }
 `

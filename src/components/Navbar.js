@@ -1,8 +1,68 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import logo from '../img/logo.png'
 import { gsap } from 'gsap'
+import { media } from '../themes'
+import Hamburger from './Hamburger'
+
+const Nav = styled.nav`
+  font-size: 14px;
+  text-transform: uppercase;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 10px 0;
+  z-index: 1;
+  height: 65px;
+  @media ${media.mobile} {
+    z-index: initial;
+  }
+`
+
+const Menu = styled.div`
+  @media ${media.mobile} {
+    transform: ${({ active }) =>
+      active ? 'translateX(0)' : 'translateX(100%)'};
+    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: var(--white);
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 25px 0;
+  }
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vw;
+`
+
+const Image = styled.img`
+  width: 50px;
+  display: block;
+`
+
+const HamburgerContainer = styled.div`
+  display: none;
+
+  @media ${media.mobile} {
+    display: block;
+    margin-left: auto;
+  }
+`
+
+const MenuContainer = styled.div``
 
 const StyledLink = styled(Link)`
   margin-left: 30px;
@@ -26,37 +86,21 @@ const StyledLink = styled(Link)`
     width: 100%;
   }
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     color: var(--text-color);
   }
-`
-
-const Nav = styled.nav`
-  font-size: 14px;
-  text-transform: uppercase;
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  top: 0;
-  padding-top: 15px;
-`
-
-const FlexContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5vw;
-`
-
-const Image = styled.img`
-  width: 50px;
-  display: block;
+  @media ${media.mobile} {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 8vw;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 `
 
 const Navbar = () => {
   const navRef = useRef(null)
   const logoRef = useRef(null)
+  const [isMenuActive, setState] = useState(false)
 
   useEffect(() => {
     let tl = gsap.timeline({ delay: 0.5 })
@@ -84,22 +128,18 @@ const Navbar = () => {
       <FlexContainer>
         <div>
           <Image ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
-
-          {/* Hamburger menu
-            <div data-target='navMenu' onClick={() => this.toggleHamburger()}>
-              <span />
-              <span />
-              <span />
-            </div> */}
         </div>
-        <div ref={navRef}>
-          <div>
+        <HamburgerContainer onClick={() => setState(!isMenuActive)}>
+          <Hamburger active={isMenuActive} />
+        </HamburgerContainer>
+        <MenuContainer ref={isMenuActive ? navRef : null}>
+          <Menu active={isMenuActive} onClick={() => setState(!isMenuActive)}>
             <StyledLink>Activiteiten</StyledLink>
             <StyledLink>Tinnewerck</StyledLink>
             <StyledLink>Vragen</StyledLink>
             <StyledLink>Contact</StyledLink>
-          </div>
-        </div>
+          </Menu>
+        </MenuContainer>
       </FlexContainer>
     </Nav>
   )

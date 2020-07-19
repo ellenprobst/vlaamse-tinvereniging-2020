@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import styled from 'styled-components'
+import { media } from '../themes'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
   align-items: stretch;
   justify-content: center;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     padding: 10vw 0;
   }
 `
@@ -24,18 +25,27 @@ const LeftContainer = styled.div`
   padding: 20px;
   width: 40%;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     width: 50%;
+  }
+
+  @media ${media.mobile} {
+    width: 100%;
   }
 `
 const RightContainer = styled.div`
   width: calc(45% - 4vw);
   max-width: 800px;
   margin-left: 4vw;
-  margin-top: 1vh;
+  margin-top: 3vh;
   padding: 0 20px;
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     width: calc(50% - 4vw);
+  }
+
+  @media ${media.mobile} {
+    width: 100%;
+    margin: 0%;
   }
 `
 const OverflowContainer = styled.div`
@@ -43,7 +53,7 @@ const OverflowContainer = styled.div`
   margin-bottom: 4rem;
 `
 const Title = styled.h2`
-  font-size: 5vw;
+  font-size: calc(14px + 8vw);
   line-height: 0.9em;
   color: var(--theme--color);
   text-align: right;
@@ -53,7 +63,7 @@ const ImageContainer = styled.div`
   max-width: 500px;
   margin-top: 10vh;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     margin-top: 1vh;
   }
 `

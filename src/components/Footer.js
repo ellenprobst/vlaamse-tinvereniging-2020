@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import contactImage from '../img/bord.jpg'
+import { media } from '../themes'
 
 const Wrapper = styled.footer`
   position: fixed;
@@ -12,8 +13,11 @@ const Wrapper = styled.footer`
   background: var(--black);
   display: flex;
 
-  @media only screen and (max-width: 795px) {
+  @media ${media.tablet} {
     margin: 16px;
+  }
+  @media ${media.mobile} {
+    margin: 0;
   }
 `
 
@@ -50,72 +54,66 @@ const Copyright = styled.p`
   font-size: 12px;
 `
 
-const Footer = class extends React.Component {
-  render() {
-    return (
-      <Wrapper>
-        <div style={{ width: '65%' }}>
-          <h2
-            style={{
-              fontSize: '8vw',
-              marginBottom: 35,
-              color: 'var(--theme--color)',
-              lineHeight: 1,
-              padding: '35px 35px 35px 70px',
-            }}
-          >
-            Contact
-          </h2>
-          <ContentContainer>
-            {/* <Title>Vlaamse Tinvereniging</Title> */}
-            {/* <SubTitle>Contact:</SubTitle> */}
-            <p>0032 (0) 475 52 80 72</p>
-            <StyledLink href='mailto:secretariaat@vlaamsetinvereniging.be'>
-              secretariaat@vlaamsetinvereniging.be
-            </StyledLink>
-            <SubTitle>Links:</SubTitle>
-            <ul>
-              <li>
-                <a href='#'>Nederlandse Tinvereniging</a>
-              </li>
-              <li>
-                <a href='#'>Pewter Society</a>
-              </li>
-              <li>
-                <a href='#'>Pewters Collectors' Club of America</a>
-              </li>
-            </ul>
-          </ContentContainer>
-        </div>
+const Footer = () => (
+  <Wrapper>
+    <div style={{ width: '65%' }}>
+      <h2
+        style={{
+          fontSize: '8vw',
+          marginBottom: 35,
+          color: 'var(--theme--color)',
+          lineHeight: 1,
+          padding: '35px 35px 35px 70px',
+        }}
+      >
+        Contact
+      </h2>
+      <ContentContainer>
+        {/* <Title>Vlaamse Tinvereniging</Title> */}
+        {/* <SubTitle>Contact:</SubTitle> */}
+        <p>0032 (0) 475 52 80 72</p>
+        <StyledLink href='mailto:secretariaat@vlaamsetinvereniging.be'>
+          secretariaat@vlaamsetinvereniging.be
+        </StyledLink>
+        <SubTitle>Links:</SubTitle>
+        <ul>
+          <li>
+            <a href='#'>Nederlandse Tinvereniging</a>
+          </li>
+          <li>
+            <a href='#'>Pewter Society</a>
+          </li>
+          <li>
+            <a href='#'>Pewters Collectors' Club of America</a>
+          </li>
+        </ul>
+      </ContentContainer>
+    </div>
 
-        <div
-          style={{
-            width: '45%',
-            backgroundImage: `url(${contactImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'left center',
-            position: 'relative',
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
-              backgroundImage:
-                'linear-gradient( to left, rgba(48,49,51,0), var(--black) )',
-            }}
-          ></div>
-        </div>
+    <div
+      style={{
+        width: '45%',
+        backgroundImage: `url(${contactImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'left center',
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundImage:
+            'linear-gradient( to left, rgba(48,49,51,0), var(--black) )',
+        }}
+      ></div>
+    </div>
 
-        <Copyright>
-          © {new Date().getFullYear()} - Vlaamse Tinvereniging{' '}
-        </Copyright>
-      </Wrapper>
-    )
-  }
-}
+    <Copyright>© {new Date().getFullYear()} - Vlaamse Tinvereniging </Copyright>
+  </Wrapper>
+)
 
 export default Footer

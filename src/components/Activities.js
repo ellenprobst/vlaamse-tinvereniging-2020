@@ -32,7 +32,7 @@ const TitleContainer = styled.div`
   overflow: hidden;
 `
 const Title = styled.h2`
-  font-size: 8vw;
+  font-size: calc(14px + 8vw);
   margin: 25px 0;
   color: var(--theme--color);
 `
@@ -40,6 +40,7 @@ const Title = styled.h2`
 const CardsContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin: 0 auto;
   margin-top: 35px;
 `
@@ -73,7 +74,7 @@ const CardImage = styled.div`
 `
 
 const CardContent = styled.div`
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   padding: 25px 25px 45px 25px;
   font-size: 0.8rem;
   background: var(--white);
