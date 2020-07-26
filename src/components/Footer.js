@@ -25,14 +25,20 @@ const Wrapper = styled.footer`
 const TextContainer = styled.div`
   color: var(--white);
   margin: 0 auto;
-  padding: 0px 8vw;
+  padding: 0 0 0 35px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  @media ${media.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 0 25px;
+  }
 `
 
 const StyledLink = styled.a`
   text-decoration: underline;
+  width: fit-content;
 `
 
 const Title = styled.h2`
@@ -48,18 +54,17 @@ const Title = styled.h2`
 `
 const SubTitle = styled.h4`
   font-weight: bold;
-  margin: 30px 0 10px;
 `
 
 const ContentContainer = styled.div`
   margin-top: 35px;
-  width: 65%;
+  width: 75%;
   @media ${media.mobile} {
     width: 100%;
   }
 `
 const ImageContainer = styled.div`
-  width: 45%;
+  width: 35%;
   background-image: url(${contactImage});
   background-size: cover;
   background-position: left center;
@@ -87,30 +92,50 @@ const Copyright = styled.p`
   font-size: 12px;
 `
 
+const LinkList = styled.div`
+  opacity: 0.7;
+  color: var(--white);
+  margin-left: 45px;
+  @media ${media.mobile} {
+    margin-left: 0;
+    margin-top: 45px;
+  }
+`
+const ContactDetails = styled.div`
+  font-size: 22px;
+
+  @media ${media.tablet} {
+    font-size: 16px;
+  }
+`
+
 const Footer = () => (
   <Wrapper>
     <ContentContainer>
       <Title>Contact</Title>
       <TextContainer>
-        <p>0032 (0) 475 52 80 72</p>
-        <StyledLink href='mailto:info@vlaamsetinvereniging.be'>
-          info@vlaamsetinvereniging.be
-        </StyledLink>
-        <SubTitle>Links:</SubTitle>
-        <ul>
-          <li>
-            <a href='#'>Nederlandse Tinvereniging</a>
-          </li>
-          <li>
-            <a href='#'>Pewter Society</a>
-          </li>
-          <li>
-            <a href='#'>Pewters Collectors' Club of America</a>
-          </li>
-        </ul>
+        <ContactDetails>
+          <p>0032 (0) 475 52 80 72</p>
+          <StyledLink href='mailto:info@vlaamsetinvereniging.be'>
+            info@vlaamsetinvereniging.be
+          </StyledLink>
+        </ContactDetails>
+        <LinkList>
+          <SubTitle>Links:</SubTitle>
+          <ul>
+            <li>
+              <a href='#'>Nederlandse Tinvereniging</a>
+            </li>
+            <li>
+              <a href='#'>Pewter Society</a>
+            </li>
+            <li>
+              <a href='#'>Pewters Collectors' Club of America</a>
+            </li>
+          </ul>
+        </LinkList>
       </TextContainer>
     </ContentContainer>
-
     <ImageContainer>
       <Image />
     </ImageContainer>

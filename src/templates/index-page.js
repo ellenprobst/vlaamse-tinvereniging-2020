@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 `
 const TeaserContainer = styled.div`
   margin: 55px 0;
-  height: 55vh;
+  height: 75vh;
 
   @media ${media.tablet} {
     height: 35vh;

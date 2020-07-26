@@ -78,9 +78,9 @@ const HamburgerContainer = styled.div`
 const MenuContainer = styled.div``
 
 const StyledLink = styled(Link)`
-  margin-left: 30px;
+  margin-left: 15px;
   color: var(--white);
-  font-weight: bold;
+  /* font-weight: bold; */
   position: relative;
   padding-bottom: 5px;
   :after {

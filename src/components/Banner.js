@@ -34,7 +34,7 @@ const ContentContainer = styled.div`
   }
 `
 const Title = styled.h3`
-  font-size: calc(5px + 1vw);
+  font-size: 16px;
   font-family: 'Montserrat', sans-serif;
 
   @media ${media.mobile} {
