@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
+import { media } from '../themes'
 import museumbezoek from '../img/museumbezoek.jpg'
 import ledenvergadering from '../img/ledenvergadering.jpg'
 import calendarIcon from '../img/icons-calendar.svg'
@@ -11,17 +12,9 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 const SectionContainer = styled.div`
   max-width: 1550px;
   margin: 0 auto;
-  padding: 0 3vw 5vh;
+  padding: 0 20px 5vh;
   position: relative;
 `
-
-// const Background = styled.div`
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   width: 38%;
-//   background: var(--grey-bg-color);
-// `
 
 const SideContainer = styled.div`
   max-width: 500px;
@@ -33,7 +26,7 @@ const TitleContainer = styled.div`
 `
 const Title = styled.h2`
   font-size: calc(14px + 8vw);
-  margin: 25px 0;
+  margin-bottom: 25px;
   color: var(--theme--color);
 `
 
@@ -58,6 +51,14 @@ const Card = styled.div`
   max-width: 350px;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
     0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  @media ${media.tablet} {
+    margin: 10px;
+    max-width: 325px;
+  }
+
+  @media ${media.mobile} {
+    margin: 10px 0;
+  }
 `
 
 const CardImage = styled.div`
@@ -130,7 +131,6 @@ const Activities = ({ heading, content, image }) => {
 
   return (
     <SectionContainer ref={sectionRef}>
-      {/* <Background /> */}
       <TitleContainer>
         <Title ref={titleRef}>Activiteiten</Title>
       </TitleContainer>

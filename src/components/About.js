@@ -53,10 +53,14 @@ const OverflowContainer = styled.div`
   margin-bottom: 4rem;
 `
 const Title = styled.h2`
-  font-size: calc(14px + 8vw);
+  font-size: clamp(16px, 12vw, 80px);
   line-height: 0.9em;
   color: var(--theme--color);
   text-align: right;
+
+  @media ${media.mobile} {
+    text-align: left;
+  }
 `
 
 const ImageContainer = styled.div`

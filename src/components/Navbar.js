@@ -16,8 +16,12 @@ const Nav = styled.nav`
   padding: 10px 0;
   z-index: 1;
   height: 65px;
+
   @media ${media.mobile} {
-    z-index: initial;
+    height: 40px;
+    position: ${({ active }) => (active ? 'fixed' : 'absolute')};
+    background: var(--white);
+    z-index: 2;
   }
 `
 
@@ -27,7 +31,7 @@ const Menu = styled.div`
       active ? 'translateX(0)' : 'translateX(100%)'};
     transition: transform 0.3s ease-in-out;
     position: fixed;
-    top: 64px;
+    top: 40px;
     left: 0;
     height: 100vh;
     width: 100vw;
@@ -46,12 +50,21 @@ const FlexContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 5vw;
+
+  @media ${media.mobile} {
+    padding: 0 10px;
+  }
 `
 
-const Image = styled.img`
+const Logo = styled.img`
   width: 50px;
   display: block;
+  @media ${media.mobile} {
+    width: 25px;
+  }
 `
+
+const LogoContainer = styled.div``
 
 const HamburgerContainer = styled.div`
   display: none;
@@ -89,10 +102,11 @@ const StyledLink = styled(Link)`
   @media ${media.tablet} {
     color: var(--text-color);
   }
+
   @media ${media.mobile} {
     margin: 15px 0;
     text-align: center;
-    font-size: 8vw;
+    font-size: 18px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 `
@@ -126,14 +140,15 @@ const Navbar = () => {
   return (
     <Nav role='navigation' aria-label='main-navigation'>
       <FlexContainer>
-        <div>
-          <Image ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
-        </div>
+        <LogoContainer>
+          <Logo ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
+        </LogoContainer>
         <HamburgerContainer onClick={() => setState(!isMenuActive)}>
           <Hamburger active={isMenuActive} />
         </HamburgerContainer>
-        <MenuContainer ref={isMenuActive ? navRef : null}>
+        <MenuContainer ref={isMenuActive ? navRef : null} active={isMenuActive}>
           <Menu active={isMenuActive} onClick={() => setState(!isMenuActive)}>
+            <StyledLink>Over Ons</StyledLink>
             <StyledLink>Activiteiten</StyledLink>
             <StyledLink>Tinnewerck</StyledLink>
             <StyledLink>Vragen</StyledLink>

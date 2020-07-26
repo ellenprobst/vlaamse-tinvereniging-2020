@@ -12,6 +12,9 @@ const Container = styled.header`
   @media ${media.tablet} {
     margin-top: 65px;
   }
+  @media ${media.mobile} {
+    margin-top: 40px;
+  }
 `
 const ContentContainer = styled.div`
   padding: 5vw;
@@ -22,6 +25,7 @@ const ContentContainer = styled.div`
 const HeroContainer = styled.div`
   width: 60vw;
   height: calc(100vh);
+  min-height: 600px;
   margin-left: auto;
 
   @media ${media.tablet} {
@@ -30,6 +34,7 @@ const HeroContainer = styled.div`
 
   @media ${media.mobile} {
     width: 100vw;
+    height: calc(100vh - 40px);
   }
 `
 

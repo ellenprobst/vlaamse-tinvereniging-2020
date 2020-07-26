@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
-
+import { media, fontSize } from '../themes'
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
@@ -29,6 +29,13 @@ ${'' /* --theme--color: #8d986e; */}
     background-color: #fff;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1.1px;
+          @media ${media.mobile} {
+    font-size: ${fontSize.sm};
+  }
+  }
+
+  p {
+
   }
 
   img {
@@ -46,7 +53,7 @@ ${'' /* --theme--color: #8d986e; */}
   }
 
   h1, h2 {
-    letter-spacing: --1px;
+    letter-spacing: -1px;
   }
 
   button {

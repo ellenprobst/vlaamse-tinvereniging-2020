@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Button = styled.button`
-  padding: 10px;
   display: flex;
   cursor: pointer;
   transition-property: opacity, filter;
@@ -21,7 +20,7 @@ const Button = styled.button`
   }
 `
 const Box = styled.span`
-  width: 30px;
+  width: 20px;
   height: 24px;
   display: inline-block;
   position: relative;
@@ -29,13 +28,13 @@ const Box = styled.span`
 const Inner = styled.span`
   display: block;
   margin-top: -2px;
-  width: 30px;
-  height: 3px;
+  width: 20px;
+  height: 1px;
   background-color: var(--text-color);
   border-radius: 4px;
   position: absolute;
   transition-property: transform;
-  top: auto;
+  top: 16px;
   bottom: 0;
   transition-duration: 0.13s;
   transition-delay: 0.13s;
@@ -44,8 +43,8 @@ const Inner = styled.span`
   &,
   :before,
   :after {
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 1px;
     background-color: var(--text-color);
     border-radius: 4px;
     position: absolute;
@@ -61,12 +60,12 @@ const Inner = styled.span`
   }
 
   :before {
-    top: -10px;
+    top: -5px;
     transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
       transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
   :after {
-    top: -20px;
+    top: -10px;
     transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
       opacity 0.1s linear;
   }
@@ -74,7 +73,7 @@ const Inner = styled.span`
   ${({ active }) =>
     active &&
     `
-    transform: translate3d(0, -10px, 0) rotate(-45deg);
+    transform: translate3d(0, -5px, 0) rotate(-45deg);
   transition-delay: 0.22s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); 
 
@@ -85,7 +84,7 @@ const Inner = styled.span`
   }
 
   :after{
-        top: 0;
+    top: 0;
     opacity: 0;
     transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.22s linear;
   }
@@ -93,8 +92,8 @@ const Inner = styled.span`
 `
 
 const Label = styled.p`
-  margin-left: 15px;
-  font-size: 20px;
+  margin-left: 10px;
+  font-size: 14px;
   color: var(--text-color);
 `
 

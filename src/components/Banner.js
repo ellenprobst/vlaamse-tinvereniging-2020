@@ -12,18 +12,34 @@ const FlexContainer = styled.div`
   align-items: center;
   background: var(--grey-bg-color);
   height: 200px;
-  padding: 15px;
+  padding: 30px;
 
   @media ${media.tablet} {
     height: 150px;
   }
+
+  @media ${media.tablet} {
+    height: auto;
+  }
 `
 const ContentContainer = styled.div`
   max-width: 35%;
+
+  @media ${media.tablet} {
+    max-width: 75%;
+  }
+
+  @media ${media.mobile} {
+    max-width: 90%;
+  }
 `
 const Title = styled.h3`
-  font-size: 1vw;
+  font-size: calc(5px + 1vw);
   font-family: 'Montserrat', sans-serif;
+
+  @media ${media.mobile} {
+    font-size: 12px;
+  }
 `
 const Button = styled.button`
   border: 2px solid var(--theme--color);
@@ -42,6 +58,12 @@ const Button = styled.button`
     transform: scale(1.1);
     opacity: 1;
   }
+
+  @media ${media.mobile} {
+    width: 150px;
+    font-size: 12px;
+    padding: 10px;
+  }
 `
 const Image = styled.img`
   display: block;
@@ -53,6 +75,17 @@ const Image = styled.img`
   border-radius: 50%;
   margin-left: 10vw;
   border: 12px solid var(--white);
+  @media ${media.tablet} {
+    height: 200px;
+    width: 200px;
+  }
+
+  @media ${media.mobile} {
+    height: 100px;
+    width: 100px;
+    border: none;
+    margin-left: 10px;
+  }
 `
 const Banner = () => {
   return (

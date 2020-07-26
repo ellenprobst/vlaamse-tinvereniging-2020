@@ -18,10 +18,11 @@ const Wrapper = styled.footer`
   }
   @media ${media.mobile} {
     margin: 0;
+    height: 400px;
   }
 `
 
-const ContentContainer = styled.div`
+const TextContainer = styled.div`
   color: var(--white);
   margin: 0 auto;
   padding: 0px 8vw;
@@ -35,15 +36,47 @@ const StyledLink = styled.a`
 `
 
 const Title = styled.h2`
-  font-size: 30px;
-  margin-bottom: 15px;
+  font-size: 8vw;
+  margin-bottom: 35px;
+  color: var(--theme--color);
+  line-height: 1;
+  padding: 35px;
+  @media ${media.tablet} {
+    margin: 0;
+    padding: 25px;
+  }
 `
 const SubTitle = styled.h4`
   font-weight: bold;
   margin: 30px 0 10px;
-  /* color: #8d976e; */
 `
 
+const ContentContainer = styled.div`
+  margin-top: 35px;
+  width: 65%;
+  @media ${media.mobile} {
+    width: 100%;
+  }
+`
+const ImageContainer = styled.div`
+  width: 45%;
+  background-image: url(${contactImage});
+  background-size: cover;
+  background-position: left center;
+  position: relative;
+
+  @media ${media.mobile} {
+    display: none;
+  }
+`
+const Image = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(to left, rgba(48, 49, 51, 0), var(--black));
+`
 const Copyright = styled.p`
   position: absolute;
   bottom: 10px;
@@ -56,24 +89,12 @@ const Copyright = styled.p`
 
 const Footer = () => (
   <Wrapper>
-    <div style={{ width: '65%' }}>
-      <h2
-        style={{
-          fontSize: '8vw',
-          marginBottom: 35,
-          color: 'var(--theme--color)',
-          lineHeight: 1,
-          padding: '35px 35px 35px 70px',
-        }}
-      >
-        Contact
-      </h2>
-      <ContentContainer>
-        {/* <Title>Vlaamse Tinvereniging</Title> */}
-        {/* <SubTitle>Contact:</SubTitle> */}
+    <ContentContainer>
+      <Title>Contact</Title>
+      <TextContainer>
         <p>0032 (0) 475 52 80 72</p>
-        <StyledLink href='mailto:secretariaat@vlaamsetinvereniging.be'>
-          secretariaat@vlaamsetinvereniging.be
+        <StyledLink href='mailto:info@vlaamsetinvereniging.be'>
+          info@vlaamsetinvereniging.be
         </StyledLink>
         <SubTitle>Links:</SubTitle>
         <ul>
@@ -87,30 +108,12 @@ const Footer = () => (
             <a href='#'>Pewters Collectors' Club of America</a>
           </li>
         </ul>
-      </ContentContainer>
-    </div>
+      </TextContainer>
+    </ContentContainer>
 
-    <div
-      style={{
-        width: '45%',
-        backgroundImage: `url(${contactImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'left center',
-        position: 'relative',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundImage:
-            'linear-gradient( to left, rgba(48,49,51,0), var(--black) )',
-        }}
-      ></div>
-    </div>
+    <ImageContainer>
+      <Image />
+    </ImageContainer>
 
     <Copyright>© {new Date().getFullYear()} - Vlaamse Tinvereniging </Copyright>
   </Wrapper>

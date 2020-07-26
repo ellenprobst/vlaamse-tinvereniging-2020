@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   }
 
   @media ${media.mobile} {
-    margin: 0 0 500px;
+    margin: 0 0 400px;
   }
 `
 const TeaserContainer = styled.div`

@@ -1,11 +1,63 @@
 import React, { useRef, useEffect } from 'react'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
-
+import styled from 'styled-components'
+import { media } from '../themes'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'gatsby'
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+
+const Wrapper = styled.div`
+  padding: 25px 50px;
+  overflow: hidden;
+
+  @media ${media.mobile} {
+    padding: 25px;
+  }
+`
+
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+`
+
+const Title = styled.h2`
+  font-size: calc(16px + 8vw);
+  text-align: center;
+  margin: 25px 25px 25px 20vw;
+  color: var(--theme--color);
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 55px auto;
+  max-width: 1250;
+  flex-wrap: wrap;
+`
+
+const Description = styled.p`
+  text-align: center;
+  margin: 60px 0 15vh;
+`
+
+const Card = styled.div`
+  width: 300px;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+
+  @media ${media.mobile} {
+    margin: 10px 0;
+  }
+`
+const ImageContainer = styled.div`
+  object-fit: cover;
+  height: 100%;
+`
 
 const Tinnewerck = ({ heading, content, image }) => {
   const sectionRef = useRef(null)
@@ -35,26 +87,9 @@ const Tinnewerck = ({ heading, content, image }) => {
   }, [])
 
   return (
-    <div ref={sectionRef} style={{ padding: '25px 50px', overflow: 'hidden' }}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          alignItems: 'baseline',
-        }}
-      >
-        <h2
-          ref={titleRef}
-          style={{
-            fontSize: 'calc(16px + 8vw)',
-            textAlign: 'center',
-            margin: '25px 25px 25px 20vw',
-            color: 'var(--theme--color)',
-          }}
-        >
-          TINnewerck
-        </h2>
+    <Wrapper ref={sectionRef}>
+      <TitleContainer>
+        <Title ref={titleRef}>TINnewerck</Title>
         <Link
           to='/archief'
           style={{
@@ -66,59 +101,27 @@ const Tinnewerck = ({ heading, content, image }) => {
           <span>-------- </span>
           Archief
         </Link>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          width: '100%',
-          margin: '55px auto',
-          maxWidth: 1250,
-          flexWrap: 'wrap',
-        }}
-        ref={cardsRef}
-      >
-        <div
-          style={{
-            width: 300,
-            height: 440,
+      </TitleContainer>
+      <FlexContainer ref={cardsRef}>
+        <Card>
+          <ImageContainer>
+            <PreviewCompatibleImage imageInfo={image} />
+          </ImageContainer>
+        </Card>
+        <Card>
+          <ImageContainer>
+            <PreviewCompatibleImage imageInfo={image} />
+          </ImageContainer>
+        </Card>
+        <Card>
+          <ImageContainer>
+            <PreviewCompatibleImage imageInfo={image} />
+          </ImageContainer>
+        </Card>
+      </FlexContainer>
 
-            boxShadow:
-              '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
-          }}
-        >
-          <div style={{ objectFit: 'cover', height: '100%' }}>
-            <PreviewCompatibleImage imageInfo={image} />
-          </div>
-        </div>
-        <div
-          style={{
-            width: 300,
-            height: 440,
-            boxShadow:
-              '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
-          }}
-        >
-          <div style={{ objectFit: 'cover', height: '100%' }}>
-            <PreviewCompatibleImage imageInfo={image} />
-          </div>
-        </div>
-        <div
-          style={{
-            width: 300,
-            height: 440,
-            boxShadow:
-              '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
-          }}
-        >
-          <div style={{ objectFit: 'cover', height: '100%' }}>
-            <PreviewCompatibleImage imageInfo={image} />
-          </div>
-        </div>
-      </div>
-
-      <p style={{ textAlign: 'center', margin: '60px 0 15vh' }}>{content}</p>
-    </div>
+      <Description>{content}</Description>
+    </Wrapper>
   )
 }
 
