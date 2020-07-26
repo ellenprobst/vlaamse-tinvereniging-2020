@@ -138,7 +138,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <Nav role='navigation' aria-label='main-navigation'>
+    <Nav active={isMenuActive} role='navigation' aria-label='main-navigation'>
       <FlexContainer>
         <LogoContainer>
           <Logo ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
@@ -146,7 +146,7 @@ const Navbar = () => {
         <HamburgerContainer onClick={() => setState(!isMenuActive)}>
           <Hamburger active={isMenuActive} />
         </HamburgerContainer>
-        <MenuContainer ref={isMenuActive ? navRef : null} active={isMenuActive}>
+        <MenuContainer ref={isMenuActive ? navRef : null}>
           <Menu active={isMenuActive} onClick={() => setState(!isMenuActive)}>
             <StyledLink>Over Ons</StyledLink>
             <StyledLink>Activiteiten</StyledLink>
