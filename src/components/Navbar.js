@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import logo from '../img/logo.png'
 import { gsap } from 'gsap'
-import { media } from '../themes'
+import { media, boxShadow } from '../themes'
 import Hamburger from './Hamburger'
 
 const Nav = styled.nav`
@@ -18,10 +18,11 @@ const Nav = styled.nav`
   height: 65px;
 
   @media ${media.mobile} {
-    height: 40px;
+    height: 50px;
     position: ${({ active }) => (active ? 'fixed' : 'absolute')};
-    background: var(--white);
+    background: var(--grey-bg-color);
     z-index: 2;
+    box-shadow: ${boxShadow};
   }
 `
 
@@ -31,7 +32,7 @@ const Menu = styled.div`
       active ? 'translateX(0)' : 'translateX(100%)'};
     transition: transform 0.3s ease-in-out;
     position: fixed;
-    top: 40px;
+    top: 50px;
     left: 0;
     height: 100vh;
     width: 100vw;
@@ -80,7 +81,6 @@ const MenuContainer = styled.div``
 const StyledLink = styled(Link)`
   margin-left: 15px;
   color: var(--white);
-  /* font-weight: bold; */
   position: relative;
   padding-bottom: 5px;
   :after {

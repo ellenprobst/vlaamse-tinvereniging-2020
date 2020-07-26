@@ -29,6 +29,7 @@ const TextContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 900px;
   @media ${media.mobile} {
     flex-direction: column;
     align-items: flex-start;
@@ -43,7 +44,6 @@ const StyledLink = styled.a`
 
 const Title = styled.h2`
   font-size: 8vw;
-  margin-bottom: 35px;
   color: var(--theme--color);
   line-height: 1;
   padding: 35px;
@@ -59,12 +59,14 @@ const SubTitle = styled.h4`
 const ContentContainer = styled.div`
   margin-top: 35px;
   width: 75%;
+  /* max-width: 1200px; */
   @media ${media.mobile} {
     width: 100%;
   }
 `
 const ImageContainer = styled.div`
   width: 35%;
+  flex-grow: 1;
   background-image: url(${contactImage});
   background-size: cover;
   background-position: left center;
@@ -98,14 +100,18 @@ const LinkList = styled.div`
   margin-left: 45px;
   @media ${media.mobile} {
     margin-left: 0;
-    margin-top: 45px;
   }
 `
 const ContactDetails = styled.div`
   font-size: 22px;
-
+  p {
+    color: var(--white);
+  }
   @media ${media.tablet} {
     font-size: 16px;
+  }
+  @media ${media.mobile} {
+    margin: 45px 0;
   }
 `
 

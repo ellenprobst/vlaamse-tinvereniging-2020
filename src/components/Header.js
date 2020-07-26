@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import styled from 'styled-components'
-import { media } from '../themes'
+import { media, boxShadow } from '../themes'
 
 const Container = styled.header`
   opacity: 0;
@@ -13,7 +13,7 @@ const Container = styled.header`
     margin-top: 65px;
   }
   @media ${media.mobile} {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 `
 const ContentContainer = styled.div`
@@ -52,8 +52,7 @@ const Button = styled.button`
   :hover {
     opacity: 1;
     transform: scale(1.1) !important;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-      0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: ${boxShadow};
   }
 `
 

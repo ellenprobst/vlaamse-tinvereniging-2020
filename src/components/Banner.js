@@ -1,7 +1,7 @@
 import React from 'react'
 import kannetje from '../img/kannetje.jpg'
 import styled from 'styled-components'
-import { media } from '../themes'
+import { media, boxShadow } from '../themes'
 
 const Wrapper = styled.div`
   margin: 3vw 0;
@@ -52,8 +52,7 @@ const Button = styled.button`
   border-radius: 25px;
   opacity: 0.8;
   transition: all 300ms ease;
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: ${boxShadow};
   :hover {
     transform: scale(1.1);
     opacity: 1;

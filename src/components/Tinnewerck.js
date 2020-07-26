@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import styled from 'styled-components'
-import { media } from '../themes'
+import { media, boxShadow } from '../themes'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -47,10 +47,9 @@ const Description = styled.p`
 
 const Card = styled.div`
   width: 300px;
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: ${boxShadow};
 
-  @media ${media.mobile} {
+  @media ${media.tablet} {
     margin: 10px 0;
   }
 `

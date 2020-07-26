@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { media } from '../themes'
+import { media, boxShadow } from '../themes'
 import museumbezoek from '../img/museumbezoek.jpg'
 import ledenvergadering from '../img/ledenvergadering.jpg'
 import calendarIcon from '../img/icons-calendar.svg'
@@ -12,8 +12,12 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 const SectionContainer = styled.div`
   max-width: 1550px;
   margin: 0 auto;
-  padding: 0 20px 5vh;
+  padding: 0 35px 5vh;
   position: relative;
+
+  @media ${media.tablet} {
+    padding: 0 25px 35px;
+  }
 `
 
 const SideContainer = styled.div`
@@ -49,11 +53,10 @@ const Card = styled.div`
   border-radius: 5px;
   margin: 20px;
   max-width: 350px;
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: ${boxShadow};
   @media ${media.tablet} {
     margin: 10px;
-    max-width: 325px;
+    max-width: 314px;
   }
 
   @media ${media.mobile} {

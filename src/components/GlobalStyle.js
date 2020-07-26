@@ -35,7 +35,7 @@ ${'' /* --theme--color: #8d986e; */}
   }
 
   p {
-
+    color: var(--text-color);
   }
 
   img {
@@ -53,7 +53,7 @@ ${'' /* --theme--color: #8d986e; */}
   }
 
   h1, h2 {
-    letter-spacing: -1px;
+    ${'' /* letter-spacing: -1px; */}
   }
 
   button {
