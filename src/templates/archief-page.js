@@ -41,8 +41,9 @@ const Grid = styled.div`
   margin: 0 auto;
   max-width: 1550px;
   display: grid;
-  grid-gap: 2vw;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
+  grid-gap: 5vw;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  justify-content: center;
 `
 const GridItem = styled.div`
   @media ${media.mobile} {
@@ -59,15 +60,16 @@ const GridLabel = styled.div`
   max-width: 180px;
   text-align: center;
   margin: 0 auto;
-  background: var(--theme--color);
+  background: var(--white);
   padding: 7px;
   margin-top: -35px;
   position: relative;
   z-index: 1;
-  color: var(--white);
+  color: var(--text-color);
+  border: 1px solid var(--theme--color);
   h4 {
     font-weight: bold;
-
+    color: var(--theme--color);
     margin-bottom: 5px;
     font-size: 16px;
   }
@@ -88,7 +90,7 @@ const ArchiefPageTemplate = ({ data, title }) => {
             <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
           </svg>
         </Arrow>
-        <p> Back</p>
+        <p> Terug</p>
       </BackButton>
       <Title>{title}</Title>
 

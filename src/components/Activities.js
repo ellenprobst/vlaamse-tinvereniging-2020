@@ -135,7 +135,9 @@ const Activities = ({ heading, content, image }) => {
   return (
     <SectionContainer ref={sectionRef}>
       <TitleContainer>
-        <Title ref={titleRef}>Activiteiten</Title>
+        <Title ref={titleRef} id='activiteiten'>
+          Activiteiten
+        </Title>
       </TitleContainer>
       <FlexContainer>
         <SideContainer>

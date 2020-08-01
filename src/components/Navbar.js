@@ -148,11 +148,11 @@ const Navbar = () => {
         </HamburgerContainer>
         <MenuContainer ref={isMenuActive ? navRef : null}>
           <Menu active={isMenuActive} onClick={() => setState(!isMenuActive)}>
-            <StyledLink>Over Ons</StyledLink>
-            <StyledLink>Activiteiten</StyledLink>
-            <StyledLink>Tinnewerck</StyledLink>
-            <StyledLink>Vragen</StyledLink>
-            <StyledLink>Contact</StyledLink>
+            <StyledLink to='/#overons'>Over Ons</StyledLink>
+            <StyledLink to='/#activiteiten'>Activiteiten</StyledLink>
+            <StyledLink to='/#tinnewerck'>Tinnewerck</StyledLink>
+            <StyledLink to='/vragen'>Vragen</StyledLink>
+            <StyledLink to='/#contact'>Contact</StyledLink>
           </Menu>
         </MenuContainer>
       </FlexContainer>

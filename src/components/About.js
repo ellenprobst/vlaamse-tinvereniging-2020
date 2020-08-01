@@ -104,7 +104,9 @@ const About = ({ heading, content, image }) => {
     <Wrapper ref={sectionRef}>
       <LeftContainer ref={triggerRef}>
         <OverflowContainer>
-          <Title ref={titleRef}>{heading}</Title>
+          <Title ref={titleRef} id='overons'>
+            {heading}
+          </Title>
         </OverflowContainer>
         <ImageContainer>
           <div

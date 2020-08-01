@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { media } from '../themes'
 
+import Navbar from '../components/Navbar'
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
 import About from '../components/About'
@@ -95,33 +96,37 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
   }, [])
 
   return (
-    <Wrapper>
-      <Header title={title} image={image} />
+    <>
+      <Navbar />
+      <Wrapper>
+        <Header title={title} image={image} />
 
-      <About
-        heading={about.heading}
-        content={about.content}
-        image={about.image}
-      />
-      <TeaserContainer ref={triggerRef}>
-        <Teaser ref={imageRef}>
-          <Overlay />
-        </Teaser>
-      </TeaserContainer>
+        <About
+          heading={about.heading}
+          content={about.content}
+          image={about.image}
+        />
+        <TeaserContainer ref={triggerRef}>
+          <Teaser ref={imageRef}>
+            <Overlay />
+          </Teaser>
+        </TeaserContainer>
 
-      <Activities />
-      <Banner />
-      <Tinnewerck
-        heading={tinnewerck.heading}
-        content={tinnewerck.content}
-        image={tinnewerck.image}
-      />
-      <Button aria-label='top'>
-        <svg width='24' height='24' fill='var(--white)'>
-          <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
-        </svg>
-      </Button>
-    </Wrapper>
+        <Activities />
+        <Banner />
+        <Tinnewerck
+          heading={tinnewerck.heading}
+          content={tinnewerck.content}
+          image={tinnewerck.image}
+        />
+        <Button aria-label='top'>
+          <svg width='24' height='24' fill='var(--white)'>
+            <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
+          </svg>
+        </Button>
+        <div id='contact'></div>
+      </Wrapper>
+    </>
   )
 }
 

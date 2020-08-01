@@ -88,7 +88,9 @@ const Tinnewerck = ({ heading, content, image }) => {
   return (
     <Wrapper ref={sectionRef}>
       <TitleContainer>
-        <Title ref={titleRef}>TINnewerck</Title>
+        <Title ref={titleRef} id='tinnewerck'>
+          TINnewerck
+        </Title>
         <Link
           to='/archief'
           style={{
