@@ -1,14 +1,14 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
-import { media, boxShadow } from '../themes'
+import { media } from '../themes'
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  background: var(--white);
-  margin-top: 65px;
-  padding: 35px;
+  background: var(--grey-bg-color);
+
+  border: 25px solid white;
 
   @media ${media.mobile} {
     margin-top: 50px;
@@ -19,24 +19,26 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-size: calc(16px + 8vw);
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
   color: var(--theme--color);
+  line-height: 1;
 `
-const BackButton = styled.button`
-  width: 250px;
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
+const BackButton = styled(Link)`
   padding: 10px;
   border: none;
-  background: #f4f4f4;
-  display: flex;
-  align-items: center;
-  font-size: 22px;
+  background: transparent;
+  font-size: 30px;
+  color: var(--text-color);
+  margin-left: auto;
+  margin-right: 0;
 `
-const Arrow = styled.div`
-  width: 50px;
-  svg {
-    transform: rotate(-90deg);
-  }
-`
+
 const Grid = styled.div`
   margin: 0 auto;
   max-width: 1550px;
@@ -54,7 +56,6 @@ const GridImage = styled.img`
   display: block;
   object-fit: cover;
   width: 100%;
-  box-shadow: ${boxShadow};
 `
 const GridLabel = styled.div`
   max-width: 180px;
@@ -66,7 +67,7 @@ const GridLabel = styled.div`
   position: relative;
   z-index: 1;
   color: var(--text-color);
-  border: 1px solid var(--theme--color);
+
   h4 {
     font-weight: bold;
     color: var(--theme--color);
@@ -81,17 +82,29 @@ const GridLabel = styled.div`
 `
 
 const ArchiefPageTemplate = ({ data, title }) => {
-  console.log(data)
   return (
     <Wrapper>
-      <BackButton>
-        <Arrow>
-          <svg width='100%' viewBox='0 0 20 20' fill='var(--text-color)'>
-            <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
+      <FlexContainer>
+        <BackButton to='/#tinnewerck'>
+          <svg
+            width='4em'
+            height='4em'
+            viewBox='0 0 16 16'
+            class='bi bi-x'
+            fill='var(--theme--color)'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              fill-rule='evenodd'
+              d='M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z'
+            />
+            <path
+              fill-rule='evenodd'
+              d='M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z'
+            />
           </svg>
-        </Arrow>
-        <p> Terug</p>
-      </BackButton>
+        </BackButton>
+      </FlexContainer>
       <Title>{title}</Title>
 
       <Grid>
@@ -112,35 +125,6 @@ const ArchiefPageTemplate = ({ data, title }) => {
             </GridLabel>
           </GridItem>
         ))}
-
-        {/* <GridItem>
-          <GridImage></GridImage>
-          <GridLabel>
-            <h4>Tinnewerck 1</h4>
-            <p>20 juli, 2020</p>
-          </GridLabel>
-        </GridItem>
-        <GridItem>
-          <GridImage></GridImage>
-          <GridLabel>
-            <h4>Tinnewerck 1</h4>
-            <p>20 juli, 2020</p>
-          </GridLabel>
-        </GridItem>
-        <GridItem>
-          <GridImage></GridImage>
-          <GridLabel>
-            <h4>Tinnewerck 1</h4>
-            <p>20 juli, 2020</p>
-          </GridLabel>
-        </GridItem>
-        <GridItem>
-          <GridImage></GridImage>
-          <GridLabel>
-            <h4>Tinnewerck 1</h4>
-            <p>20 juli, 2020</p>
-          </GridLabel>
-        </GridItem> */}
       </Grid>
     </Wrapper>
   )

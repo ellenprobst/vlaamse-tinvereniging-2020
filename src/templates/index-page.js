@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { media } from '../themes'
@@ -34,10 +35,15 @@ const Wrapper = styled.div`
 `
 const TeaserContainer = styled.div`
   margin: 55px 0;
-  height: 75vh;
-
+  height: 65vh;
+  display: flex;
   @media ${media.tablet} {
     height: 35vh;
+  }
+  @media ${media.mobile} {
+    div:last-child {
+      display: none;
+    }
   }
 `
 const Teaser = styled.div`
@@ -54,19 +60,9 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(48, 49, 51, 0),
-    rgb(12, 13, 13)
-  );
-  background-image: linear-gradient(
-    to bottom,
-    rgba(48, 49, 51, 0),
-    var(--black)
-  );
 `
 
-const Button = styled.button`
+const StyledLink = styled(Link)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -77,19 +73,34 @@ const Button = styled.button`
   right: 0;
   background: var(--theme--color);
   border: 2px solid var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
   const triggerRef = useRef(null)
   const imageRef = useRef(null)
+  const imageRef2 = useRef(null)
   useEffect(() => {
     gsap.from(imageRef.current, {
-      scaleX: 0.9,
+      // scaleX: 0.9,
       backgroundPosition: '50% 0%',
       scrollTrigger: {
         trigger: triggerRef.current,
         start: 'top bottom',
-        end: 'bottom top',
+        end: 'bottom center',
+        scrub: 0.1,
+      },
+    })
+
+    gsap.from(imageRef2.current, {
+      // scaleX: 0.9,
+      backgroundPosition: '50% 0%',
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: 'top bottom',
+        end: 'bottom center',
         scrub: 0.1,
       },
     })
@@ -110,6 +121,9 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
           <Teaser ref={imageRef}>
             <Overlay />
           </Teaser>
+          <Teaser ref={imageRef2} style={{ backgroundSize: '300%' }}>
+            <Overlay />
+          </Teaser>
         </TeaserContainer>
 
         <Activities />
@@ -119,11 +133,11 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
           content={tinnewerck.content}
           image={tinnewerck.image}
         />
-        <Button aria-label='top'>
+        <StyledLink aria-label='top'>
           <svg width='24' height='24' fill='var(--white)'>
             <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
           </svg>
-        </Button>
+        </StyledLink>
         <div id='contact'></div>
       </Wrapper>
     </>

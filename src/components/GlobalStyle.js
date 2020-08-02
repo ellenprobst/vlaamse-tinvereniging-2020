@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   --theme--color: #B6BE9D;
 ${'' /* --theme--color: #8d986e; */}
   ${'' /* --black:#27282b; */}
-  --black:#474448;
+  --black:#393a3b;
   --white:#fff; 
 }
 
@@ -50,6 +50,7 @@ ${'' /* --theme--color: #8d986e; */}
 
   h1,h2,h3 {
      font-family:  'Playfair Display', serif;
+
   }
 
   h1, h2 {

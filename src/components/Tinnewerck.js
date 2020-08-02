@@ -57,6 +57,15 @@ const ImageContainer = styled.div`
   object-fit: cover;
   height: 100%;
 `
+const Arrow = styled.div`
+  width: 30px;
+
+  margin-left: 10px;
+
+  svg {
+    transform: rotate(90deg);
+  }
+`
 
 const Tinnewerck = ({ heading, content, image }) => {
   const sectionRef = useRef(null)
@@ -77,7 +86,7 @@ const Tinnewerck = ({ heading, content, image }) => {
       ease: 'power4',
       opacity: 0,
       duration: 2,
-      delay: 0.5,
+
       scrollTrigger: {
         start: 'top bottom',
         trigger: sectionRef.current,
@@ -96,11 +105,20 @@ const Tinnewerck = ({ heading, content, image }) => {
           style={{
             color: 'var(--theme--color)',
             marginRight: '3vw',
-            fontSize: 18,
+            fontSize: 20,
+            borderBottom: '1px solid var(--theme--color)',
+            display: 'flex',
+            padding: '0 3px 0 0',
+            alignItems: 'center',
+            textAlign: 'center',
           }}
         >
-          <span>-------- </span>
-          Archief
+          Naar het archief{' '}
+          <Arrow>
+            <svg width='100%' viewBox='0 0 20 20' fill='currentColor'>
+              <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
+            </svg>
+          </Arrow>
         </Link>
       </TitleContainer>
       <FlexContainer ref={cardsRef}>
