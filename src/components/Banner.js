@@ -2,9 +2,10 @@ import React from 'react'
 import kannetje from '../img/kannetje.jpg'
 import styled from 'styled-components'
 import { media, boxShadow } from '../themes'
+import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
-  margin: 3vw 0;
+  margin: 7vw 0;
 `
 const FlexContainer = styled.div`
   display: flex;
@@ -41,13 +42,15 @@ const Title = styled.h3`
     font-size: 12px;
   }
 `
-const Button = styled.button`
+const StyledLink = styled(Link)`
+  display: block;
+  text-align: center;
   border: 2px solid var(--theme--color);
   border-radius: 3px;
   background: var(--theme--color);
   padding: 10px 20px;
   color: var(--white);
-  width: 180px;
+  width: 220px;
   margin-top: 25px;
   border-radius: 25px;
   opacity: 0.8;
@@ -95,7 +98,7 @@ const Banner = () => {
             Heb je zelf tin en ben je benieuwd naar de afkomst van het werk,
             stel je vraag aan onze experten.
           </Title>
-          <Button>Stel hier je vraag</Button>
+          <StyledLink to={'/vragen'}>Stel hier je vraag</StyledLink>
         </ContentContainer>
         <Image src={kannetje} />
       </FlexContainer>

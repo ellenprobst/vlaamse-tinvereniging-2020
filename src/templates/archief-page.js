@@ -7,12 +7,11 @@ import { media } from '../themes'
 const Wrapper = styled.div`
   min-height: 100vh;
   background: var(--grey-bg-color);
-
-  border: 25px solid white;
-
+  border: 25px solid var(--white);
+  padding: 15px;
   @media ${media.mobile} {
-    margin-top: 50px;
     padding: 25px;
+    border: 15px solid var(--white);
   }
 `
 
@@ -30,13 +29,21 @@ const FlexContainer = styled.div`
 `
 
 const BackButton = styled(Link)`
-  padding: 10px;
   border: none;
   background: transparent;
-  font-size: 30px;
   color: var(--text-color);
   margin-left: auto;
   margin-right: 0;
+  svg {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+
+    @media ${media.mobile} {
+      width: 50px;
+      height: 50px;
+    }
+  }
 `
 
 const Grid = styled.div`
@@ -87,8 +94,6 @@ const ArchiefPageTemplate = ({ data, title }) => {
       <FlexContainer>
         <BackButton to='/#tinnewerck'>
           <svg
-            width='4em'
-            height='4em'
             viewBox='0 0 16 16'
             class='bi bi-x'
             fill='var(--theme--color)'
@@ -134,9 +139,9 @@ const ArchiefPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout>
+    <Layout hideNav>
       <ArchiefPageTemplate
-        data={frontmatter.testing}
+        data={frontmatter.content}
         title={frontmatter.title}
       />
     </Layout>
@@ -150,7 +155,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "archief-page" } }) {
       frontmatter {
         title
-        testing {
+        content {
           title
           date
           image {

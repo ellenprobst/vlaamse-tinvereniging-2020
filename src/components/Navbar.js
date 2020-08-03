@@ -6,7 +6,7 @@ import { gsap } from 'gsap'
 import { media, boxShadow } from '../themes'
 import Hamburger from './Hamburger'
 
-const Nav = styled.nav`
+const Wrapper = styled.nav`
   font-size: 14px;
   text-transform: uppercase;
   position: absolute;
@@ -23,6 +23,18 @@ const Nav = styled.nav`
     background: var(--grey-bg-color);
     z-index: 2;
     box-shadow: ${boxShadow};
+  }
+`
+
+const NavContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5vw;
+  color: ${({ light }) => (light ? 'var(--theme-color)' : 'var(--white)')};
+
+  @media ${media.mobile} {
+    padding: 0 10px;
   }
 `
 
@@ -45,18 +57,6 @@ const Menu = styled.div`
     padding: 25px 0;
   }
 `
-
-const FlexContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5vw;
-
-  @media ${media.mobile} {
-    padding: 0 10px;
-  }
-`
-
 const Logo = styled.img`
   width: 50px;
   display: block;
@@ -79,8 +79,8 @@ const HamburgerContainer = styled.div`
 const MenuContainer = styled.div``
 
 const StyledLink = styled(Link)`
-  margin-left: 15px;
-  color: var(--white);
+  margin-left: 20px;
+  color: currentColor;
   position: relative;
   padding-bottom: 5px;
   :after {
@@ -111,7 +111,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Navbar = () => {
+const Navbar = ({ light = false }) => {
   const navRef = useRef(null)
   const logoRef = useRef(null)
   const [isMenuActive, setState] = useState(false)
@@ -138,10 +138,16 @@ const Navbar = () => {
   }, [])
 
   return (
-    <Nav active={isMenuActive} role='navigation' aria-label='main-navigation'>
-      <FlexContainer>
+    <Wrapper
+      active={isMenuActive}
+      role='navigation'
+      aria-label='main-navigation'
+    >
+      <NavContainer light={light}>
         <LogoContainer>
-          <Logo ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
+          <Link to='/'>
+            <Logo ref={logoRef} src={logo} alt='Vlaamse Tinvereniging' />
+          </Link>
         </LogoContainer>
         <HamburgerContainer onClick={() => setState(!isMenuActive)}>
           <Hamburger active={isMenuActive} />
@@ -155,8 +161,8 @@ const Navbar = () => {
             <StyledLink to='/#contact'>Contact</StyledLink>
           </Menu>
         </MenuContainer>
-      </FlexContainer>
-    </Nav>
+      </NavContainer>
+    </Wrapper>
   )
 }
 

@@ -1,8 +1,8 @@
 ---
 templateKey: archief-page
 title: Archief
-slug: '/blog/my-first-post'
-testing:
+slug: '/archief'
+content:
   - title: Tinnewerck 1
     date: 20 juni, 2020
     image: /img/cover-TW60.jpg

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import styled from 'styled-components'
 import { media, boxShadow } from '../themes'
+import { Link } from 'gatsby'
 
 const Container = styled.header`
   opacity: 0;
@@ -38,7 +39,7 @@ const HeroContainer = styled.div`
   }
 `
 
-const Button = styled.button`
+const StyledLink = styled(Link)`
   border: 2px solid var(--theme--color);
   border-radius: 3px;
   background: var(--theme--color);
@@ -46,7 +47,8 @@ const Button = styled.button`
   color: var(--white);
   width: 180px;
   border-radius: 25px;
-
+  display: block;
+  text-align: center;
   transition: all 300ms ease;
 
   :hover {
@@ -211,7 +213,9 @@ const Header = ({ title, image }) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
         </Intro>
-        <Button ref={buttonRef}>Activiteiten</Button>
+        <StyledLink to='/#activiteiten' ref={buttonRef}>
+          Activiteiten
+        </StyledLink>
       </ContentContainer>
       <HeroContainer>
         <Overlay ref={overlayRef} />
