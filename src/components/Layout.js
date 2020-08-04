@@ -60,7 +60,6 @@ const TemplateWrapper = ({ children }) => {
       <GlobalStyle />
 
       <div>{children}</div>
-      <Footer />
     </div>
   )
 }

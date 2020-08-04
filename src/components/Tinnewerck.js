@@ -42,7 +42,7 @@ const FlexContainer = styled.div`
 
 const Description = styled.p`
   text-align: center;
-  margin: 60px 0 15vh;
+  margin: 60px 0 35px;
 `
 
 const Card = styled.div`

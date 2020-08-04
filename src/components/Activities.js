@@ -14,7 +14,7 @@ const SectionContainer = styled.div`
   margin: 0 auto;
   padding: 0 35px 5vh;
   position: relative;
-
+  background: var(--grey-bg-color);
   @media ${media.tablet} {
     padding: 0 25px 35px;
   }

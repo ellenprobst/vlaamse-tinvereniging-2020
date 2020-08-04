@@ -5,7 +5,7 @@ import { media, boxShadow } from '../themes'
 import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
-  margin: 7vw 0;
+  margin: 6vw 0;
 `
 const FlexContainer = styled.div`
   display: flex;
@@ -76,7 +76,7 @@ const Image = styled.img`
   max-height: 300px;
   border-radius: 50%;
   margin-left: 10vw;
-  border: 12px solid var(--white);
+  border: 12px solid var(--grey-bg-color);
   @media ${media.tablet} {
     height: 200px;
     width: 200px;

@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { media } from '../themes'
 
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
@@ -34,7 +35,6 @@ const Wrapper = styled.div`
   }
 `
 const TeaserContainer = styled.div`
-  margin: 55px 0;
   height: 65vh;
   display: flex;
   @media ${media.tablet} {
@@ -127,12 +127,13 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
         </TeaserContainer>
 
         <Activities />
-        <Banner />
+
         <Tinnewerck
           heading={tinnewerck.heading}
           content={tinnewerck.content}
           image={tinnewerck.image}
         />
+        <Banner />
         <StyledLink aria-label='top'>
           <svg width='24' height='24' fill='var(--white)'>
             <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
@@ -157,6 +158,7 @@ const IndexPage = ({ data }) => {
         about={frontmatter.about}
         tinnewerck={frontmatter.tinnewerck}
       />
+      <Footer />
     </Layout>
   )
 }
