@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import styled from 'styled-components'
-import { media } from '../themes'
+import { media, wrapper } from '../themes'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -9,9 +9,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Wrapper = styled.div`
-  max-width: 1450px;
+  max-width: ${wrapper};
   margin: 0 auto;
-  padding: 10vw 5vw;
+  padding: 10vw 0;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;

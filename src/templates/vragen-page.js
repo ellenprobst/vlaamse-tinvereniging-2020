@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import Form from '../components/Form'
 import Item from '../components/Item'
 import styled from 'styled-components'
-import { media } from '../themes'
+import { media, wrapper } from '../themes'
 
 const PageContainer = styled.div`
   @media ${media.mobile} {
@@ -21,7 +21,7 @@ const Main = styled.main`
 `
 const Wrapper = styled.div`
   margin-top: 65px;
-  max-width: 1200px;
+  max-width: ${wrapper};
   margin: 0 auto;
   padding: 35px 35px 10px;
   @media ${media.mobile} {
@@ -29,15 +29,21 @@ const Wrapper = styled.div`
   }
 `
 
+const FlexWrapper = styled(Wrapper)`
+  padding-top: 90px;
+  display: flex;
+`
+
 const Header = styled.div`
-  margin: 35px 0;
-  max-width: 800px;
+  margin: 35px 35px 35px 0;
+  max-width: 500px;
   border-radius: 5px;
   font-size: 14px;
 `
 
 const Title = styled.h2`
   font-size: calc(16px + 2vw);
+  font-size: clamp(16px, 12vw, 80px);
   color: var(--theme--color);
 `
 const List = styled.ul``
@@ -49,20 +55,20 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
   return (
     <PageContainer>
       <Fold>
-        <Wrapper>
+        <FlexWrapper>
           <Header>
             <Title>{title}</Title>
             <Description>{beschrijving}</Description>
           </Header>
           <Form />
-        </Wrapper>
+        </FlexWrapper>
       </Fold>
       <Main>
         <Wrapper>
           <Title>Antwoorden</Title>
           <List>
-            {data.map((item) => (
-              <Item data={item} />
+            {data.map((item, index) => (
+              <Item data={item} key={index} />
             ))}
           </List>
         </Wrapper>

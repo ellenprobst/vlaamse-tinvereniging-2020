@@ -84,7 +84,7 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
   const imageRef2 = useRef(null)
   useEffect(() => {
     gsap.from(imageRef.current, {
-      // scaleX: 0.9,
+      scaleX: 0.9,
       backgroundPosition: '50% 0%',
       scrollTrigger: {
         trigger: triggerRef.current,
@@ -93,7 +93,6 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
         scrub: 0.1,
       },
     })
-
     gsap.from(imageRef2.current, {
       // scaleX: 0.9,
       backgroundPosition: '50% 0%',
@@ -121,9 +120,6 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
           <Teaser ref={imageRef}>
             <Overlay />
           </Teaser>
-          <Teaser ref={imageRef2} style={{ backgroundSize: '300%' }}>
-            <Overlay />
-          </Teaser>
         </TeaserContainer>
 
         <Activities />
@@ -134,7 +130,7 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
           image={tinnewerck.image}
         />
         <Banner />
-        <StyledLink aria-label='top'>
+        <StyledLink aria-label='top' to='/'>
           <svg width='24' height='24' fill='var(--white)'>
             <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
           </svg>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { media, boxShadow } from '../themes'
+import { media, boxShadow, wrapper } from '../themes'
 import museumbezoek from '../img/museumbezoek.jpg'
 import ledenvergadering from '../img/ledenvergadering.jpg'
 import calendarIcon from '../img/icons-calendar.svg'
@@ -10,18 +10,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const SectionContainer = styled.div`
-  max-width: 1550px;
+  max-width: ${wrapper};
   margin: 0 auto;
-  padding: 0 35px 5vh;
+  padding: 10vh 0;
   position: relative;
-  background: var(--grey-bg-color);
+
   @media ${media.tablet} {
     padding: 0 25px 35px;
   }
 `
 
 const SideContainer = styled.div`
-  max-width: 500px;
+  max-width: 400px;
   margin-right: 35px;
   position: relative;
 `
@@ -30,7 +30,9 @@ const TitleContainer = styled.div`
 `
 const Title = styled.h2`
   font-size: calc(14px + 8vw);
-  margin-bottom: 25px;
+  font-size: clamp(16px, 12vw, 80px);
+  line-height: 0.9em;
+  margin: 35px 0;
   color: var(--theme--color);
 `
 
@@ -38,7 +40,6 @@ const CardsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 0 auto;
   margin-top: 35px;
 `
 
@@ -51,11 +52,10 @@ const FlexContainer = styled.div`
 const Card = styled.div`
   height: min-content;
   border-radius: 5px;
-  margin: 20px;
+  margin: 10px;
   max-width: 350px;
   box-shadow: ${boxShadow};
   @media ${media.tablet} {
-    margin: 10px;
     max-width: 314px;
   }
 
@@ -66,12 +66,7 @@ const Card = styled.div`
 
 const CardImage = styled.div`
   height: 200px;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(48, 49, 51, 0),
-      rgba(48, 49, 51, 0.8)
-    ),
-    url(${museumbezoek});
+  background-image: url(${museumbezoek});
   background-size: cover;
   background-position: center;
   border-radius: 5px 5px 0 0;
@@ -158,7 +153,7 @@ const Activities = ({ heading, content, image }) => {
             <div
               style={{
                 height: 200,
-                backgroundImage: `linear-gradient(to bottom,rgba(48, 49, 51, 0),rgba(48, 49, 51, 0.8)),url(${ledenvergadering})`,
+                backgroundImage: `url(${ledenvergadering})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 borderRadius: '3px 3px 0 0 ',

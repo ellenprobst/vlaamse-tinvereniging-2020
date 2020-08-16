@@ -1,19 +1,21 @@
 import React from 'react'
 import kannetje from '../img/kannetje.jpg'
 import styled from 'styled-components'
-import { media, boxShadow } from '../themes'
+import { media, boxShadow, wrapper } from '../themes'
 import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
-  margin: 6vw 0;
+  margin: 3vw 0;
+  background: var(--grey-bg-color);
 `
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background: var(--grey-bg-color);
-  height: 200px;
-  padding: 30px;
+  margin: 0 auto;
+  height: 225px;
+  padding: 35px;
+  max-width: ${wrapper};
 
   @media ${media.tablet} {
     height: 150px;
@@ -24,7 +26,7 @@ const FlexContainer = styled.div`
   }
 `
 const ContentContainer = styled.div`
-  max-width: 35%;
+  max-width: 800px;
 
   @media ${media.tablet} {
     max-width: 75%;
@@ -72,11 +74,11 @@ const Image = styled.img`
   object-fit: cover;
   height: 30vw;
   width: 30vw;
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 275px;
+  max-height: 275px;
   border-radius: 50%;
-  margin-left: 10vw;
-  border: 12px solid var(--grey-bg-color);
+
+  border: 8px solid var(--grey-bg-color);
   @media ${media.tablet} {
     height: 200px;
     width: 200px;
@@ -93,6 +95,7 @@ const Banner = () => {
   return (
     <Wrapper>
       <FlexContainer>
+        <Image src={kannetje} />
         <ContentContainer>
           <Title>
             Heb je zelf tin en ben je benieuwd naar de afkomst van het werk,
@@ -100,7 +103,6 @@ const Banner = () => {
           </Title>
           <StyledLink to={'/vragen'}>Stel hier je vraag</StyledLink>
         </ContentContainer>
-        <Image src={kannetje} />
       </FlexContainer>
     </Wrapper>
   )

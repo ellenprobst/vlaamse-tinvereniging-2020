@@ -47,6 +47,8 @@ const Title = styled.h2`
   color: var(--theme--color);
   line-height: 1;
   padding: 35px;
+  font-size: clamp(16px, 12vw, 80px);
+  line-height: 0.9em;
   @media ${media.tablet} {
     margin: 0;
     padding: 25px;

@@ -1,15 +1,16 @@
 import React from 'react'
 import kannetje from '../img/kannetje.jpg'
 import styled from 'styled-components'
-import { media, boxShadow } from '../themes'
-import { Link } from 'gatsby'
+import { boxShadow } from '../themes'
 
 const FormContainer = styled.form`
-  margin-bottom: 35px;
   background: var(--white);
   border-radius: 3px;
   padding: 20px 35px;
+  margin-bottom: -35px;
+  position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
 `
 const Field = styled.div`
   margin: 15px 0;
@@ -70,24 +71,24 @@ const Form = () => {
       <Field>
         <label htmlFor={'text'}>Vraag</label>
         <div>
-          <textarea input name='text' rows='6' cols='50' />
+          <textarea name='text' rows='6' cols='50' />
         </div>
       </Field>
       <div>
         <Field>
-          <label label>
+          <label>
             <span>
-              <span label>Upload foto 1: {` `}</span>
+              <span>Upload foto 1: {` `}</span>
             </span>
-            <input input type='file' name='attachment' />
+            <input type='file' name='attachment' />
           </label>
         </Field>
         <Field>
-          <label label>
+          <label>
             <span>
-              <span label>Upload foto 2: {` `}</span>
+              <span>Upload foto 2: {` `}</span>
             </span>
-            <input input type='file' name='attachment' />
+            <input type='file' name='attachment' />
           </label>
         </Field>
       </div>
