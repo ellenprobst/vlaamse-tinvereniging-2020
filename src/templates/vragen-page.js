@@ -85,7 +85,6 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
       <Main>
         <Wrapper>
           <Title>Antwoorden</Title>
-          {JSON.stringify(data, null, 4)}
           <List>
             {data.map((item, index) => (
               <Item
