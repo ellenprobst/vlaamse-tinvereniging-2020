@@ -54,23 +54,21 @@ const Description = styled.p`
   color: var(--white);
 `
 
-const Modal = styled.div`
-  width: 90vw;
-  height: 90vh;
-  background: #ffff;
-  overflow: hidden;
-  padding: 35px;
-`
-
 const VragenPageTemplate = ({ data, title, beschrijving }) => {
   const [isOpen, setOpen] = useState(false)
-  const [selectedItem, setSelected] = useState(0)
-  const [selectedImg, setSelectedImg] = useState(0)
+  const [itemIndex, setItemIndex] = useState(0)
+  const [imgIndex, setImgIndex] = useState(0)
 
   const openModal = (id) => {
     setOpen(true)
-    setSelected(id)
+    setItemIndex(id)
   }
+
+  const closeModal = () => {
+    setOpen(false)
+    setImgIndex(0)
+  }
+
   return (
     <PageContainer>
       <Fold>
@@ -101,29 +99,28 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
       {isOpen && (
         <Lightbox
           mainSrc={
-            data[selectedItem].images[selectedImg].image.childImageSharp.fluid
-              .src
+            data[itemIndex].images[imgIndex].image.childImageSharp.fluid.src
           }
           nextSrc={
-            data[selectedItem].images[
-              (selectedImg + 1) % data[selectedItem].images.length
-            ]
-          }
-          prevSrc={
-            data[selectedItem].images[
-              (selectedImg + data[selectedItem].images.length - 1) %
-                data[selectedItem].images.length
+            data[itemIndex].images[
+              (imgIndex + 1) % data[itemIndex].images.length
             ].image.childImageSharp.fluid.src
           }
-          onCloseRequest={() => setOpen(false)}
+          prevSrc={
+            data[itemIndex].images[
+              (imgIndex + data[itemIndex].images.length - 1) %
+                data[itemIndex].images.length
+            ].image.childImageSharp.fluid.src
+          }
+          onCloseRequest={closeModal}
           onMovePrevRequest={() => {
-            setSelectedImg(
-              (selectedImg + data[selectedItem].images.length - 1) %
-                data[selectedItem].images.length
+            setImgIndex(
+              (imgIndex + data[itemIndex].images.length - 1) %
+                data[itemIndex].images.length
             )
           }}
           onMoveNextRequest={() => {
-            setSelectedImg((selectedImg + 1) % data[selectedItem].images.length)
+            setImgIndex((imgIndex + 1) % data[itemIndex].images.length)
           }}
           imagePadding={50}
         />
