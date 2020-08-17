@@ -76,9 +76,9 @@ const IconContainer = styled.div`
 
 const Item = ({ data, index, openModal }) => {
   return (
-    <ListItem onClick={() => data.images && openModal(index)}>
+    <ListItem>
       <FlexContainer>
-        <ImageContainer>
+        <ImageContainer onClick={() => data.images && openModal(index)}>
           <Image>
             {data.images && data.images[0] ? (
               <PreviewCompatibleImage imageInfo={data.images[0]} borderRadius />
