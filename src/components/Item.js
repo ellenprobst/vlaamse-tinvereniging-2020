@@ -74,16 +74,14 @@ const IconContainer = styled.div`
   opacity: 0.8;
 `
 
-const Item = ({ data }) => {
-  const images = [data.image1, data.image2].filter(Boolean)
-
+const Item = ({ data, index, openModal }) => {
   return (
-    <ListItem>
+    <ListItem onClick={() => data.images && openModal(index)}>
       <FlexContainer>
         <ImageContainer>
           <Image>
-            {images[0] ? (
-              <PreviewCompatibleImage imageInfo={data.image1} borderRadius />
+            {data.images && data.images[0] ? (
+              <PreviewCompatibleImage imageInfo={data.images[0]} borderRadius />
             ) : (
               <svg
                 width='45px'
@@ -104,7 +102,7 @@ const Item = ({ data }) => {
               </svg>
             )}
           </Image>
-          {images.length > 1 && (
+          {data.images && data.images.length > 1 && (
             <IconContainer>
               <svg
                 width='1em'
@@ -125,7 +123,7 @@ const Item = ({ data }) => {
             </IconContainer>
           )}
 
-          {images.length === 1 && (
+          {data.images && data.images.length === 1 && (
             <IconContainer>
               <svg
                 width='1em'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
@@ -6,6 +6,9 @@ import Form from '../components/Form'
 import Item from '../components/Item'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
+
+import Lightbox from 'react-image-lightbox'
+import 'react-image-lightbox/style.css'
 
 const PageContainer = styled.div`
   @media ${media.mobile} {
@@ -51,7 +54,23 @@ const Description = styled.p`
   color: var(--white);
 `
 
+const Modal = styled.div`
+  width: 90vw;
+  height: 90vh;
+  background: #ffff;
+  overflow: hidden;
+  padding: 35px;
+`
+
 const VragenPageTemplate = ({ data, title, beschrijving }) => {
+  const [isOpen, setOpen] = useState(false)
+  const [selectedItem, setSelected] = useState(0)
+  const [selectedImg, setSelectedImg] = useState(0)
+
+  const openModal = (id) => {
+    setOpen(true)
+    setSelected(id)
+  }
   return (
     <PageContainer>
       <Fold>
@@ -66,13 +85,50 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
       <Main>
         <Wrapper>
           <Title>Antwoorden</Title>
+          {JSON.stringify(data, null, 4)}
           <List>
             {data.map((item, index) => (
-              <Item data={item} key={index} />
+              <Item
+                data={item}
+                key={index}
+                openModal={openModal}
+                index={index}
+              />
             ))}
           </List>
         </Wrapper>
       </Main>
+
+      {isOpen && (
+        <Lightbox
+          mainSrc={
+            data[selectedItem].images[selectedImg].image.childImageSharp.fluid
+              .src
+          }
+          nextSrc={
+            data[selectedItem].images[
+              (selectedImg + 1) % data[selectedItem].images.length
+            ]
+          }
+          prevSrc={
+            data[selectedItem].images[
+              (selectedImg + data[selectedItem].images.length - 1) %
+                data[selectedItem].images.length
+            ].image.childImageSharp.fluid.src
+          }
+          onCloseRequest={() => setOpen(false)}
+          onMovePrevRequest={() => {
+            setSelectedImg(
+              (selectedImg + data[selectedItem].images.length - 1) %
+                data[selectedItem].images.length
+            )
+          }}
+          onMoveNextRequest={() => {
+            setSelectedImg((selectedImg + 1) % data[selectedItem].images.length)
+          }}
+          imagePadding={50}
+        />
+      )}
     </PageContainer>
   )
 }
@@ -105,21 +161,11 @@ export const pageQuery = graphql`
           vraag
           antwoord
           datum
-          image1 {
+          images {
             alt
             image {
               childImageSharp {
-                fluid(maxWidth: 2048, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          image2 {
-            alt
-            image {
-              childImageSharp {
-                fluid(maxWidth: 2048, quality: 100) {
+                fluid(maxWidth: 1500, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }
