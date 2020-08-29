@@ -26,9 +26,10 @@ const Wrapper = styled.div`
   margin-top: 65px;
   max-width: ${wrapper};
   margin: 0 auto;
-  padding: 35px 35px 10px;
+  padding: 55px 35px 10px;
   @media ${media.mobile} {
-    margin-top: 50px;
+    margin-top: 0px;
+    padding: 55px 15px 10px;
   }
 `
 
@@ -38,20 +39,40 @@ const FlexWrapper = styled(Wrapper)`
 `
 
 const Header = styled.div`
-  margin: 35px 35px 35px 0;
+  padding: 25px;
   max-width: 500px;
-  border-radius: 5px;
+  min-width: 250px;
+  width: 30%;
   font-size: 14px;
+  border-right: 1px solid #efefef;
+  margin: 15px;
+  @media ${media.mobile} {
+    border-right: none;
+    width: 100%;
+    padding: 15px;
+    margin: 0;
+  }
 `
 
 const Title = styled.h2`
-  font-size: calc(16px + 2vw);
-  font-size: clamp(16px, 12vw, 80px);
-  color: var(--theme--color);
+  font-size: clamp(16px, 12vw, 35px);
+  color: var(--black);
+  margin-bottom: 15px;
 `
 const List = styled.ul``
-const Description = styled.p`
-  color: var(--white);
+const Description = styled.p``
+
+const FormContainer = styled.div`
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: -35px;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  background: white;
+  @media ${media.mobile} {
+    flex-direction: column;
+  }
 `
 
 const VragenPageTemplate = ({ data, title, beschrijving }) => {
@@ -73,11 +94,13 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
     <PageContainer>
       <Fold>
         <FlexWrapper>
-          <Header>
-            <Title>{title}</Title>
-            <Description>{beschrijving}</Description>
-          </Header>
-          <Form />
+          <FormContainer>
+            <Header>
+              <Title>{title}</Title>
+              <Description>{beschrijving}</Description>
+            </Header>
+            <Form />
+          </FormContainer>
         </FlexWrapper>
       </Fold>
       <Main>
@@ -98,6 +121,7 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
 
       {isOpen && (
         <Lightbox
+          discourageDownloads
           mainSrc={
             data[itemIndex].images[imgIndex].image.childImageSharp.fluid.src
           }

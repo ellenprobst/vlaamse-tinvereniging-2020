@@ -7,8 +7,9 @@ const GlobalStyle = createGlobalStyle`
   :root {
   --main-bg-color: #fff;
   --grey-bg-color: #f4f4f4;
-  --text-color:  #40544e;;
+  --text-color:  #40544e;
   --theme--color: #B6BE9D;
+  --input--color: #b6be9d73;
 ${'' /* --theme--color: #8d986e; */}
   --black:#393a3b;
   --white:#fff; 
@@ -21,6 +22,10 @@ ${'' /* --theme--color: #8d986e; */}
   html {
     box-sizing: border-box;
   }
+  
+  .ril-image-current {
+    transform: translate3d(0px,0px,0px) scale3d(1,1,1) !important;
+}
   
   body {
     line-height: 1.5;

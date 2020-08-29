@@ -1,16 +1,14 @@
 import React from 'react'
 import kannetje from '../img/kannetje.jpg'
 import styled from 'styled-components'
-import { boxShadow } from '../themes'
+import { boxShadow, media } from '../themes'
 
 const FormContainer = styled.form`
-  background: var(--white);
-  border-radius: 3px;
-  padding: 20px 35px;
-  margin-bottom: -35px;
-  position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   flex-grow: 1;
+  padding: 15px 25px 35px;
+  @media ${media.mobile} {
+    padding: 15px 15px 35px;
+  }
 `
 const Field = styled.div`
   margin: 15px 0;
@@ -19,13 +17,22 @@ const Field = styled.div`
   label:after {
     content: ' *';
     color: red;
+    display: ${(props) => (props.required ? '' : 'none')};
   }
 `
 const Input = styled.input`
   padding: 5px;
   border-radius: 3px;
-  width: 350px;
-  border: 2px solid var(--theme--color);
+  max-width: 350px;
+  width: 100%;
+  border: 1px solid var(--input--color);
+`
+const Textarea = styled.textarea`
+  padding: 5px;
+  border-radius: 3px;
+  max-width: 350px;
+  width: 100%;
+  border: 1px solid var(--input--color);
 `
 
 const Submit = styled.button`
@@ -56,22 +63,22 @@ const Form = () => {
           Don’t fill this out: <Input name='bot-field' />
         </label>
       </div>
-      <Field>
+      <Field required>
         <label htmlFor={'name'}>Naam</label>
         <div>
           <Input type={'text'} name={'name'} id={'name'} required={true} />
         </div>
       </Field>
-      <Field>
+      <Field required>
         <label htmlFor={'email'}>Email</label>
         <div>
           <Input type={'text'} name={'email'} id={'email'} required={true} />
         </div>
       </Field>
-      <Field>
+      <Field required>
         <label htmlFor={'text'}>Vraag</label>
         <div>
-          <textarea name='text' rows='6' cols='50' />
+          <Textarea name='text' rows='6' cols='50' />
         </div>
       </Field>
       <div>
@@ -94,7 +101,7 @@ const Form = () => {
       </div>
       <div>
         <Submit is-link type='submit'>
-          Send
+          Verstuur
         </Submit>
       </div>
     </FormContainer>

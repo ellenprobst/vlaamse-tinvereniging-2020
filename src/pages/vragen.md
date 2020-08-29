@@ -2,8 +2,7 @@
 templateKey: vragen-page
 title: Vragen
 path: '/vragen'
-beschrijving: Heb je een vraag over tin dan kan je ons deze via het
-  vragenformulier stellen. Voor identificatie-vragen stuur je best twee foto's van het stuk en de hierop aangebrachte merken. De Vlaamse Tinvereniging geeft geen waardebepalingen.
+beschrijving: Voor identificatie-vragen stuur je best twee foto's van het stuk en de hierop aangebrachte merken. De Vlaamse Tinvereniging geeft geen waardebepalingen.
 vragen:
   - titel: Bord
     vraag: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.

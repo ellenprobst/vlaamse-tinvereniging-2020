@@ -18,13 +18,12 @@ const ListItem = styled.li`
 const FlexContainer = styled.div`
   display: flex;
 
-
-  /* @media ${media.mobile} {
+  @media ${media.mobile} {
     flex-wrap: wrap;
-  } */
+  }
 `
 const ItemContent = styled.div`
-  padding: 25px;
+  padding: 15px;
 `
 
 const ItemTitle = styled.h4`
