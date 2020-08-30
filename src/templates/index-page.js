@@ -40,11 +40,6 @@ const TeaserContainer = styled.div`
   @media ${media.tablet} {
     height: 35vh;
   }
-  @media ${media.mobile} {
-    div:last-child {
-      display: none;
-    }
-  }
 `
 const Teaser = styled.div`
   position: relative;

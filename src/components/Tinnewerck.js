@@ -42,6 +42,9 @@ const FlexContainer = styled.div`
   width: 100%;
   margin: 55px auto;
   flex-wrap: wrap;
+  @media ${media.tablet} {
+    justify-content: center;
+  }
 `
 
 const Description = styled.p`

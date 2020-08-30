@@ -79,9 +79,13 @@ const Form = () => {
         ...eachEntry,
       }),
     })
-      .then(() => alert('success'))
-      .catch((error) => alert(error))
+      .then(() => {
+        alert('success')
+        setEachEntry(initialState)
+      })
+      .catch((error) => alert('error'))
   }
+
   return (
     <FormContainer
       name='vragen-formulier'

@@ -17,6 +17,10 @@ const Wrapper = styled.nav`
   z-index: 1;
   height: 65px;
 
+  @media ${media.tablet} {
+    background: var(--white);
+  }
+
   @media ${media.mobile} {
     height: 50px;
     position: ${({ active }) => (active ? 'fixed' : 'absolute')};

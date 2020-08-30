@@ -12,11 +12,11 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 const SectionContainer = styled.div`
   max-width: ${wrapper};
   margin: 0 auto;
-  padding: 10vh 0;
+  padding: 10vh 20px;
   position: relative;
 
   @media ${media.tablet} {
-    padding: 0 25px 35px;
+    padding: 0 20px 35px;
   }
 `
 
@@ -46,15 +46,20 @@ const CardsContainer = styled.div`
 const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+
+  @media ${media.tablet} {
+    flex-wrap: wrap;
+  }
 `
 
 const Card = styled.div`
   height: min-content;
   border-radius: 5px;
   margin: 10px;
-  max-width: 350px;
+  max-width: 420px;
   box-shadow: ${boxShadow};
+  flex-basis: 280px;
+  flex-grow: 1;
   @media ${media.tablet} {
     max-width: 314px;
   }

@@ -11,9 +11,6 @@ const ListItem = styled.li`
   border-radius: 3px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   font-size: 14px;
-  @media ${media.mobile} {
-    padding: 35px 0;
-  }
 `
 const FlexContainer = styled.div`
   display: flex;
@@ -90,12 +87,12 @@ const Item = ({ data, index, openModal }) => {
                 opacity='0.5'
               >
                 <path
-                  fill-rule='evenodd'
+                  fillRule='evenodd'
                   d='M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z'
                 />
                 <path d='M10.648 7.646a.5.5 0 0 1 .577-.093L15.002 9.5V13h-14v-1l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71z' />
                 <path
-                  fill-rule='evenodd'
+                  fillRule='evenodd'
                   d='M4.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z'
                 />
               </svg>

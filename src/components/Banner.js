@@ -18,16 +18,18 @@ const FlexContainer = styled.div`
   max-width: ${wrapper};
 
   @media ${media.tablet} {
-    height: 150px;
+    height: 180px;
+    padding: 15px 15px 35px;
   }
 
-  @media ${media.tablet} {
+  @media ${media.mobile} {
     height: auto;
+    padding: 35px 15px;
   }
 `
 const ContentContainer = styled.div`
   max-width: 800px;
-
+  margin-left: 15px;
   @media ${media.tablet} {
     max-width: 75%;
   }
@@ -63,7 +65,7 @@ const StyledLink = styled(Link)`
     opacity: 1;
   }
 
-  @media ${media.mobile} {
+  @media ${media.tablet} {
     width: 150px;
     font-size: 12px;
     padding: 10px;
@@ -80,8 +82,8 @@ const Image = styled.img`
 
   border: 8px solid var(--grey-bg-color);
   @media ${media.tablet} {
-    height: 200px;
-    width: 200px;
+    height: 230px;
+    width: 230px;
   }
 
   @media ${media.mobile} {
