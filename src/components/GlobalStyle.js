@@ -23,10 +23,6 @@ ${'' /* --theme--color: #8d986e; */}
     box-sizing: border-box;
   }
   
-  .ril-image-current {
-    transform: translate3d(0px,0px,0px) scale3d(1,1,1) !important;
-}
-  
   body {
     line-height: 1.5;
     letter-spacing: 0;

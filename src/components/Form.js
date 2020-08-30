@@ -1,5 +1,4 @@
-import React from 'react'
-import kannetje from '../img/kannetje.jpg'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { boxShadow, media } from '../themes'
 
@@ -46,15 +45,51 @@ const Submit = styled.button`
   border: 2px solid var(--theme--color);
   box-shadow: ${boxShadow};
 `
+
+function encode(data) {
+  const formData = new FormData()
+
+  for (const key of Object.keys(data)) {
+    formData.append(key, data[key])
+  }
+
+  return formData
+}
+
 const Form = () => {
+  const initialState = { name: '', email: '', text: '' }
+  const [eachEntry, setEachEntry] = useState(initialState)
+  const { name, email, text } = eachEntry
+
+  const handleInputChange = (e) => {
+    setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
+  }
+
+  const handleAttachment = (e) => {
+    // setState({ [e.target.name]: e.target.files[0] })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...eachEntry,
+      }),
+    })
+      .then(() => alert('success'))
+      .catch((error) => alert(error))
+  }
   return (
     <FormContainer
-      name='file-upload'
+      name='vragen-formulier'
       method='post'
-      action='/contact/thanks/'
+      // action='/contact/thanks/'
       data-netlify='true'
       data-netlify-honeypot='bot-field'
-      // onSubmit={this.handleSubmit}
+      onSubmit={handleSubmit}
     >
       {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
       <Input type='hidden' name='form-name' value='file-upload' />
@@ -66,19 +101,39 @@ const Form = () => {
       <Field required>
         <label htmlFor={'name'}>Naam</label>
         <div>
-          <Input type={'text'} name={'name'} id={'name'} required={true} />
+          <Input
+            type={'text'}
+            name={'name'}
+            id={'name'}
+            required={true}
+            value={name}
+            onChange={handleInputChange}
+          />
         </div>
       </Field>
       <Field required>
         <label htmlFor={'email'}>Email</label>
         <div>
-          <Input type={'text'} name={'email'} id={'email'} required={true} />
+          <Input
+            type={'text'}
+            name={'email'}
+            id={'email'}
+            required={true}
+            value={email}
+            onChange={handleInputChange}
+          />
         </div>
       </Field>
       <Field required>
         <label htmlFor={'text'}>Vraag</label>
         <div>
-          <Textarea name='text' rows='6' cols='50' />
+          <Textarea
+            name='text'
+            rows='6'
+            cols='50'
+            value={text}
+            onChange={handleInputChange}
+          />
         </div>
       </Field>
       <div>
