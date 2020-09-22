@@ -9,7 +9,7 @@ import Hamburger from './Hamburger'
 const Wrapper = styled.nav`
   font-size: 14px;
   text-transform: uppercase;
-  position: absolute;
+  position: ${({ absolute }) => (absolute ? 'absolute' : 'static')};
   left: 0;
   right: 0;
   top: 0;
@@ -115,7 +115,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Navbar = ({ light = false }) => {
+const Navbar = ({ light = false, absolute = false }) => {
   const navRef = useRef(null)
   const logoRef = useRef(null)
   const [isMenuActive, setState] = useState(false)
@@ -146,6 +146,7 @@ const Navbar = ({ light = false }) => {
       active={isMenuActive}
       role='navigation'
       aria-label='main-navigation'
+      absolute={absolute}
     >
       <NavContainer light={light}>
         <LogoContainer>

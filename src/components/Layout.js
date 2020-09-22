@@ -5,12 +5,12 @@ import Navbar from '../components/Navbar'
 import GlobalStyle from '../components/GlobalStyle'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
-
+import { IdentityContextProvider } from 'react-netlify-identity-widget'
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
 
   return (
-    <div>
+    <IdentityContextProvider url='https://hopeful-goldstine-0f469e.netlify.app'>
       <Helmet>
         <html lang='en' />
         <title>{title}</title>
@@ -60,7 +60,7 @@ const TemplateWrapper = ({ children }) => {
       <GlobalStyle />
 
       <div>{children}</div>
-    </div>
+    </IdentityContextProvider>
   )
 }
 

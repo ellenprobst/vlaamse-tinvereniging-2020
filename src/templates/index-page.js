@@ -102,10 +102,10 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar absolute />
       <Wrapper>
         <Header title={title} image={image} />
-
+        <Link to='/dashboard'>Go to dashboard</Link>
         <About
           heading={about.heading}
           content={about.content}

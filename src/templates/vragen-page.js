@@ -158,7 +158,7 @@ const VragenPage = ({ data }) => {
 
   return (
     <Layout>
-      <Navbar />
+      <Navbar absolute />
       <VragenPageTemplate
         data={frontmatter.vragen}
         title={frontmatter.title}
