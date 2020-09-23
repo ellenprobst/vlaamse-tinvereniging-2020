@@ -1,0 +1,18 @@
+type Vraag {
+  naam: String!
+  email: String!
+  vraag: String!
+  antwoord: String
+  status: String!
+  images: [Image]
+  datum: Date!
+}
+
+type Image @embedded {
+  name: String
+  url: String
+}
+
+type Query {
+  alleVragen: [Vraag!]!
+}

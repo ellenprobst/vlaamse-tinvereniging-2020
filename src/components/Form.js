@@ -73,9 +73,9 @@ function encode(data) {
 }
 
 const Form = () => {
-  const initialState = { name: '', email: '', text: '' }
+  const initialState = { naam: '', email: '', vraag: '', images: [] }
   const [eachEntry, setEachEntry] = useState(initialState)
-  const { name, email, text } = eachEntry
+  const { naam, email, vraag, images } = eachEntry
 
   const handleInputChange = (e) => {
     setEachEntry({ ...eachEntry, [e.target.name]: e.target.value })
@@ -87,15 +87,31 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(eachEntry)
     const form = e.target
-    fetch('/', {
+    // fetch('/', {
+    //   method: 'POST',
+    //   body: encode({
+    //     'form-name': form.getAttribute('name'),
+    //     ...eachEntry,
+    //   }),
+    // })
+    //   .then(() => {
+    //     alert('success')
+    //     setEachEntry(initialState)
+    //   })
+    //   .catch((error) => alert('error'))
+
+    fetch('/api/create-item', {
       method: 'POST',
-      body: encode({
-        'form-name': form.getAttribute('name'),
+      body: JSON.stringify({
+        // 'form-name': form.getAttribute('name'),
         ...eachEntry,
+        datum: '2020-09-22',
       }),
     })
-      .then(() => {
+      .then((res) => {
+        console.log(res)
         alert('success')
         setEachEntry(initialState)
       })
@@ -107,8 +123,8 @@ const Form = () => {
       name='vragen-formulier'
       method='post'
       // action='/contact/thanks/'
-      data-netlify='true'
-      data-netlify-honeypot='bot-field'
+      // data-netlify='true'
+      // data-netlify-honeypot='bot-field'
       onSubmit={handleSubmit}
     >
       {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
@@ -119,14 +135,14 @@ const Form = () => {
         </label>
       </div>
       <Field required>
-        <label htmlFor={'name'}>Naam</label>
+        <label htmlFor={'naam'}>Naam</label>
         <div>
           <Input
             type={'text'}
-            name={'name'}
-            id={'name'}
+            name={'naam'}
+            id={'naam'}
             required={true}
-            value={name}
+            value={naam}
             onChange={handleInputChange}
           />
         </div>
@@ -145,13 +161,13 @@ const Form = () => {
         </div>
       </Field>
       <Field required>
-        <label htmlFor={'text'}>Vraag</label>
+        <label htmlFor={'vraag'}>Vraag</label>
         <div>
           <Textarea
-            name='text'
+            name='vraag'
             rows='6'
             cols='50'
-            value={text}
+            value={vraag}
             onChange={handleInputChange}
           />
         </div>

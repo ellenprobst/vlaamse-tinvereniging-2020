@@ -100,6 +100,13 @@ const About = ({ heading, content, image }) => {
     })
   }, [])
 
+  useEffect(() => {
+    fetch('/.netlify/functions/hello')
+      .then((response) => response.json())
+      .then((res) => console.log(res, 'this is it'))
+      .catch((err) => console.log(err, 'this is the err'))
+  }, [])
+
   return (
     <Wrapper ref={sectionRef}>
       <LeftContainer ref={triggerRef}>

@@ -23,12 +23,13 @@ const FormWrapper = styled.div`
   }
 `
 
-const Form = ({ initialValues }) => {
+const Form = ({ initialValues, handleSubmit, handleCancel }) => {
   const [form] = CustomForm.useForm()
-  const [showField, setShowField] = useState(false)
+
   useEffect(() => form.resetFields(), [initialValues], [])
+
   const onFinish = (values) => {
-    console.log('Success:', values)
+    handleSubmit({ ...initialValues, ...values })
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -49,6 +50,8 @@ const Form = ({ initialValues }) => {
         name='basic'
         initialValues={{
           ...initialValues,
+          verstuurEmail: false,
+          publiceer: false,
           emailTemplate: template(initialValues.antwoord),
         }}
         onFinish={onFinish}
@@ -83,13 +86,7 @@ const Form = ({ initialValues }) => {
             name='verstuurEmail'
             valuePropName='checked'
           >
-            <Checkbox
-            // onChange={(e) => {
-            //   setShowField(e.target.checked)
-            // }}
-            >
-              Verstuur email
-            </Checkbox>
+            <Checkbox>Verstuur email</Checkbox>
           </CustomForm.Item>
         </Group>
         <CustomForm.Item
@@ -120,15 +117,23 @@ const Form = ({ initialValues }) => {
               text = 'Publiceer en verstuur email'
             return (
               <>
-                <Button htmlType='button' onClick={onReset}>
-                  Reset
-                </Button>
-                <Button
-                  type='primary'
-                  htmlType='submit'
-                  style={{ marginLeft: 10 }}
-                >
+                <Button type='primary' htmlType='submit'>
                   {text}
+                </Button>
+
+                {/* <Button
+                  htmlType='button'
+                  onClick={onReset}
+                  style={{ margin: '0 10px' }}
+                >
+                  Reset
+                </Button> */}
+                <Button
+                  htmlType='button'
+                  onClick={handleCancel}
+                  style={{ margin: '0 10px' }}
+                >
+                  Cancel
                 </Button>
               </>
             )

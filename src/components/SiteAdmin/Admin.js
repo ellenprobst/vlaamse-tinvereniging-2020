@@ -1,59 +1,136 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import Table from './Table'
-import { Modal } from 'antd'
+import { Modal, Result, Button } from 'antd'
 import Form from './Form'
+
+const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e2e4d8;
+  padding: 10px;
+  margin: 15px 25px 0 0;
+`
 
 const Admin = () => {
   const [isVisible, setVisibility] = useState(false)
   const [selected, setSelected] = useState(null)
+  const [showSucces, setShowSucces] = useState(false)
+  const [data, setData] = useState([])
+  const [status, setStatus] = useState('loading')
+
   const closeModal = () => {
+    setShowSucces(false)
     setSelected(null)
     return setVisibility(false)
   }
 
-  const selectItem = (item) => {
+  const handleSelect = (item) => {
     setSelected(item)
     setVisibility(true)
   }
+
+  useEffect(() => {
+    let canceled = false
+
+    if (status !== 'loading') return
+
+    fetch('/.netlify/functions/get-all-items')
+      .then((response) => {
+        if (canceled === true) return
+        if (response.status !== 200) {
+          console.error('Foutmelding:', response)
+          return
+        }
+        return response.json()
+      })
+      .then((result) => {
+        setData(result.vragen)
+        setStatus('loaded')
+      })
+      .catch((err) => {
+        console.log('Foutmelding:', err)
+        setStatus('error')
+      })
+
+    return () => {
+      canceled = true
+    }
+  }, [status])
+
+  const handleSubmit = (formData) => {
+    fetch('/.netlify/functions/edit-item', {
+      method: 'POST',
+      body: JSON.stringify({
+        ...formData,
+        id: formData._id,
+      }),
+    }).then(() => {
+      setStatus('loading')
+      setShowSucces(true)
+    })
+  }
+
+  const handleDelete = (item) => {
+    fetch('/.netlify/functions/delete-item', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: item._id,
+      }),
+    }).then(() => {
+      setStatus('loading')
+    })
+  }
+
   return (
     <>
-      <Table selectItem={selectItem} />
+      <Table
+        handleSelect={handleSelect}
+        handleDelete={handleDelete}
+        data={data}
+        status={status}
+      />
 
       {selected && (
         <Modal
           title={
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                background: '#e2e4d8',
-                padding: '10px ',
-                margin: '15px 25px 0 0',
-              }}
-            >
+            <Title>
               <p>
                 {selected.naam} | {selected.email}{' '}
               </p>
-
               <p
                 style={{
-                  // background: '#e2e4d8',
                   padding: '3px 5px',
                   borderRadius: 3,
                 }}
               >
                 {selected.datum}
               </p>
-            </div>
+            </Title>
           }
           visible={isVisible}
-          onOk={closeModal}
-          onCancel={closeModal}
+          footer={null}
           width={'1000px'}
         >
-          {/* <pre>{JSON.stringify(selected, null, 2)}</pre> */}
-          <Form initialValues={selected} />
+          {showSucces && (
+            <Result
+              status='success'
+              title='Successfully Purchased Cloud Server ECS!'
+              extra={[
+                <Button type='primary' onClick={closeModal}>
+                  Close
+                </Button>,
+              ]}
+            />
+          )}
+          {!showSucces && (
+            <Form
+              initialValues={selected}
+              handleSubmit={handleSubmit}
+              handleCancel={closeModal}
+            />
+          )}
         </Modal>
       )}
     </>
