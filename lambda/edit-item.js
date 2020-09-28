@@ -4,8 +4,8 @@ var cloudinary = require('cloudinary').v2
 
 cloudinary.config({
   cloud_name: 'dljqgwvnc',
-  api_key: process.env.CLAUDINARY_API_KEY,
-  api_secret: process.env.CLAUDINARY_API_SECRET,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
 const EDIT_ITEM = `
