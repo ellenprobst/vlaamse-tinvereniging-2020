@@ -31,6 +31,7 @@ export const DashboardPage = ({ location }) => {
   const toggleModal = () => {
     return setVisibility(!isVisible)
   }
+
   return (
     <Layout>
       <Navbar light />

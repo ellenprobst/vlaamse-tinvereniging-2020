@@ -63,6 +63,7 @@ const StyledLink = styled(Link)`
   :hover {
     transform: scale(1.1);
     opacity: 1;
+    color: var(--white);
   }
 
   @media ${media.tablet} {

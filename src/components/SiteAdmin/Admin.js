@@ -1,42 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Table from './Table'
-import { Modal, Result, Button } from 'antd'
+import { Modal, Result, Button, message, Image } from 'antd'
 import Form from './Form'
+import EmailForm from './EmailForm'
 
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #e2e4d8;
+  font-weight: bold;
   padding: 10px;
-  margin: 15px 25px 0 0;
 `
 
 const Admin = () => {
   const [isVisible, setVisibility] = useState(false)
   const [selected, setSelected] = useState(null)
-  const [showSucces, setShowSucces] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [data, setData] = useState([])
   const [status, setStatus] = useState('loading')
-
-  const closeModal = () => {
-    setShowSucces(false)
-    setSelected(null)
-    return setVisibility(false)
-  }
-
-  const handleSelect = (item) => {
-    setSelected(item)
-    setVisibility(true)
-  }
+  const [step, setStep] = useState(0)
 
   useEffect(() => {
     let canceled = false
 
     if (status !== 'loading') return
 
-    fetch('/.netlify/functions/get-all-items')
+    fetch('/api/get-all-items')
       .then((response) => {
         if (canceled === true) return
         if (response.status !== 200) {
@@ -59,29 +49,55 @@ const Admin = () => {
     }
   }, [status])
 
+  const closeModal = () => {
+    setSelected(null)
+    setStep(0)
+    setVisibility(false)
+  }
+
+  const handleSelect = (item) => {
+    setSelected(item)
+    setVisibility(true)
+  }
+
   const handleSubmit = (formData) => {
-    fetch('/.netlify/functions/edit-item', {
+    setSubmitting(true)
+
+    const status = formData.publiceer ? 'done' : 'open'
+    fetch('/api/edit-item', {
       method: 'POST',
       body: JSON.stringify({
         ...formData,
         id: formData._id,
+        status: status,
+        publicatieDatum: formData.publiceer ? new Date(Date.now()) : null,
+        imagesToDelete: formData.imagesToDelete,
       }),
-    }).then(() => {
-      setStatus('loading')
-      setShowSucces(true)
     })
+      .then(() => {
+        setSubmitting(false)
+        setStatus('loading')
+        setSelected(formData)
+        status === 'done' ? setStep(1) : closeModal()
+      })
+      .catch((e) => console.log(e))
   }
 
   const handleDelete = (item) => {
-    fetch('/.netlify/functions/delete-item', {
+    const loadingMessage = message.loading('👩‍💻 Even geduld...', 0)
+    fetch('/api/delete-item', {
       method: 'POST',
       body: JSON.stringify({
         id: item._id,
+        images: item.images,
       }),
     }).then(() => {
+      loadingMessage() // hide loading message
       setStatus('loading')
     })
   }
+
+  const handleEmail = () => setStep(2)
 
   return (
     <>
@@ -97,7 +113,7 @@ const Admin = () => {
           title={
             <Title>
               <p>
-                {selected.naam} | {selected.email}{' '}
+                {selected.naam} | email: {selected.email}
               </p>
               <p
                 style={{
@@ -105,30 +121,50 @@ const Admin = () => {
                   borderRadius: 3,
                 }}
               >
-                {selected.datum}
+                {new Date(selected.datum).toLocaleDateString('en-gb')}
               </p>
             </Title>
           }
           visible={isVisible}
+          onCancel={closeModal}
           footer={null}
           width={'1000px'}
+          closable={false}
         >
-          {showSucces && (
+          {step === 0 && (
+            <Form
+              initialValues={selected}
+              handleSubmit={handleSubmit}
+              handleCancel={closeModal}
+              disableSubmit={submitting}
+            />
+          )}
+          {step === 1 && (
             <Result
               status='success'
-              title='Successfully Purchased Cloud Server ECS!'
+              title='Het antwoord is gepubliceerd! 😎'
               extra={[
-                <Button type='primary' onClick={closeModal}>
+                <Button
+                  key='email'
+                  type='primary'
+                  onClick={handleEmail}
+                  shape='round'
+                >
+                  Email sturen ?
+                </Button>,
+                <Button key='close' type='' onClick={closeModal} shape='round'>
                   Close
                 </Button>,
               ]}
             />
           )}
-          {!showSucces && (
-            <Form
+
+          {step === 2 && (
+            <EmailForm
               initialValues={selected}
               handleSubmit={handleSubmit}
               handleCancel={closeModal}
+              disableSubmit={submitting}
             />
           )}
         </Modal>

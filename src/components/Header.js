@@ -55,6 +55,7 @@ const StyledLink = styled(Link)`
     opacity: 1;
     transform: scale(1.1) !important;
     box-shadow: ${boxShadow};
+    color: var(--white);
   }
 `
 
@@ -220,6 +221,7 @@ const Header = ({ title, image }) => {
       <HeroContainer>
         <Overlay ref={overlayRef} />
         <Image
+          style={{ width: '100%' }}
           aria-hidden='true'
           src={
             !!image.childImageSharp ? image.childImageSharp.fluid.src : image

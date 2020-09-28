@@ -1,4 +1,12 @@
 const sendQuery = require('./utils/send-query')
+require('dotenv').config()
+var cloudinary = require('cloudinary').v2
+
+cloudinary.config({
+  cloud_name: 'dljqgwvnc',
+  api_key: process.env.CLAUDINARY_API_KEY,
+  api_secret: process.env.CLAUDINARY_API_SECRET,
+})
 
 const DELETE_ITEM = `
     mutation($id: ID!){
@@ -9,9 +17,17 @@ const DELETE_ITEM = `
 `
 
 exports.handler = async (event) => {
-  const { id } = JSON.parse(event.body)
+  const { id, images } = JSON.parse(event.body)
   const { data, errors } = await sendQuery(DELETE_ITEM, { id })
-
+  // delete images from claudinary
+  if (images && images.length) {
+    await cloudinary.api.delete_resources(
+      images.map((image) => image.id),
+      (error, result) => {
+        if (error) console.log(error) // silent fail
+      }
+    )
+  }
   if (errors) {
     return {
       statusCode: 500,

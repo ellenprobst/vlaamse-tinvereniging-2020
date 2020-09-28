@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { Form as CustomForm, Input, Button, Checkbox, Row, Col } from 'antd'
-import PicturesWall from './PicturesWall'
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
+import {
+  Form as CustomForm,
+  Input,
+  Button,
+  Checkbox,
+  message,
+  Image,
+  Popconfirm,
+} from 'antd'
 
 const layout = {
   labelCol: { span: 4 },
@@ -21,15 +29,51 @@ const FormWrapper = styled.div`
   && .ant-form-item-control-input {
     min-height: 0;
   }
+
+  && .ant-input {
+    border-color: #d9d9d973;
+  }
 `
 
-const Form = ({ initialValues, handleSubmit, handleCancel }) => {
-  const [form] = CustomForm.useForm()
+const Actions = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+`
 
-  useEffect(() => form.resetFields(), [initialValues], [])
+const ImageContainer = styled.div`
+  position: relative;
+  padding: 5px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 15px;
+  line-height: 0;
+  :hover {
+    opacity: 0.5;
+
+    ${Actions} {
+      opacity: 1;
+    }
+  }
+`
+
+const Form = ({ initialValues, handleSubmit, handleCancel, disableSubmit }) => {
+  const [form] = CustomForm.useForm()
+  const [images, setImages] = useState(initialValues.images)
+  const [imagesToDelete, setImagesToDelete] = useState([])
+  useEffect(() => form.resetFields(), [initialValues, form])
 
   const onFinish = (values) => {
-    handleSubmit({ ...initialValues, ...values })
+    if (values.publiceer) {
+      !values.titel && message.error('Titel ontbreekt')
+      !values.vraag && message.error('Vraag ontbreekt')
+      !values.antwoord && message.error('Antwoord ontbreekt')
+
+      if (!values.titel || !values.vraag || !values.antwoord) return
+    }
+    handleSubmit({ ...initialValues, ...values, images, imagesToDelete })
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -38,6 +82,11 @@ const Form = ({ initialValues, handleSubmit, handleCancel }) => {
 
   const onReset = () => {
     form.resetFields()
+  }
+
+  const onRemoveImage = (id) => {
+    setImages(images.filter((image) => image.id !== id))
+    setImagesToDelete([...imagesToDelete, id])
   }
 
   const template = (placeholder) =>
@@ -57,10 +106,35 @@ const Form = ({ initialValues, handleSubmit, handleCancel }) => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
+        <CustomForm.Item label='Titel' name='titel' {...layout}>
+          <Input />
+        </CustomForm.Item>
         <CustomForm.Item label='Vraag' name='vraag' {...layout}>
           <Input.TextArea rows={4} />
         </CustomForm.Item>
-        <PicturesWall />
+
+        <div style={{ textAlign: 'right' }}>
+          {images.map((item) => (
+            <ImageContainer key={item.id}>
+              <Image width={100} height={100} src={item.url} />
+              <Actions>
+                <Popconfirm
+                  title='Foto verwijderen?'
+                  onConfirm={() => onRemoveImage(item.id)}
+                  okText='Ja'
+                  cancelText='Cancel'
+                >
+                  <Button
+                    shape='circle'
+                    size='small'
+                    style={{ background: '#000', color: '#FFF' }}
+                    icon={<DeleteOutlined />}
+                  />
+                </Popconfirm>
+              </Actions>
+            </ImageContainer>
+          ))}
+        </div>
         <CustomForm.Item
           label='Antwoord'
           name='antwoord'
@@ -81,43 +155,27 @@ const Form = ({ initialValues, handleSubmit, handleCancel }) => {
           >
             <Checkbox>Publiceer</Checkbox>
           </CustomForm.Item>
-          <CustomForm.Item
-            {...tailLayout}
-            name='verstuurEmail'
-            valuePropName='checked'
-          >
-            <Checkbox>Verstuur email</Checkbox>
-          </CustomForm.Item>
         </Group>
-        <CustomForm.Item
-          shouldUpdate={(prevValues, curValues) => prevValues !== curValues}
-          style={{ marginTop: 25 }}
-        >
-          {({ getFieldValue }) => {
-            return getFieldValue('verstuurEmail') === true ? (
-              <CustomForm.Item label='Email' name='emailTemplate' {...layout}>
-                <Input.TextArea rows={8} value={template('ellen')} />
-              </CustomForm.Item>
-            ) : null
-          }}
-        </CustomForm.Item>
 
         <CustomForm.Item
           {...tailLayout}
           shouldUpdate={(prevValues, curValues) =>
-            prevValues.verstuurEmail !== curValues.verstuurEmail ||
             prevValues.publiceer !== curValues.publiceer
           }
+          style={{ margin: ' 10px 0' }}
         >
           {({ getFieldValue }) => {
             let text = 'Save'
             if (getFieldValue('publiceer')) text = 'Publiceer'
-            if (getFieldValue('verstuurEmail')) text = 'Verstuur email'
-            if (getFieldValue('publiceer') && getFieldValue('verstuurEmail'))
-              text = 'Publiceer en verstuur email'
             return (
               <>
-                <Button type='primary' htmlType='submit'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  disabled={disableSubmit}
+                  loading={disableSubmit}
+                  shape='round'
+                >
                   {text}
                 </Button>
 
@@ -132,6 +190,7 @@ const Form = ({ initialValues, handleSubmit, handleCancel }) => {
                   htmlType='button'
                   onClick={handleCancel}
                   style={{ margin: '0 10px' }}
+                  shape='round'
                 >
                   Cancel
                 </Button>

@@ -2,7 +2,7 @@ const sendQuery = require('./utils/send-query')
 
 const GET_ALL_ITEMS = `
     query{
-      alleVragen {
+      alleVragen{
         data {
           _id
           status
@@ -11,8 +11,10 @@ const GET_ALL_ITEMS = `
           email
           vraag
           antwoord
+          titel
+    
           images {
-            name
+            id
             url
           }
         }

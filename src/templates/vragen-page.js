@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
@@ -6,7 +6,7 @@ import Form from '../components/Form'
 import Item from '../components/Item'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
-
+import { Skeleton } from 'antd'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
@@ -21,6 +21,7 @@ const Fold = styled.div`
 
 const Main = styled.main`
   background: var(--grey-bg-color);
+  min-height: 100vh;
 `
 const Wrapper = styled.div`
   margin-top: 65px;
@@ -75,10 +76,40 @@ const FormContainer = styled.div`
   }
 `
 
-const VragenPageTemplate = ({ data, title, beschrijving }) => {
+const VragenPageTemplate = ({ title, beschrijving }) => {
   const [isOpen, setOpen] = useState(false)
   const [itemIndex, setItemIndex] = useState(0)
   const [imgIndex, setImgIndex] = useState(0)
+  const [data, setData] = useState([])
+  const [status, setStatus] = useState('loading')
+
+  useEffect(() => {
+    let canceled = false
+
+    if (status !== 'loading') return
+
+    fetch('/api/get-all-published-items')
+      .then((response) => {
+        if (canceled === true) return
+        if (response.status !== 200) {
+          console.error('Foutmelding:', response)
+          return
+        }
+        return response.json()
+      })
+      .then((result) => {
+        setData(result.vragen)
+        setStatus('loaded')
+      })
+      .catch((err) => {
+        console.log('Foutmelding:', err)
+        setStatus('error')
+      })
+
+    return () => {
+      canceled = true
+    }
+  }, [status])
 
   const openModal = (id) => {
     setOpen(true)
@@ -106,6 +137,21 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
       <Main>
         <Wrapper>
           <Title>Antwoorden</Title>
+          <div style={{ margin: '20px 0' }}>
+            {' '}
+            <Skeleton loading={status === 'loading'} active></Skeleton>
+          </div>
+          <div style={{ margin: '20px 0' }}>
+            {' '}
+            <Skeleton loading={status === 'loading'} active></Skeleton>
+          </div>
+          <div style={{ margin: '20px 0' }}>
+            {' '}
+            <Skeleton loading={status === 'loading'} active></Skeleton>
+          </div>
+          <div style={{ margin: '20px 0' }}>
+            <Skeleton loading={status === 'loading'} active></Skeleton>
+          </div>
           <List>
             {data.map((item, index) => (
               <Item
@@ -119,22 +165,20 @@ const VragenPageTemplate = ({ data, title, beschrijving }) => {
         </Wrapper>
       </Main>
 
-      {isOpen && (
+      {isOpen && data && (
         <Lightbox
-          discourageDownloads
-          mainSrc={
-            data[itemIndex].images[imgIndex].image.childImageSharp.fluid.src
-          }
+          // discourageDownloads
+          mainSrc={data[itemIndex].images[imgIndex].url}
           nextSrc={
             data[itemIndex].images[
               (imgIndex + 1) % data[itemIndex].images.length
-            ].image.childImageSharp.fluid.src
+            ].url
           }
           prevSrc={
             data[itemIndex].images[
               (imgIndex + data[itemIndex].images.length - 1) %
                 data[itemIndex].images.length
-            ].image.childImageSharp.fluid.src
+            ].url
           }
           onCloseRequest={closeModal}
           onMovePrevRequest={() => {

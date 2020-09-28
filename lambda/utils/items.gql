@@ -2,17 +2,21 @@ type Vraag {
   naam: String!
   email: String!
   vraag: String!
+  titel: String
   antwoord: String
   status: String!
   images: [Image]
-  datum: Date!
+  datum: Time!
+  publicatieDatum: Time
 }
 
 type Image @embedded {
-  name: String
+  id: String
   url: String
 }
 
 type Query {
-  alleVragen: [Vraag!]!
+  alleVragen: [Vraag!]! @resolver(name: "sortByDate", paginated: true)
+  alleGepubliceerdeVragen(status: String!): [Vraag!]!
+    @resolver(name: "sortByPublicationDate", paginated: true)
 }

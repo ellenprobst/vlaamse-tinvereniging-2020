@@ -21,23 +21,28 @@ const FlexContainer = styled.div`
 `
 const ItemContent = styled.div`
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `
 
 const ItemTitle = styled.h4`
   font-weight: bold;
   color: var(--text-color);
 `
-const ItemMain = styled.p`
+const ItemVraag = styled.p`
   opacity: 0.6;
   margin: 10px 0 20px;
 `
 
-const ItemText = styled.p`
+const ItemAntwoord = styled.p`
   margin: 15px 0;
+  flex-grow: 1;
 `
 const ItemDate = styled.p`
   opacity: 0.6;
   margin-top: 15px;
+  text-align: right;
 `
 const ImageContainer = styled.div`
   display: flex;
@@ -74,10 +79,14 @@ const Item = ({ data, index, openModal }) => {
   return (
     <ListItem>
       <FlexContainer>
-        <ImageContainer onClick={() => data.images && openModal(index)}>
+        <ImageContainer onClick={() => data.images.length && openModal(index)}>
           <Image>
             {data.images && data.images[0] ? (
-              <PreviewCompatibleImage imageInfo={data.images[0]} borderRadius />
+              <img
+                style={{ width: 180, height: 180, objectFit: 'cover' }}
+                src={data.images[0].url}
+                alt={'ingestuurde foto'}
+              />
             ) : (
               <svg
                 width='45px'
@@ -141,9 +150,11 @@ const Item = ({ data, index, openModal }) => {
         </ImageContainer>
         <ItemContent>
           <ItemTitle>{data.titel}</ItemTitle>
-          <ItemMain>{data.vraag}</ItemMain>
-          <ItemText>{data.antwoord}</ItemText>
-          <ItemDate>{data.datum}</ItemDate>
+          <ItemVraag>{data.vraag}</ItemVraag>
+          <ItemAntwoord>{data.antwoord}</ItemAntwoord>
+          <ItemDate>
+            {new Date(data.publicatieDatum).toLocaleDateString('en-gb')}
+          </ItemDate>
         </ItemContent>
       </FlexContainer>
     </ListItem>

@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   }
 `
 const TeaserContainer = styled.div`
-  height: 65vh;
+  height: 85vh;
   display: flex;
   @media ${media.tablet} {
     height: 35vh;
@@ -105,7 +105,7 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
       <Navbar absolute />
       <Wrapper>
         <Header title={title} image={image} />
-        <Link to='/dashboard'>Go to dashboard</Link>
+
         <About
           heading={about.heading}
           content={about.content}

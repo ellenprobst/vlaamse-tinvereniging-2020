@@ -1,6 +1,7 @@
 import React from 'react'
-import { Table as CustomTable, Tag, Space, Tooltip, Alert } from 'antd'
+import { Table as CustomTable, Tag, Space, Tooltip, Alert, Modal } from 'antd'
 import styled from 'styled-components'
+const { confirm } = Modal
 
 const ActionButton = styled.button`
   border: none;
@@ -12,6 +13,33 @@ const ActionButton = styled.button`
     border-radius: 20px;
   }
 `
+
+function showConfirm(callback, item) {
+  confirm({
+    title: 'Verwijder deze vraag?',
+    okText: 'Ja, verwijder',
+    onOk() {
+      callback(item)
+    },
+    onCancel() {
+      console.log('Cancel')
+    },
+  })
+}
+
+function sortByStatus(a, b) {
+  var statusA = a.status.toUpperCase() // ignore upper and lowercase
+  var statusB = b.status.toUpperCase() // ignore upper and lowercase
+  if (statusA < statusB) {
+    return -1
+  }
+  if (statusA > statusB) {
+    return 1
+  }
+
+  // names must be equal
+  return 0
+}
 
 const Table = ({ handleSelect, handleDelete, data, status }) => {
   const columns = [
@@ -37,7 +65,7 @@ const Table = ({ handleSelect, handleDelete, data, status }) => {
           </Tooltip>
 
           <Tooltip title='delete'>
-            <ActionButton onClick={() => handleDelete(record)}>
+            <ActionButton onClick={() => showConfirm(handleDelete, record)}>
               <svg
                 width='1em'
                 height='1em'
@@ -59,6 +87,7 @@ const Table = ({ handleSelect, handleDelete, data, status }) => {
       title: 'Status',
       key: 'status',
       dataIndex: 'status',
+      sorter: sortByStatus,
       render: (status) => {
         let color = 'grey'
         if (status === 'done') color = '#81c784'
@@ -81,7 +110,8 @@ const Table = ({ handleSelect, handleDelete, data, status }) => {
       title: 'Datum',
       dataIndex: 'datum',
       key: 'datum',
-      width: '135px',
+      width: '200px',
+      render: (datum) => new Date(datum).toLocaleDateString('en-gb'),
     },
     {
       title: 'Vraag',
@@ -95,13 +125,19 @@ const Table = ({ handleSelect, handleDelete, data, status }) => {
       key: 'antwoord',
       width: '600px',
     },
+    {
+      title: 'Titel',
+      dataIndex: 'titel',
+      key: 'titel',
+      width: '600px',
+    },
   ]
   return (
     <>
       {' '}
       {status === 'error' && (
         <Alert
-          message='Foutmelding: check de console voor meer info.'
+          message='🤔 Foutmelding: check de console voor meer info.'
           type='error'
           showIcon
           style={{ marginBottom: 15 }}

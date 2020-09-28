@@ -23,13 +23,14 @@ ${'' /* --theme--color: #8d986e; */}
     box-sizing: border-box;
   }
 
-  .ril-image-current {
-     @media ${media.mobile} {
-      transform: translate3d(0px,0px,0px) scale3d(1,1,1) !important;
-  }
 
-}
-  
+${'' /* .ril-image {
+    
+      transform: none !important;
+
+} */}
+
+
   body {
     line-height: 1.5;
     letter-spacing: 0;
@@ -45,19 +46,23 @@ ${'' /* --theme--color: #8d986e; */}
     color: var(--text-color);
   }
 
-  img {
-    display: block;
-    width: 100%;
+  a {
+    color: currentColor;
+    text-decoration: none;
   }
 
-  a {
+    a:hover {
     color: currentColor;
     text-decoration: none;
   }
 
   h1,h2,h3 {
      font-family:  'Playfair Display', serif;
+  
+  }
 
+  h4 {
+  color: currentColor;
   }
 
   h1, h2 {
