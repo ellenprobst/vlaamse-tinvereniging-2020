@@ -168,7 +168,7 @@ const Form = () => {
 
     fetch('/api/submission-created', {
       method: 'POST',
-      body: JSON.stringify({
+      body: encode({
         'form-name': form.getAttribute('name'),
         ...eachEntry,
         images: imageList,
@@ -200,9 +200,9 @@ const Form = () => {
   return (
     <FormContainer
       name='vragen-formulier'
-      // method='post'
+      method='post'
       // action='/contact/thanks/'
-      // data-netlify='true'
+      data-netlify='true'
       data-netlify-honeypot='bot-field'
       onSubmit={handleSubmit}
     >
