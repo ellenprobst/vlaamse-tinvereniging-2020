@@ -166,7 +166,7 @@ const Form = () => {
       id: file.response.public_id,
     }))
 
-    fetch('/api/submission-created', {
+    fetch('/', {
       method: 'POST',
       body: encode({
         'form-name': form.getAttribute('name'),
