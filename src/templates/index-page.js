@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { media } from '../themes'
-
+import 'antd/dist/antd.css'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Layout from '../components/Layout'

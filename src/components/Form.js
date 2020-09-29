@@ -208,7 +208,7 @@ const Form = () => {
     >
       <Wrapper>
         {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        <Input type='hidden' name='form-name' value='file-upload' />
+        <input type='hidden' name='form-name' value='file-upload' />
         <div hidden>
           <label>
             Don’t fill this out: <Input name='bot-field' />
@@ -253,17 +253,19 @@ const Form = () => {
           </div>
         </Field>
         <ImgCrop>
-          <Upload
-            fileList={images}
-            //beforeUpload={beforeUpload}
-            onChange={handleAttachmentChange}
-            customRequest={uploadImage}
-            onRemove={onRemove}
-            method='POST'
-            accept='.jpeg,.jpg,.png'
-          >
-            <Button icon={<UploadOutlined />}>Foto toevoegen </Button>
-          </Upload>
+          <label>
+            <Upload
+              fileList={images}
+              //beforeUpload={beforeUpload}
+              onChange={handleAttachmentChange}
+              customRequest={uploadImage}
+              onRemove={onRemove}
+              method='POST'
+              accept='.jpeg,.jpg,.png'
+            >
+              <Button icon={<UploadOutlined />}>Foto toevoegen </Button>
+            </Upload>
+          </label>
         </ImgCrop>
         <div>
           <Submit
