@@ -263,8 +263,14 @@ const Form = () => {
           </div>
         </Field>
         <ImgCrop>
-          <label htmlFor={'fileUpload'}>
-            <Input type={'text'} name={'images'} id={'images'} hidden />
+          <label htmlFor={'images'}>
+            <Input
+              type={'text'}
+              name={'images'}
+              id={'images'}
+              hidden
+              value={'test'}
+            />
             <Upload
               fileList={images}
               //beforeUpload={beforeUpload}
