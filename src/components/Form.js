@@ -177,7 +177,7 @@ const Form = () => {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...eachEntry,
-        images: 'imageList',
+        images: imageList,
       }),
     })
       .then((res) => {
@@ -263,26 +263,28 @@ const Form = () => {
           </div>
         </Field>
         <ImgCrop>
-          <label htmlFor={'images'}>
-            <Input
-              type={'text'}
-              name={'images'}
-              id={'images'}
-              hidden
-              value={'test'}
-            />
-            {/* <Upload
-              fileList={images}
-              //beforeUpload={beforeUpload}
-              onChange={handleAttachmentChange}
-              customRequest={uploadImage}
-              onRemove={onRemove}
-              method='POST'
-              accept='.jpeg,.jpg,.png'
-            >
-              <Button icon={<UploadOutlined />}>Foto toevoegen </Button>
-            </Upload> */}
+          <label htmlFor={'images'} hidden>
+            Images
           </label>
+          <Input
+            type={'text'}
+            name={'images'}
+            id={'images'}
+            hidden
+            value={'test'}
+          />
+
+          <Upload
+            fileList={images}
+            //beforeUpload={beforeUpload}
+            onChange={handleAttachmentChange}
+            customRequest={uploadImage}
+            onRemove={onRemove}
+            method='POST'
+            accept='.jpeg,.jpg,.png'
+          >
+            <Button icon={<UploadOutlined />}>Foto toevoegen </Button>
+          </Upload>
         </ImgCrop>
         <div>
           <Submit
