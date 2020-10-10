@@ -209,7 +209,7 @@ const Form = () => {
 
   return (
     <FormContainer
-      name='vragen-formulier'
+      name='vragen-formulier-test'
       method='post'
       // action='/contact/thanks/'
       data-netlify='true'
@@ -271,7 +271,7 @@ const Form = () => {
               hidden
               value={'test'}
             />
-            <Upload
+            {/* <Upload
               fileList={images}
               //beforeUpload={beforeUpload}
               onChange={handleAttachmentChange}
@@ -281,7 +281,7 @@ const Form = () => {
               accept='.jpeg,.jpg,.png'
             >
               <Button icon={<UploadOutlined />}>Foto toevoegen </Button>
-            </Upload>
+            </Upload> */}
           </label>
         </ImgCrop>
         <div>
