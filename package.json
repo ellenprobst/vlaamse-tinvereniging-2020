@@ -40,6 +40,7 @@
     "netlify-cms-media-library-uploadcare": "^0.5.2",
     "netlify-lambda": "^2.0.1",
     "node-sass": "^4.14.0",
+    "postmark": "^2.6.0",
     "prop-types": "^15.6.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

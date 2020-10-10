@@ -1,6 +1,6 @@
-const sendQuery = require('./utils/send-query')
 require('dotenv').config()
-var cloudinary = require('cloudinary').v2
+const sendQuery = require('./utils/send-query')
+const cloudinary = require('cloudinary').v2
 
 cloudinary.config({
   cloud_name: 'dljqgwvnc',

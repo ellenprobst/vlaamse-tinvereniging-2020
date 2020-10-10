@@ -124,14 +124,20 @@ const Form = () => {
 
   const uploadImage = async (option) => {
     const { onSuccess, onError, file } = option
-
+    setSubmitting(true)
     fetch(`${BASE_URL}/image/upload`, {
       method: 'POST',
       body: encode({ file, upload_preset: 'upload' }),
     })
       .then((response) => response.json())
-      .then((response) => onSuccess(response))
-      .catch((err) => onError(err))
+      .then((response) => {
+        onSuccess(response)
+        setSubmitting(false)
+      })
+      .catch((err) => {
+        onError(err)
+        setSubmitting(false)
+      })
   }
 
   const handleAttachmentChange = async (info) => {
@@ -162,7 +168,7 @@ const Form = () => {
     setSubmitting(true)
     const form = e.target
     const imageList = images.map((file) => ({
-      url: file.response.url,
+      url: file.response.secure_url,
       id: file.response.public_id,
     }))
 
@@ -175,13 +181,17 @@ const Form = () => {
       }),
     })
       .then((res) => {
+        console.log(res)
         setSubmitting(false)
         if (res.status !== 200) return
         setShowSuccess(true)
         setEachEntry(initialState)
         setImages([])
       })
-      .catch((error) => alert('error'))
+      .catch((error) => {
+        setSubmitting(false)
+        console.log(error)
+      })
   }
 
   if (showSuccess)
@@ -253,7 +263,8 @@ const Form = () => {
           </div>
         </Field>
         <ImgCrop>
-          <label>
+          <label htmlFor={'fileUpload'}>
+            <Input type={'text'} name={'images'} id={'images'} hidden />
             <Upload
               fileList={images}
               //beforeUpload={beforeUpload}
