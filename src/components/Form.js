@@ -177,7 +177,7 @@ const Form = () => {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...eachEntry,
-        images: imageList,
+        images: 'imageList',
       }),
     })
       .then((res) => {
