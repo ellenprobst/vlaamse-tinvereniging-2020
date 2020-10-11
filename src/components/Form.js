@@ -108,6 +108,7 @@ const Form = () => {
   const [showSuccess, setShowSuccess] = useState(false)
   //const [size, setSize] = useState(0)
   const [submitting, setSubmitting] = useState(false)
+  const [uploading, setUploading] = useState(false)
   const { naam, email, vraag } = eachEntry
 
   const handleInputChange = (e) => {
@@ -124,7 +125,7 @@ const Form = () => {
 
   const uploadImage = async (option) => {
     const { onSuccess, onError, file } = option
-    setSubmitting(true)
+    setUploading(true)
     fetch(`${BASE_URL}/image/upload`, {
       method: 'POST',
       body: encode({ file, upload_preset: 'upload' }),
@@ -132,11 +133,11 @@ const Form = () => {
       .then((response) => response.json())
       .then((response) => {
         onSuccess(response)
-        setSubmitting(false)
+        setUploading(false)
       })
       .catch((err) => {
         onError(err)
-        setSubmitting(false)
+        setUploading(false)
       })
   }
 
@@ -177,11 +178,10 @@ const Form = () => {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...eachEntry,
-        images: imageList,
+        images: JSON.stringify(imageList),
       }),
     })
       .then((res) => {
-        console.log(res)
         setSubmitting(false)
         if (res.status !== 200) return
         setShowSuccess(true)
@@ -291,7 +291,7 @@ const Form = () => {
           <Submit
             shape='round'
             htmlType='submit'
-            disabled={submitting}
+            disabled={submitting || uploading}
             loading={submitting}
           >
             Verstuur
