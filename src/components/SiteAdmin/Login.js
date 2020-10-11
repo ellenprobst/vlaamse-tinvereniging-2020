@@ -16,6 +16,13 @@ const Button = styled.button`
   width: 120px;
 `
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+`
+
 const Login = ({ toggleModal }) => {
   const identity = useIdentityContext()
 
@@ -23,20 +30,25 @@ const Login = ({ toggleModal }) => {
     navigate('/dashboard/leden', { replace: true })
   }
   return (
-    <>
-      <p>Dit deel van de website is enkel toegankelijk voor leden. </p>
-      <p>
-        Voor meer informatie kan je terecht via
-        <a
-          style={{ color: 'var(--theme--color)', textDecoration: 'underline' }}
-          href='mailto:info@vlaamsetinverening.be'
-        >
-          {' '}
-          info@vlaamsetinverening.be
-        </a>
-      </p>
-      <Button onClick={toggleModal}>Login</Button>
-    </>
+    <Container>
+      <div style={{ maxWidth: 800 }}>
+        <p>Dit deel van de website is enkel toegankelijk voor leden. </p>
+        <p>
+          Voor meer informatie kan je terecht via
+          <a
+            style={{
+              color: 'var(--theme--color)',
+              textDecoration: 'underline',
+            }}
+            href='mailto:info@vlaamsetinverening.be'
+          >
+            {' '}
+            info@vlaamsetinverening.be
+          </a>
+        </p>
+        <Button onClick={toggleModal}>Login</Button>
+      </div>
+    </Container>
   )
 }
 

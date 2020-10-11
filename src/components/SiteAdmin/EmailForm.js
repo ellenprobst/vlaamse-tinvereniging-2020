@@ -30,24 +30,17 @@ const EmailForm = ({ initialValues, handleCancel, disableSubmit }) => {
       })
   }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
-  }
-
-  const onReset = () => {
-    form.resetFields()
-  }
-
   const template = (placeholder) =>
     `Beste ${initialValues.naam}, \n\nHieronder vindt u het antwoord op uw vraag: \n \n ${placeholder} \n \n Met vriendelijke groeten, \n Vlaamse Tinvereniging`
 
   if (success)
     return (
       <Result
+        icon={<></>}
         status='success'
         title='Email is verstuurd! 👍'
         extra={[
-          <Button type='primary' key='close' onCl>
+          <Button type='primary' key='close' onClick={handleCancel}>
             Close
           </Button>,
         ]}
@@ -79,7 +72,6 @@ const EmailForm = ({ initialValues, handleCancel, disableSubmit }) => {
         antwoord: template(initialValues.antwoord),
       }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
     >
       <CustomForm.Item
         label='Onderwerp'

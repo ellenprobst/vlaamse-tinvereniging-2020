@@ -8,7 +8,7 @@ import Admin from '../components/SiteAdmin/Admin'
 import Leden from '../components/SiteAdmin/Leden'
 import Login from '../components/SiteAdmin/Login'
 import Profile from '../components/SiteAdmin/Profile'
-import { media, wrapper } from '../themes'
+import { wrapper } from '../themes'
 import IdentityModal from 'react-netlify-identity-widget'
 import PrivateRoute from '../components/PrivateRoute'
 import 'react-netlify-identity-widget/styles.css'
@@ -18,7 +18,7 @@ const Container = styled.div`
   max-width: calc(${wrapper} + 100px);
   margin: 30px auto 0;
   background: #f4f4f4;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 `
 export const DashboardPage = ({ location }) => {
   const [isVisible, setVisibility] = useState(false)

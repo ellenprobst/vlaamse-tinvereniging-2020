@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
+import { DeleteOutlined } from '@ant-design/icons'
 import {
   Form as CustomForm,
   Input,
@@ -76,14 +76,6 @@ const Form = ({ initialValues, handleSubmit, handleCancel, disableSubmit }) => {
     handleSubmit({ ...initialValues, ...values, images, imagesToDelete })
   }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
-  }
-
-  const onReset = () => {
-    form.resetFields()
-  }
-
   const onRemoveImage = (id) => {
     setImages(images.filter((image) => image.id !== id))
     setImagesToDelete([...imagesToDelete, id])
@@ -104,7 +96,6 @@ const Form = ({ initialValues, handleSubmit, handleCancel, disableSubmit }) => {
           emailTemplate: template(initialValues.antwoord),
         }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         <CustomForm.Item label='Titel' name='titel' {...layout}>
           <Input />
@@ -179,13 +170,6 @@ const Form = ({ initialValues, handleSubmit, handleCancel, disableSubmit }) => {
                   {text}
                 </Button>
 
-                {/* <Button
-                  htmlType='button'
-                  onClick={onReset}
-                  style={{ margin: '0 10px' }}
-                >
-                  Reset
-                </Button> */}
                 <Button
                   htmlType='button'
                   onClick={handleCancel}

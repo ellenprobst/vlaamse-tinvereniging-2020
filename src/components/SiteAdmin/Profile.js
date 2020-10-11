@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media, wrapper } from '../../themes'
 import { useIdentityContext } from 'react-netlify-identity'
 import { Link } from 'gatsby'
 

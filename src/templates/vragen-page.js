@@ -91,10 +91,7 @@ const VragenPageTemplate = ({ title, beschrijving }) => {
     fetch('/api/get-all-published-items')
       .then((response) => {
         if (canceled === true) return
-        if (response.status !== 200) {
-          console.error('Foutmelding:', response)
-          return
-        }
+        if (response.status !== 200) return
         return response.json()
       })
       .then((result) => {
@@ -102,7 +99,6 @@ const VragenPageTemplate = ({ title, beschrijving }) => {
         setStatus('loaded')
       })
       .catch((err) => {
-        console.log('Foutmelding:', err)
         setStatus('error')
       })
 

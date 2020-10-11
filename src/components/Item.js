@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { media } from '../themes'
 
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-
 const ListItem = styled.li`
   margin: 20px 0;
 

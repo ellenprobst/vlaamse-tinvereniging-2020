@@ -2,6 +2,7 @@ require('dotenv').config()
 const sgMail = require('@sendgrid/mail')
 const postmark = require('postmark')
 const client = new postmark.ServerClient(process.env.POSTMARK_API_KEY)
+
 exports.handler = async (event, context, callback) => {
   const payload = JSON.parse(event.body)
   const { email, titel, antwoord, from = 'hello@ellenprobst.com' } = payload

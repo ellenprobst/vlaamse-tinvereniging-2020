@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Table from './Table'
-import { Modal, Result, Button, message, Image } from 'antd'
+import { Modal, Result, Button, message } from 'antd'
 import Form from './Form'
 import EmailForm from './EmailForm'
 
@@ -141,8 +141,9 @@ const Admin = () => {
           )}
           {step === 1 && (
             <Result
+              icon={<></>}
               status='success'
-              title='Het antwoord is gepubliceerd! 😎'
+              title='Het antwoord is gepubliceerd! 👍'
               extra={[
                 <Button
                   key='email'

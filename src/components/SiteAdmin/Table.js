@@ -21,9 +21,6 @@ function showConfirm(callback, item) {
     onOk() {
       callback(item)
     },
-    onCancel() {
-      console.log('Cancel')
-    },
   })
 }
 
