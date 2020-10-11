@@ -262,7 +262,7 @@ const Form = () => {
             />
           </div>
         </Field>
-        <ImgCrop>
+        <div>
           <label htmlFor={'images'} hidden>
             Images
           </label>
@@ -273,7 +273,8 @@ const Form = () => {
             hidden
             value={'test'}
           />
-
+        </div>
+        <ImgCrop>
           <Upload
             fileList={images}
             //beforeUpload={beforeUpload}
