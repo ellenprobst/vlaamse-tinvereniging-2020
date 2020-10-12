@@ -76,7 +76,7 @@ const FormContainer = styled.div`
   }
 `
 
-const VragenPageTemplate = ({ title, beschrijving }) => {
+const VragenPageTemplate = ({ title, description }) => {
   const [isOpen, setOpen] = useState(false)
   const [itemIndex, setItemIndex] = useState(0)
   const [imgIndex, setImgIndex] = useState(0)
@@ -124,7 +124,7 @@ const VragenPageTemplate = ({ title, beschrijving }) => {
           <FormContainer>
             <Header>
               <Title>{title}</Title>
-              <Description>{beschrijving}</Description>
+              <Description>{description}</Description>
             </Header>
             <Form />
           </FormContainer>
@@ -202,7 +202,7 @@ const VragenPage = ({ data }) => {
       <VragenPageTemplate
         data={frontmatter.vragen}
         title={frontmatter.title}
-        beschrijving={frontmatter.beschrijving}
+        description={frontmatter.description}
       />
     </Layout>
   )
@@ -215,23 +215,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "vragen-page" } }) {
       frontmatter {
         title
-        beschrijving
-        vragen {
-          titel
-          vraag
-          antwoord
-          datum
-          images {
-            alt
-            image {
-              childImageSharp {
-                fluid(maxWidth: 1500, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
+        description
       }
     }
   }
