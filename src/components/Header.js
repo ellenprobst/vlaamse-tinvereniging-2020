@@ -192,7 +192,7 @@ const Header = ({ title, image }) => {
           ease: 'power4',
           duration: 2,
         },
-        2
+        1
       )
   }, [])
 

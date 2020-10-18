@@ -11,7 +11,8 @@ const GlobalStyle = createGlobalStyle`
   --theme--color: #B6BE9D;
   --input--color: #b6be9d73;
 ${'' /* --theme--color: #8d986e; */}
-  --black:#393a3b;
+  ${'' /* --black:#393a3b; */}
+    --black:#26292b;
   --white:#fff; 
 }
 

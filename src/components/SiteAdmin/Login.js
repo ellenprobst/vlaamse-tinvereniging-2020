@@ -40,7 +40,7 @@ const Login = ({ toggleModal }) => {
               color: 'var(--theme--color)',
               textDecoration: 'underline',
             }}
-            href='mailto:info@vlaamsetinverening.be'
+            href='mailto:info@vlaamsetinvereniging.be'
           >
             {' '}
             info@vlaamsetinverening.be

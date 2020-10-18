@@ -27,10 +27,8 @@ collections:
             }
           - { label: Title, name: title, widget: string }
           - { label: Image, name: image, widget: image }
-          - { label: Heading, name: heading, widget: string }
-          - { label: Subheading, name: subheading, widget: string }
           - {
-              label: Mainpitch,
+              label: Over ons,
               name: mainpitch,
               widget: object,
               fields:
@@ -39,10 +37,10 @@ collections:
                   { label: Description, name: description, widget: text },
                 ],
             }
-          - { label: Description, name: description, widget: string }
+
           - {
-              label: Intro,
-              name: intro,
+              label: Activiteiten,
+              name: activiteiten,
               widget: object,
               fields:
                 [
@@ -61,8 +59,8 @@ collections:
                 ],
             }
           - {
-              label: Main,
-              name: main,
+              label: Tinnewerck,
+              name: tinnewerck,
               widget: object,
               fields:
                 [

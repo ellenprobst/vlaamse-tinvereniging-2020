@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Wrapper = styled.div`
   color: var(--text-color);
-  margin-bottom: 500px;
+  margin-bottom: 415px;
   position: relative;
   background-color: var(--white);
   @media ${media.tablet} {
@@ -125,6 +125,7 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
           image={tinnewerck.image}
         />
         <Banner />
+        <div></div>
         <StyledLink aria-label='top' to='/'>
           <svg width='24' height='24' fill='var(--white)'>
             <path d='M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z' />
@@ -144,8 +145,6 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
         about={frontmatter.about}
         tinnewerck={frontmatter.tinnewerck}
       />
@@ -176,11 +175,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        mainpitch {
-          title
-          description
-        }
-        description
         about {
           heading
           content

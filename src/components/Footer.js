@@ -5,7 +5,7 @@ import { media } from '../themes'
 
 const Wrapper = styled.footer`
   position: fixed;
-  height: 500px;
+  height: 415px;
   z-index: -1;
   bottom: 0;
   left: 0;

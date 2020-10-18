@@ -156,7 +156,7 @@ const Form = ({ initialValues, handleSubmit, handleCancel, disableSubmit }) => {
           style={{ margin: ' 10px 0' }}
         >
           {({ getFieldValue }) => {
-            let text = 'Save'
+            let text = 'Opslaan'
             if (getFieldValue('publiceer')) text = 'Publiceer'
             return (
               <>
