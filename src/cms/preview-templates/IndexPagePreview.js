@@ -1,18 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { IndexPageTemplate } from '../../templates/index-page'
+import Layout from '../../components/Layout'
+import Footer from '../../components/Footer'
 
 const IndexPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(['data']).toJS()
 
   if (data) {
     return (
-      <IndexPageTemplate
-        image={getAsset(data.image)}
-        title={data.title}
-        about={data.about}
-        tinnewerck={data.tinnewerck}
-      />
+      <Layout>
+        <IndexPageTemplate
+          image={getAsset(data.image)}
+          title={data.title}
+          about={data.about}
+          tinnewerck={data.tinnewerck}
+        />
+        <Footer />
+      </Layout>
     )
   } else {
     return <div>Loading...</div>
