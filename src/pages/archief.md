@@ -30,4 +30,8 @@ edities:
     text: "2017"
     titel: Tinnewerck 60
     nummer: 60
+  - image: /img/tw61.jpg
+    text: "2017"
+    titel: Tinnewerck 61
+    nummer: 61
 ---
