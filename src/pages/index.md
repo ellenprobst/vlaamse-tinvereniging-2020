@@ -6,9 +6,11 @@ titel: De Vlaamse Tinvereniging, opgericht in 1980, heeft als doel de
 overOns:
   titel: Over Ons
   text: >-
-    De Vlaamse Tinvereniging is een feitelijke vereniging, opgericht in 1980,
+    **De Vlaamse Tinvereniging is een feitelijke vereniging, opgericht in 1980,
     met als doel de verspreiding van de kennis over het oude tin en de daaruit
-    gemaakte voorwerpen.
+    gemaakte voorwerpen.**
+
+
 
 
     Ze telt een tachtigtal leden, afkomstig uit België en Nederland. Ook een aantal musea en archieven zijn al jarenlang trouw lid van de vereniging. De vereniging heeft geen commerciële doeleinden.
@@ -28,8 +30,8 @@ activiteiten:
       titel: test
   title: Activiteiten-cms
   text: >-
-    Jaarlijks worden twee ledenbijeenkomsten georganiseerd alsook een
-    museumbezoek gericht op antiek en op oude tinnen voorwerpen.
+    **Jaarlijks worden twee ledenbijeenkomsten georganiseerd alsook een
+    museumbezoek gericht op antiek en op oude tinnen voorwerpen.**
 
 
     Op de ledenbijeenkomsten worden door specialisten voordrachten gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens de mogelijkheid geboden aan de aanwezigen om hun stukken te laten keuren of identificeren.
