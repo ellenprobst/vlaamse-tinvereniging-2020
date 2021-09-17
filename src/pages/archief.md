@@ -42,4 +42,8 @@ edities:
     titel: Tinnewerck 63
     text: "2018"
     image: /img/tw63.jpg
+  - nummer: 64
+    titel: Tinnewerck 64
+    text: "2019"
+    image: /img/tw64.jpg
 ---
