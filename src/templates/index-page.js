@@ -141,8 +141,7 @@ export const IndexPageTemplate = ({
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.main
-
-  console.log(data, frontmatter)
+  console.log(process.env)
   return (
     <Layout>
       <IndexPageTemplate
