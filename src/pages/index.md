@@ -1,14 +1,14 @@
 ---
 templateKey: index-page
-titel: De Vlaamse Tinvereniging is een feitelijke vereniging, opgericht in 1980,
-  met als doel de verspreiding van de kennis over het oude tin en de daaruit
-  gemaakte voorwerpen.
+titel: De Vlaamse Tinvereniging, opgericht in 1980, heeft als doel de
+  verspreiding van de kennis over het oude tin en de daaruit gemaakte
+  voorwerpen.
 overOns:
   titel: Over Ons
   text: >-
-    De Vlaamse Tinvereniging is een vereniging, opgericht in 1980, met als doel
-    de verspreiding van de kennis over het oude tin en de daaruit gemaakte
-    voorwerpen.
+    De Vlaamse Tinvereniging is een feitelijke vereniging, opgericht in 1980,
+    met als doel de verspreiding van de kennis over het oude tin en de daaruit
+    gemaakte voorwerpen.
 
 
     Ze telt een tachtigtal leden, afkomstig uit België en Nederland. Ook een aantal musea en archieven zijn al jarenlang trouw lid van de vereniging. De vereniging heeft geen commerciële doeleinden.
@@ -37,6 +37,13 @@ activiteiten:
 contact:
   tel: 0032 (0) 475 52 80 72
   email: info@vlaamsetinvereniging.be
+  links:
+    - url: www.https://nederlandsetinvereniging.nl
+      text: Nederlandse Tinvereniging
+    - text: Pewter Society
+      url: https://www.pewtersociety.org/
+    - text: Pewters Collectors' Club of America
+      url: https://www.pewtercollectorsclub.org/
 mainpitch:
   title: Over Ons
   description: >
