@@ -4,14 +4,8 @@ import contactImage from '../img/bord.jpg'
 import { media } from '../themes'
 
 const Wrapper = styled.footer`
-  position: fixed;
-  height: 415px;
-  z-index: -1;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   background: var(--black);
-  display: flex;
 
   @media ${media.tablet} {
     margin: 16px;
@@ -25,11 +19,9 @@ const Wrapper = styled.footer`
 const TextContainer = styled.div`
   color: var(--white);
   margin: 0 auto;
-  padding: 0 0 0 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 35px;
   max-width: 900px;
+  flex-grow: 2;
   @media ${media.mobile} {
     flex-direction: column;
     align-items: flex-start;
@@ -43,11 +35,11 @@ const StyledLink = styled.a`
 `
 
 const Title = styled.h2`
-  font-size: 8vw;
+  font-size: 35px;
   color: var(--theme--color);
   line-height: 1;
-  padding: 35px;
-  font-size: clamp(16px, 12vw, 80px);
+  padding: 0 0 35px 0;
+
   line-height: 0.9em;
   @media ${media.tablet} {
     margin: 0;
@@ -59,12 +51,8 @@ const SubTitle = styled.h4`
 `
 
 const ContentContainer = styled.div`
+  display: flex;
   margin-top: 35px;
-  width: 75%;
-  /* max-width: 1200px; */
-  @media ${media.mobile} {
-    width: 100%;
-  }
 `
 const ImageContainer = styled.div`
   width: 35%;
@@ -89,17 +77,18 @@ const Image = styled.div`
 const Copyright = styled.p`
   position: absolute;
   bottom: 10px;
-  opacity: 0.5;
-  text-align: center;
   width: 100%;
   color: var(--white);
+  text-align: center;
+  opacity: 0.5;
   font-size: 12px;
 `
 
 const LinkList = styled.div`
+  font-size: 14px;
   opacity: 0.7;
   color: var(--white);
-  margin-left: 45px;
+  margin-top: 35px;
   @media ${media.mobile} {
     margin-left: 0;
   }
@@ -117,36 +106,34 @@ const ContactDetails = styled.div`
   }
 `
 
-const Footer = () => (
+const Footer = ({ contact }) => (
   <Wrapper>
     <ContentContainer>
-      <Title>Contact</Title>
       <TextContainer>
+        <Title>Contact</Title>
         <ContactDetails>
-          <p>0032 (0) 475 52 80 72</p>
-          <StyledLink href='mailto:info@vlaamsetinvereniging.be'>
-            info@vlaamsetinvereniging.be
+          <p>{contact.tel}</p>
+          <StyledLink href={`mailto:${contact.email}`}>
+            {contact.email}
           </StyledLink>
         </ContactDetails>
         <LinkList>
           <SubTitle>Links:</SubTitle>
           <ul>
-            <li>
-              <a href='#'>Nederlandse Tinvereniging</a>
-            </li>
-            <li>
-              <a href='#'>Pewter Society</a>
-            </li>
-            <li>
-              <a href='#'>Pewters Collectors' Club of America</a>
-            </li>
+            {contact.links.map((link) => {
+              return (
+                <li key={link.url}>
+                  <a href={link.url}>{link.text}</a>
+                </li>
+              )
+            })}
           </ul>
         </LinkList>
       </TextContainer>
+      <ImageContainer>
+        <Image />
+      </ImageContainer>
     </ContentContainer>
-    <ImageContainer>
-      <Image />
-    </ImageContainer>
 
     <Copyright>© {new Date().getFullYear()} - Vlaamse Tinvereniging </Copyright>
   </Wrapper>

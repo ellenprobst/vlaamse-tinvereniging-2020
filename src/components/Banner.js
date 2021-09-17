@@ -94,16 +94,13 @@ const Image = styled.img`
     margin-left: 10px;
   }
 `
-const Banner = () => {
+const Banner = ({ text }) => {
   return (
     <Wrapper>
       <FlexContainer>
         <Image src={kannetje} />
         <ContentContainer>
-          <Title>
-            Heb je zelf tin en ben je benieuwd naar de afkomst van het werk,
-            stel je vraag aan onze experten.
-          </Title>
+          <Title>{text}</Title>
           <StyledLink to={'/vragen'}>Stel hier je vraag</StyledLink>
         </ContentContainer>
       </FlexContainer>

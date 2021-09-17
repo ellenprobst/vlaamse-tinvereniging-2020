@@ -25,16 +25,16 @@ collections:
               widget: 'hidden',
               default: 'index-page',
             }
-          - { label: Title, name: title, widget: string }
+          - { label: Titel, name: titel, widget: string }
           - { label: Image, name: image, widget: image }
           - {
-              label: Over ons,
-              name: mainpitch,
+              label: 'Over ons',
+              name: overOns,
               widget: object,
               fields:
                 [
-                  { label: Title, name: title, widget: string },
-                  { label: Description, name: description, widget: text },
+                  { label: Titel, name: titel, widget: string },
+                  { label: Text, name: text, widget: markdown },
                 ],
             }
 
@@ -44,11 +44,40 @@ collections:
               widget: object,
               fields:
                 [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
+                  { label: Titel, name: titel, widget: string },
+                  { label: Text, name: text, widget: markdown },
                   {
                     label: Blurbs,
                     name: blurbs,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Titel, name: titel, widget: string },
+                        { label: Text, name: text, widget: text },
+                      ],
+                  },
+                ],
+            }
+
+          - {
+              label: Banner,
+              name: banner,
+              widget: object,
+              fields: [{ label: Text, name: text, widget: string }],
+            }
+
+          - {
+              label: Tinnewerck,
+              name: tinnewerck,
+              widget: object,
+              fields:
+                [
+                  { label: Titel, name: titel, widget: string },
+                  { label: Text, name: text, widget: text },
+                  {
+                    label: edities,
+                    name: edities,
                     widget: list,
                     fields:
                       [
@@ -59,41 +88,21 @@ collections:
                 ],
             }
           - {
-              label: Tinnewerck,
-              name: tinnewerck,
+              label: Contact,
+              name: contact,
               widget: object,
               fields:
                 [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
+                  { label: Tel, name: tel, widget: string },
+                  { label: Email, name: email, widget: string },
                   {
-                    label: Image1,
-                    name: image1,
-                    widget: object,
+                    label: Links,
+                    name: links,
+                    widget: list,
                     fields:
                       [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image2,
-                    name: image2,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image3,
-                    name: image3,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
+                        { label: Url, name: url, widget: string },
+                        { label: Text, name: text, widget: string },
                       ],
                   },
                 ],
@@ -104,3 +113,20 @@ collections:
         fields:
           - { label: Titel, name: title, widget: string }
           - { label: Beschrijving, name: description, widget: 'text' }
+      - file: 'src/pages/archief.md'
+        label: 'Archief'
+        name: 'archief'
+        fields:
+          - { label: Titel, name: titel, widget: string }
+          - {
+              label: Edities,
+              name: edities,
+              widget: list,
+              fields:
+                [
+                  { label: Nummer, name: nummer, widget: number },
+                  { label: Titel, name: titel, widget: string },
+                  { label: Text, name: text, widget: string },
+                  { label: Image, name: image, widget: image },
+                ],
+            }

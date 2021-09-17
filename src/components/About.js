@@ -72,7 +72,7 @@ const ImageContainer = styled.div`
   }
 `
 
-const About = ({ heading, content, image }) => {
+const About = ({ titel, text, image }) => {
   const triggerRef = useRef(null)
   const imageRef = useRef(null)
   const titleRef = useRef(null)
@@ -105,7 +105,7 @@ const About = ({ heading, content, image }) => {
       <LeftContainer ref={triggerRef}>
         <OverflowContainer>
           <Title ref={titleRef} id='overons'>
-            {heading}
+            {titel}
           </Title>
         </OverflowContainer>
         <ImageContainer>
@@ -122,8 +122,10 @@ const About = ({ heading, content, image }) => {
         </ImageContainer>
       </LeftContainer>
       <RightContainer>
-        <p style={{ fontWeight: 'bold', margin: '15px 0 25px' }}>{content}</p>
-        <p>{content}</p>
+        <p
+          style={{ fontWeight: 'bold', margin: '15px 0 0' }}
+          dangerouslySetInnerHTML={{ __html: text }}
+        ></p>
       </RightContainer>
     </Wrapper>
   )

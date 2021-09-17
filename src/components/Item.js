@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { media } from '../themes'
 
 const ListItem = styled.li`
-  margin: 20px 0;
-
+  margin: 5px;
+  width: calc(50% - 20px);
   background: var(--white);
   border-radius: 3px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -53,8 +53,8 @@ const ImageContainer = styled.div`
 const Image = styled.div`
   display: block;
   object-fit: cover;
-  width: 180px;
-  height: 180px;
+  width: 100px;
+  height: 100px;
   background: #f4f4f4;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@ const Item = ({ data, index, openModal }) => {
           <Image>
             {data.images && data.images[0] ? (
               <img
-                style={{ width: 180, height: 180, objectFit: 'cover' }}
+                style={{ width: 100, height: 100, objectFit: 'cover' }}
                 src={data.images[0].url}
                 alt={'ingestuurde foto'}
               />

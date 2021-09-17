@@ -74,7 +74,7 @@ const Arrow = styled.div`
   }
 `
 
-const Tinnewerck = ({ heading, content, image }) => {
+const Tinnewerck = ({ titel, text, edities }) => {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const cardsRef = useRef(null)
@@ -100,12 +100,10 @@ const Tinnewerck = ({ heading, content, image }) => {
   }, [])
 
   return (
-    <SectionContainer ref={sectionRef}>
+    <SectionContainer>
       <Wrapper>
         <TitleContainer>
-          <Title ref={titleRef} id='tinnewerck'>
-            TINnewerck
-          </Title>
+          <Title id='tinnewerck'>{titel}</Title>
           <Link
             to='/archief'
             style={{
@@ -128,24 +126,23 @@ const Tinnewerck = ({ heading, content, image }) => {
           </Link>
         </TitleContainer>
         <FlexContainer ref={cardsRef}>
-          <Card>
-            <ImageContainer>
-              <PreviewCompatibleImage imageInfo={image} />
-            </ImageContainer>
-          </Card>
-          <Card>
-            <ImageContainer>
-              <PreviewCompatibleImage imageInfo={image} />
-            </ImageContainer>
-          </Card>
-          <Card>
-            <ImageContainer>
-              <PreviewCompatibleImage imageInfo={image} />
-            </ImageContainer>
-          </Card>
+          {edities
+            .sort((a, b) => b.nummer - a.nummer)
+            .slice(-3)
+            .map((editie) => {
+              return (
+                <Card key={editie.nummer}>
+                  <ImageContainer>
+                    <PreviewCompatibleImage
+                      imageInfo={{ image: editie.image, alt: '' }}
+                    />
+                  </ImageContainer>
+                </Card>
+              )
+            })}
         </FlexContainer>
 
-        <Description>{content}</Description>
+        <Description>{text}</Description>
       </Wrapper>
     </SectionContainer>
   )

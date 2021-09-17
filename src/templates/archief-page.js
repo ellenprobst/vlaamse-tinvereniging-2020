@@ -88,7 +88,7 @@ const GridLabel = styled.div`
   }
 `
 
-const ArchiefPageTemplate = ({ data, title }) => {
+const ArchiefPageTemplate = ({ data, titel }) => {
   return (
     <Wrapper>
       <FlexContainer>
@@ -110,26 +110,28 @@ const ArchiefPageTemplate = ({ data, title }) => {
           </svg>
         </BackButton>
       </FlexContainer>
-      <Title>{title}</Title>
+      <Title>{titel}</Title>
 
       <Grid>
-        {data.map((item) => (
-          <GridItem>
-            <GridImage
-              aria-hidden='true'
-              src={
-                !!item.image.childImageSharp
-                  ? item.image.childImageSharp.fluid.src
-                  : item.image
-              }
-            />
+        {data
+          .sort((a, b) => b.nummer - a.nummer)
+          .map((item) => (
+            <GridItem key={item.nummer}>
+              <GridImage
+                aria-hidden='true'
+                src={
+                  !!item.image.childImageSharp
+                    ? item.image.childImageSharp.fluid.src
+                    : item.image
+                }
+              />
 
-            <GridLabel>
-              <h4>{item.title}</h4>
-              <p>{item.date}</p>
-            </GridLabel>
-          </GridItem>
-        ))}
+              <GridLabel>
+                <h4>{item.titel}</h4>
+                <p>{item.text}</p>
+              </GridLabel>
+            </GridItem>
+          ))}
       </Grid>
     </Wrapper>
   )
@@ -141,7 +143,7 @@ const ArchiefPage = ({ data }) => {
   return (
     <Layout hideNav>
       <ArchiefPageTemplate
-        data={frontmatter.content}
+        data={frontmatter.edities}
         title={frontmatter.title}
       />
     </Layout>
@@ -154,10 +156,8 @@ export const pageQuery = graphql`
   query ArchiefPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "archief-page" } }) {
       frontmatter {
-        title
-        content {
-          title
-          date
+        titel
+        edities {
           image {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {
@@ -165,6 +165,9 @@ export const pageQuery = graphql`
               }
             }
           }
+          titel
+          text
+          nummer
         }
       }
     }

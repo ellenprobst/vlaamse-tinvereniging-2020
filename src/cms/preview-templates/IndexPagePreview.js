@@ -12,11 +12,13 @@ const IndexPagePreview = ({ entry, getAsset }) => {
       <Layout>
         <IndexPageTemplate
           image={getAsset(data.image)}
-          title={data.title}
-          about={data.about}
+          titel={data.titel}
+          overOns={data.overOns}
           tinnewerck={data.tinnewerck}
+          activiteiten={data.activiteiten}
+          banner={data.banner}
         />
-        <Footer />
+        <Footer contact={data.contact} />
       </Layout>
     )
   } else {

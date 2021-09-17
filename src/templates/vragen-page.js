@@ -60,7 +60,10 @@ const Title = styled.h2`
   color: var(--black);
   margin-bottom: 15px;
 `
-const List = styled.ul``
+const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`
 const Description = styled.p``
 
 const FormContainer = styled.div`

@@ -22,7 +22,7 @@ const SectionContainer = styled.div`
 
 const SideContainer = styled.div`
   max-width: 400px;
-  margin-right: 35px;
+  margin-right: 55px;
   position: relative;
 `
 const TitleContainer = styled.div`
@@ -103,7 +103,7 @@ const Icon = styled.img`
   opacity: 0.8;
 `
 
-const Activities = ({ heading, content, image }) => {
+const Activities = ({ titel, text, image }) => {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const cardsRef = useRef(null)
@@ -136,23 +136,11 @@ const Activities = ({ heading, content, image }) => {
     <SectionContainer ref={sectionRef}>
       <TitleContainer>
         <Title ref={titleRef} id='activiteiten'>
-          Activiteiten
+          {titel}
         </Title>
       </TitleContainer>
       <FlexContainer>
-        <SideContainer>
-          <p>
-            Jaarlijks worden twee ledenbijeenkomsten georganiseerd alsook een
-            museumbezoek gericht op antiek en op oude tinnen voorwerpen.
-          </p>
-          <br />
-          <p>
-            Op de ledenbijeenkomsten worden door specialisten voordrachten
-            gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens
-            de mogelijkheid geboden aan de aanwezigen om hun stukken te laten
-            keuren of identificeren.
-          </p>
-        </SideContainer>
+        <SideContainer>{text}</SideContainer>
         <CardsContainer ref={cardsRef}>
           <Card>
             <div

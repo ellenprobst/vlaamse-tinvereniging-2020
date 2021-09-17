@@ -23,16 +23,9 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Wrapper = styled.div`
   color: var(--text-color);
-  margin-bottom: 415px;
+
   position: relative;
   background-color: var(--white);
-  @media ${media.tablet} {
-    margin: 15px 15px 500px;
-  }
-
-  @media ${media.mobile} {
-    margin: 0 0 400px;
-  }
 `
 const TeaserContainer = styled.div`
   height: 85vh;
@@ -62,7 +55,7 @@ const StyledLink = styled(Link)`
   height: 50px;
   border-radius: 50%;
   position: absolute;
-  bottom: -25px;
+  bottom: -55px;
   margin: auto;
   left: 0;
   right: 0;
@@ -71,9 +64,18 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 `
 
-export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
+export const IndexPageTemplate = ({
+  image,
+  titel,
+  overOns,
+  tinnewerck,
+  activiteiten,
+  banner,
+  edities,
+}) => {
   const triggerRef = useRef(null)
   const imageRef = useRef(null)
   const imageRef2 = useRef(null)
@@ -104,12 +106,12 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
     <>
       <Navbar absolute />
       <Wrapper>
-        <Header title={title} image={image} />
+        <Header titel={titel} image={image} />
 
         <About
-          heading={about.heading}
-          content={about.content}
-          image={about.image}
+          titel={overOns.titel}
+          text={overOns.text}
+          image={overOns.image}
         />
         <TeaserContainer ref={triggerRef}>
           <Teaser ref={imageRef}>
@@ -117,14 +119,14 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
           </Teaser>
         </TeaserContainer>
 
-        <Activities />
-
+        <Activities titel={activiteiten.titel} text={activiteiten.text} />
+        <Banner text={banner.text} />
         <Tinnewerck
-          heading={tinnewerck.heading}
-          content={tinnewerck.content}
-          image={tinnewerck.image}
+          titel={tinnewerck.titel}
+          text={tinnewerck.text}
+          edities={edities}
         />
-        <Banner />
+
         <div></div>
         <StyledLink aria-label='top' to='/'>
           <svg width='24' height='24' fill='var(--white)'>
@@ -138,17 +140,21 @@ export const IndexPageTemplate = ({ image, title, about, tinnewerck }) => {
 }
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.main
 
+  console.log(data, frontmatter)
   return (
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
-        title={frontmatter.title}
-        about={frontmatter.about}
+        titel={frontmatter.titel}
+        overOns={frontmatter.overOns}
+        activiteiten={frontmatter.activiteiten}
         tinnewerck={frontmatter.tinnewerck}
+        banner={frontmatter.banner}
+        edities={data.archief.frontmatter.edities}
       />
-      <Footer />
+      <Footer contact={frontmatter.contact} />
     </Layout>
   )
 }
@@ -165,9 +171,9 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+    main: markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
+        titel
         image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
@@ -175,9 +181,9 @@ export const pageQuery = graphql`
             }
           }
         }
-        about {
-          heading
-          content
+        overOns {
+          titel
+          text
           image {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {
@@ -187,8 +193,29 @@ export const pageQuery = graphql`
           }
         }
         tinnewerck {
-          heading
-          content
+          titel
+          text
+        }
+        activiteiten {
+          titel
+          text
+          blurbs {
+            text
+            titel
+          }
+        }
+        contact {
+          tel
+          email
+          links {
+            url
+            text
+          }
+        }
+        banner {
+          text
+        }
+        edities {
           image {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {
@@ -196,6 +223,29 @@ export const pageQuery = graphql`
               }
             }
           }
+          titel
+          text
+          nummer
+        }
+      }
+    }
+
+    archief: markdownRemark(
+      frontmatter: { templateKey: { eq: "archief-page" } }
+    ) {
+      frontmatter {
+        titel
+        edities {
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          titel
+          text
+          nummer
         }
       }
     }

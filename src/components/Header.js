@@ -126,7 +126,7 @@ const Overlay = styled.div`
   background: var(--white);
 `
 
-const Header = ({ title, image }) => {
+const Header = ({ titel, image }) => {
   const overlayRef = useRef(null)
   const introRef = useRef(null)
   const titleRef = useRef(null)
@@ -208,12 +208,9 @@ const Header = ({ title, image }) => {
           </FlexContainer>
         </OverflowContainer>
         <OverflowContainer>
-          <MainTitle ref={titleRef}>{title}</MainTitle>
+          <MainTitle ref={titleRef}>Tinvereniging</MainTitle>
         </OverflowContainer>
-        <Intro ref={introRef}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
-        </Intro>
+        <Intro ref={introRef}>{titel} </Intro>
         <StyledLink to='/#activiteiten' ref={buttonRef}>
           Activiteiten
         </StyledLink>
