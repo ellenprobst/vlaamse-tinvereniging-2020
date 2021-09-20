@@ -25,4 +25,8 @@ edities:
     titel: Tinnewerck 60
     image: /img/tw60.jpg
     text: "2017"
+  - nummer: 60
+    titel: Tinnewerck 60
+    text: "2017"
+    image: /img/tw60.jpg
 ---
