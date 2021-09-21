@@ -52,13 +52,14 @@ const FlexContainer = styled.div`
 `
 
 const Card = styled.div`
-  height: min-content;
+  min-height: min-content;
   border-radius: 5px;
   margin: 10px;
   max-width: 420px;
   box-shadow: ${boxShadow};
   flex-basis: 280px;
   flex-grow: 1;
+  align-self: stretch;
   @media ${media.tablet} {
     max-width: 314px;
   }
@@ -68,18 +69,14 @@ const Card = styled.div`
   }
 `
 
-// const CardImage = styled.div`
-//   height: 200px;
-//   background-size: cover;
-//   background-position: center;
-//   border-radius: 5px 5px 0 0;
-// `
-
 const CardContent = styled.div`
   border-radius: 0 0 5px 5px;
   padding: 25px 25px 45px 25px;
   font-size: 0.8rem;
   background: var(--white);
+  p {
+    white-space: pre-wrap;
+  }
 `
 
 const CardTitle = styled.h3`
@@ -142,11 +139,11 @@ const Activities = ({ titel, text, items }) => {
         <CardsContainer ref={cardsRef}>
           {items.map((item) => {
             return (
-              <Card>
+              <Card key={item.datum}>
                 <div
                   style={{
                     height: 200,
-                    backgroundImage: `url(${item.image})`,
+                    backgroundImage: `url(${item.image?.childImageSharp?.fluid?.src})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '3px 3px 0 0 ',

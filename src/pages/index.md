@@ -23,18 +23,20 @@ activiteiten:
 
     Op de ledenbijeenkomsten worden door specialisten voordrachten gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens de mogelijkheid geboden aan de aanwezigen om hun stukken te laten keuren of identificeren.
   items:
-    - image: /img/museum.jpg
-      text:
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.-cms
-      titel: test
-      datum: 25 maart 2020
+    - image: /img/ledenvergadering.jpg
+      text: >-
+        Voorjaar: geannuleerd omwille van de  COVID-19 pandemie
+
+        Najaar : 24 oktober 2021 (onder voorbehoud)
+
+
+        Deze bijeenkomsten gaan door te Lokeren in de zaal de Kievit.
+      titel: Ledenbijeenkomst
+      datum: 24 oktober 2021
     - image: /img/museumbezoek.jpg
-      text:
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.-cms
-      titel: test
-      datum: 8 januari 2020
+      text: Het museumbezoek 2021 is geannuleerd omwille van de COVID-19 pandemie
+      titel: Museumbezoek
+      datum: '2021'
 
 banner:
   text: Heb je zelf tin en ben je benieuwd naar de afkomst van het werk, stel je
