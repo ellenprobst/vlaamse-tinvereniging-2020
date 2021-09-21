@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { media, boxShadow, wrapper } from '../themes'
-import museumbezoek from '../img/museumbezoek.jpg'
-import ledenvergadering from '../img/ledenvergadering.jpg'
 import calendarIcon from '../img/icons-calendar.svg'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
@@ -24,6 +22,7 @@ const SideContainer = styled.div`
   max-width: 400px;
   margin-right: 55px;
   position: relative;
+  white-space: pre-wrap;
 `
 const TitleContainer = styled.div`
   overflow: hidden;
@@ -69,13 +68,12 @@ const Card = styled.div`
   }
 `
 
-const CardImage = styled.div`
-  height: 200px;
-  background-image: url(${museumbezoek});
-  background-size: cover;
-  background-position: center;
-  border-radius: 5px 5px 0 0;
-`
+// const CardImage = styled.div`
+//   height: 200px;
+//   background-size: cover;
+//   background-position: center;
+//   border-radius: 5px 5px 0 0;
+// `
 
 const CardContent = styled.div`
   border-radius: 0 0 5px 5px;
@@ -103,7 +101,7 @@ const Icon = styled.img`
   opacity: 0.8;
 `
 
-const Activities = ({ titel, text, image }) => {
+const Activities = ({ titel, text, items }) => {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const cardsRef = useRef(null)
@@ -142,42 +140,29 @@ const Activities = ({ titel, text, image }) => {
       <FlexContainer>
         <SideContainer>{text}</SideContainer>
         <CardsContainer ref={cardsRef}>
-          <Card>
-            <div
-              style={{
-                height: 200,
-                backgroundImage: `url(${ledenvergadering})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderRadius: '3px 3px 0 0 ',
-              }}
-            ></div>
-            <CardContent>
-              <CardTitle>Ledenvergadering</CardTitle>
-              <CardDate>
-                <Icon src={calendarIcon} alt='calendar' />
-                25 maart 2020
-              </CardDate>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardImage />
-            <CardContent>
-              <CardTitle>Museumbezoek</CardTitle>
-              <CardDate>
-                <Icon src={calendarIcon} alt='calendar' />
-                10 oktober 2020
-              </CardDate>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </CardContent>
-          </Card>
+          {items.map((item) => {
+            return (
+              <Card>
+                <div
+                  style={{
+                    height: 200,
+                    backgroundImage: `url(${item.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '3px 3px 0 0 ',
+                  }}
+                ></div>
+                <CardContent>
+                  <CardTitle>{item.titel}</CardTitle>
+                  <CardDate>
+                    <Icon src={calendarIcon} alt='calendar' />
+                    {item.datum}
+                  </CardDate>
+                  <p>{item.text}</p>
+                </CardContent>
+              </Card>
+            )
+          })}
         </CardsContainer>
       </FlexContainer>
     </SectionContainer>

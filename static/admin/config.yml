@@ -34,7 +34,8 @@ collections:
               fields:
                 [
                   { label: Titel, name: titel, widget: string },
-                  { label: Text, name: text, widget: markdown },
+                  { label: Text, name: text, widget: text },
+                  { label: Image, name: image, widget: image },
                 ],
             }
 
@@ -45,16 +46,17 @@ collections:
               fields:
                 [
                   { label: Titel, name: titel, widget: string },
-                  { label: Text, name: text, widget: markdown },
+                  { label: Text, name: text, widget: text },
                   {
-                    label: Blurbs,
-                    name: blurbs,
+                    label: Items,
+                    name: items,
                     widget: list,
                     fields:
                       [
-                        { label: Image, name: image, widget: image },
                         { label: Titel, name: titel, widget: string },
+                        { label: Datum, name: datum, widget: string },
                         { label: Text, name: text, widget: text },
+                        { label: Image, name: image, widget: image },
                       ],
                   },
                 ],
@@ -75,16 +77,6 @@ collections:
                 [
                   { label: Titel, name: titel, widget: string },
                   { label: Text, name: text, widget: text },
-                  {
-                    label: edities,
-                    name: edities,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Text, name: text, widget: text },
-                      ],
-                  },
                 ],
             }
           - {
@@ -126,7 +118,7 @@ collections:
                 [
                   { label: Nummer, name: nummer, widget: number },
                   { label: Titel, name: titel, widget: string },
-                  { label: Text, name: text, widget: string },
+                  { label: Text, name: text, widget: string, required: false },
                   { label: Image, name: image, widget: image },
                 ],
             }

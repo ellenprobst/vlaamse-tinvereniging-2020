@@ -119,7 +119,11 @@ export const IndexPageTemplate = ({
           </Teaser>
         </TeaserContainer>
 
-        <Activities titel={activiteiten.titel} text={activiteiten.text} />
+        <Activities
+          titel={activiteiten.titel}
+          text={activiteiten.text}
+          items={activiteiten.items}
+        />
         <Banner text={banner.text} />
         <Tinnewerck
           titel={tinnewerck.titel}
@@ -141,7 +145,6 @@ export const IndexPageTemplate = ({
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.main
-  console.log(process.env)
   return (
     <Layout>
       <IndexPageTemplate
@@ -198,9 +201,17 @@ export const pageQuery = graphql`
         activiteiten {
           titel
           text
-          blurbs {
+          items {
             text
             titel
+            datum
+            image {
+              childImageSharp {
+                fluid(maxWidth: 600, quality: 100) {
+                  src
+                }
+              }
+            }
           }
         }
         contact {

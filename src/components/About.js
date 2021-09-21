@@ -37,8 +37,7 @@ const RightContainer = styled.div`
   width: calc(45% - 4vw);
   max-width: 800px;
   margin-left: 4vw;
-  margin-top: 3vh;
-  padding: 0 20px;
+  align-self: center;
   @media ${media.tablet} {
     width: calc(50% - 4vw);
   }
@@ -122,10 +121,7 @@ const About = ({ titel, text, image }) => {
         </ImageContainer>
       </LeftContainer>
       <RightContainer>
-        <p
-          style={{ fontWeight: 'bold', margin: '15px 0 0' }}
-          dangerouslySetInnerHTML={{ __html: text }}
-        ></p>
+        <p style={{ whiteSpace: 'pre-wrap' }}>{text}</p>
       </RightContainer>
     </Wrapper>
   )
