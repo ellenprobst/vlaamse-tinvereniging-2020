@@ -128,7 +128,7 @@ const Tinnewerck = ({ titel, text, edities }) => {
         <FlexContainer ref={cardsRef}>
           {edities
             .sort((a, b) => b.nummer - a.nummer)
-            .slice(-3)
+            .slice(0, 3)
             .map((editie) => {
               return (
                 <Card key={editie.nummer}>
