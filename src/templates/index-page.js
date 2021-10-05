@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { media } from '../themes'
 import 'antd/dist/antd.css'
-import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
@@ -23,7 +22,6 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Wrapper = styled.div`
   color: var(--text-color);
-
   position: relative;
   background-color: var(--white);
 `
@@ -55,16 +53,27 @@ const StyledLink = styled(Link)`
   height: 50px;
   border-radius: 50%;
   position: absolute;
-  bottom: -55px;
+  bottom: -20px;
   margin: auto;
-  left: 0;
-  right: 0;
+  right: 27px;
   background: var(--theme--color);
   border: 2px solid var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
+`
+const Copyright = styled.p`
+  width: 100%;
+  color: var(--white);
+  text-align: center;
+  opacity: 0.5;
+  font-size: 12px;
+`
+
+const Footer = styled.footer`
+  background: var(--black);
+  padding: 35px 35px 15px;
 `
 
 export const IndexPageTemplate = ({
@@ -156,7 +165,12 @@ const IndexPage = ({ data }) => {
         banner={frontmatter.banner}
         edities={data.archief.frontmatter.edities}
       />
-      <Footer contact={frontmatter.contact} />
+      <Footer>
+        {' '}
+        <Copyright>
+          © {new Date().getFullYear()} - Vlaamse Tinvereniging{' '}
+        </Copyright>
+      </Footer>
     </Layout>
   )
 }
@@ -188,7 +202,7 @@ export const pageQuery = graphql`
           text
           image {
             childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
+              fluid(maxWidth: 800, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -214,28 +228,8 @@ export const pageQuery = graphql`
             }
           }
         }
-        contact {
-          tel
-          email
-          links {
-            url
-            text
-          }
-        }
         banner {
           text
-        }
-        edities {
-          image {
-            childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          titel
-          text
-          nummer
         }
       }
     }
@@ -248,7 +242,7 @@ export const pageQuery = graphql`
         edities {
           image {
             childImageSharp {
-              fluid(maxWidth: 2048, quality: 100) {
+              fluid(maxWidth: 500, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
             }

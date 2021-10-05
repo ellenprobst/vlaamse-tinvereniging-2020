@@ -163,7 +163,7 @@ const Navbar = ({ light = false, absolute = false }) => {
             <StyledLink to='/#activiteiten'>Activiteiten</StyledLink>
             <StyledLink to='/#tinnewerck'>Tinnewerck</StyledLink>
             <StyledLink to='/vragen'>Vragen</StyledLink>
-            <StyledLink to='/#contact'>Contact</StyledLink>
+            <StyledLink to='/contact'>Contact</StyledLink>
           </Menu>
         </MenuContainer>
       </NavContainer>

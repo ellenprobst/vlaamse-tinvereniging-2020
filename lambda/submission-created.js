@@ -24,7 +24,6 @@ const CREATE_ITEM = `mutation($naam: String!,$datum: Time!,$email: String!,$vraa
 exports.handler = async (event) => {
   const { payload } = JSON.parse(event.body)
   const { naam, email, vraag, images } = payload.data
-  console.log(JSON.parse(images), typeof JSON.parse(images))
 
   const { data, errors } = await sendQuery(CREATE_ITEM, {
     naam,

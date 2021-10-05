@@ -50,13 +50,4 @@ tinnewerck:
     wordt uitgegeven in glanzend A4 formaat.
   titel: Tinnewerck
 contact:
-  tel: 0032 (0) 475 52 80 72
-  email: info@vlaamsetinvereniging.be
-  links:
-    - url: www.https://nederlandsetinvereniging.nl
-      text: Nederlandse Tinvereniging
-    - text: Pewter Society
-      url: https://www.pewtersociety.org/
-    - text: Pewters Collectors' Club of America
-      url: https://www.pewtercollectorsclub.org/
 ---

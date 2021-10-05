@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import contactImage from '../img/bord.jpg'
 import { media } from '../themes'
+import ContactForm from './ContactForm'
 
 const Wrapper = styled.footer`
   position: relative;
@@ -107,7 +108,8 @@ const ContactDetails = styled.div`
 `
 
 const Footer = ({ contact }) => (
-  <Wrapper>
+  <ContactForm></ContactForm>
+  /* <Wrapper>
     <ContentContainer>
       <TextContainer>
         <Title>Contact</Title>
@@ -136,7 +138,7 @@ const Footer = ({ contact }) => (
     </ContentContainer>
 
     <Copyright>© {new Date().getFullYear()} - Vlaamse Tinvereniging </Copyright>
-  </Wrapper>
+  </Wrapper> */
 )
 
 export default Footer

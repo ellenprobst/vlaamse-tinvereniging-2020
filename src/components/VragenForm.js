@@ -101,7 +101,7 @@ const kbToMb = (sizeInKb) => {
 const FILE_LIMIT = 10
 const BASE_URL = 'https://api.cloudinary.com/v1_1/dljqgwvnc'
 
-const Form = () => {
+const VragenForm = () => {
   const initialState = { naam: '', email: '', vraag: '' }
   const [eachEntry, setEachEntry] = useState(initialState)
   const [images, setImages] = useState([])
@@ -302,4 +302,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default VragenForm

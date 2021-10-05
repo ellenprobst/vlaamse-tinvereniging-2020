@@ -79,26 +79,6 @@ collections:
                   { label: Text, name: text, widget: text },
                 ],
             }
-          - {
-              label: Contact,
-              name: contact,
-              widget: object,
-              fields:
-                [
-                  { label: Tel, name: tel, widget: string },
-                  { label: Email, name: email, widget: string },
-                  {
-                    label: Links,
-                    name: links,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Url, name: url, widget: string },
-                        { label: Text, name: text, widget: string },
-                      ],
-                  },
-                ],
-            }
       - file: 'src/pages/vragen.md'
         label: 'Vragen'
         name: 'vragen'
@@ -120,5 +100,24 @@ collections:
                   { label: Titel, name: titel, widget: string },
                   { label: Text, name: text, widget: string, required: false },
                   { label: Image, name: image, widget: image },
+                ],
+            }
+      - file: 'src/pages/contact.md'
+        label: 'Contact'
+        name: 'contact'
+        fields:
+          - { label: Titel, name: titel, widget: string }
+          - { label: Tel, name: tel, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: SubTitel, name: subTitel, widget: string }
+          - { label: SubText, name: subText, widget: text }
+          - {
+              label: Links,
+              name: links,
+              widget: list,
+              fields:
+                [
+                  { label: Url, name: url, widget: string },
+                  { label: Text, name: text, widget: string },
                 ],
             }

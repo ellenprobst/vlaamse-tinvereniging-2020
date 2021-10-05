@@ -1,4 +1,4 @@
-exports.handler = async (event, context) => {
+module.exports.handler = async (event, context) => {
   console.log('context', context)
   const { identity, user } = context.clientContext
   const usersUrl = `${identity.url}/admin/users`

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
-import Form from '../components/Form'
+import VragenForm from '../components/VragenForm'
 import Item from '../components/Item'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
@@ -129,7 +129,7 @@ const VragenPageTemplate = ({ title, description }) => {
               <Title>{title}</Title>
               <Description>{description}</Description>
             </Header>
-            <Form />
+            <VragenForm />
           </FormContainer>
         </FlexWrapper>
       </Fold>

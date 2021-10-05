@@ -12,7 +12,7 @@ const ListItem = styled.li`
 `
 const FlexContainer = styled.div`
   display: flex;
-
+  height: 100%;
   @media ${media.mobile} {
     flex-wrap: wrap;
   }
