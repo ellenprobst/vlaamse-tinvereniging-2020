@@ -64,4 +64,10 @@ edities:
   - nummer: 55
     titel: Tinnewerck 55
     image: /img/cover-tw-55.jpg
+  - nummer: 54
+    titel: Tinnewerck 54
+    image: /img/cover-tw-54.jpg
+  - nummer: 53
+    titel: Tinnewerck 53
+    image: /img/cover-tw-53.jpg
 ---
