@@ -64,7 +64,9 @@ const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
 `
-const Description = styled.p``
+const Description = styled.p`
+  white-space: pre-wrap;
+`
 
 const FormContainer = styled.div`
   border-radius: 5px;

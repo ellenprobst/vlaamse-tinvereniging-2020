@@ -55,6 +55,7 @@ const Grid = styled.div`
   justify-content: center;
 `
 const GridItem = styled.div`
+  box-shadow: 0 15px 30px 0 rgb(0 0 0 / 11%), 0 5px 15px 0 rgb(0 0 0 / 8%);
   @media ${media.mobile} {
     margin-top: 10px;
   }
