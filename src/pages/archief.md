@@ -16,7 +16,7 @@ edities:
   - nummer: 62
     titel: TINnewerck 62
     text: Juni 2018
-    image: /img/cover-tw65.jpg
+    image: /img/tw62.jpg
   - nummer: 63
     titel: Tinnewerck 63
     text: December 2018
