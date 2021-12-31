@@ -6,7 +6,7 @@ content: null
 titel: Archief
 edities:
   - nummer: 61
-    image: /img/tw60.jpg
+    image: /img/tw61.jpg
     text: "2017"
     titel: Tinnewerck 61
   - nummer: 62
