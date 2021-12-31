@@ -21,7 +21,7 @@ activiteiten:
     museumbezoek gericht op antiek en op oude tinnen voorwerpen.
 
 
-    Op de ledenbijeenkomsten worden door specialisten voordrachten gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens de mogelijkheid geboden aan de aanwezigen om hun stukken te laten keuren of identificeren.
+    Op de ledenbijeenkomsten worden voordrachten gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens de mogelijkheid geboden aan de aanwezigen om hun stukken te laten keuren of identificeren.
   items:
     - image: /img/ledenvergadering.jpg
       text: |-
@@ -30,7 +30,7 @@ activiteiten:
 
         Deze bijeenkomsten gaan door te Lokeren in de zaal de Kievit.
       titel: Ledenbijeenkomst
-      datum: 24 oktober 2021
+      datum: 24 oktober 2022
     - image: /img/museumbezoek.jpg
       text: Het museumbezoek 2021 is geannuleerd omwille van de COVID-19 pandemie
       titel: Museumbezoek
@@ -42,7 +42,7 @@ tinnewerck:
   text: >
     Twee maal per jaar geeft de Vlaamse Tinvereniging een ledenblad uit. Deze
     uitgaven verschijnen in juli en in december. Elk nummer telt vijftig
-    bladzijden waar allerhande artikelen over tin en aanverwante onderwerpen
+    bladzijden waarin allerhande artikelen over tin en aanverwante onderwerpen
     worden gepubliceerd. Het geheel is opgesmukt met talrijke kleurenfoto’s en
     wordt uitgegeven in glanzend A4 formaat.
   titel: Tinnewerck
