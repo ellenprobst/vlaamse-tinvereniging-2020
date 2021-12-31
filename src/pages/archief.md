@@ -45,4 +45,7 @@ edities:
     titel: TINnewerck 69
     image: /img/tw69.jpg
     text: December 2021
+  - nummer: 59
+    titel: Tinnewerck 59
+    image: /img/cover-tw-56.jpg
 ---
