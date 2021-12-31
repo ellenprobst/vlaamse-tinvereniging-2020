@@ -24,7 +24,7 @@ edities:
   - nummer: 60
     titel: Tinnewerck 60
     text: "2017"
-    image: /img/cover-tw65.jpg
+    image: /img/tw60.jpg
   - nummer: 65
     titel: Tinnewerck 65
     text: "2019"
