@@ -30,7 +30,7 @@ activiteiten:
 
         Deze bijeenkomsten gaan door te Lokeren in de zaal de Kievit.
       titel: Ledenbijeenkomst
-      datum: 24 oktober 2022
+      datum: 24 oktober 2022 en 30 oktober 2022
     - image: /img/museumbezoek.jpg
       text: Het museumbezoek 2021 is geannuleerd omwille van de COVID-19 pandemie
       titel: Museumbezoek
