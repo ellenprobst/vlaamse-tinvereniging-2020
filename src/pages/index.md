@@ -12,7 +12,7 @@ overOns:
     gemaakte voorwerpen.
 
 
-    Ze telt een tachtigtal leden, afkomstig uit België en Nederland. Ook een aantal musea en archieven zijn al jarenlang trouw lid van de vereniging. De vereniging heeft geen commerciële doeleinden.
+    Ze telt een tachtigtal leden, afkomstig uit België en Nederland. Ook een aantal musea en archiefdiensten zijn al jarenlang trouw lid van de vereniging. De vereniging heeft geen commerciële doeleinden.
   image: /img/museum.jpg
 activiteiten:
   titel: Activiteiten
@@ -24,11 +24,9 @@ activiteiten:
     Op de ledenbijeenkomsten worden door specialisten voordrachten gegeven over oud tin, de tinnegieters en hun merken. Er wordt tevens de mogelijkheid geboden aan de aanwezigen om hun stukken te laten keuren of identificeren.
   items:
     - image: /img/ledenvergadering.jpg
-      text: >-
+      text: |-
         Voorjaar: geannuleerd omwille van de  COVID-19 pandemie
-
         Najaar : 24 oktober 2021 (onder voorbehoud)
-
 
         Deze bijeenkomsten gaan door te Lokeren in de zaal de Kievit.
       titel: Ledenbijeenkomst
@@ -36,8 +34,7 @@ activiteiten:
     - image: /img/museumbezoek.jpg
       text: Het museumbezoek 2021 is geannuleerd omwille van de COVID-19 pandemie
       titel: Museumbezoek
-      datum: '2021'
-
+      datum: "2021"
 banner:
   text: Heb je zelf tin en ben je benieuwd naar de afkomst van het werk, stel je
     vraag aan onze experten.
