@@ -82,4 +82,7 @@ edities:
   - nummer: 49
     titel: Tinnewerck 49
     image: /img/tw49.jpg
+  - nummer: 48
+    titel: Tinnewerck 48
+    image: /img/tw48.jpg
 ---
