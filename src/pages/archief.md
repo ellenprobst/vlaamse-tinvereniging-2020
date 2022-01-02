@@ -88,4 +88,13 @@ edities:
   - nummer: 47
     titel: Tinnewerck 47
     image: /img/tw47.jpg
+  - nummer: 41
+    titel: Tinnewerck 41
+    image: /img/tw41.jpg
+  - nummer: 42
+    titel: Tinnewerck 42
+    image: /img/tw42.jpg
+  - nummer: 43
+    titel: Tinnewerck 43
+    image: /img/tw43.jpg
 ---
