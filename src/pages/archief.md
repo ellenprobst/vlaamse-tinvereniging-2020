@@ -152,4 +152,24 @@ edities:
     titel: Tinnewerck 30
     text: Januari 2002
     image: /img/tw30.jpg
+  - nummer: 29
+    titel: Tinnewerck 29
+    text: Juli 2001
+    image: /img/tw29.jpg
+  - nummer: 28
+    titel: Tinnewerck 28
+    text: Januari 2001
+    image: /img/tw28.jpg
+  - nummer: 27
+    titel: Tinnewerck 27
+    text: Juli 2000
+    image: /img/tw27.jpg
+  - nummer: 26
+    titel: Tinnewerck 26
+    text: Januari 2000
+    image: /img/tw26.jpg
+  - nummer: 25
+    titel: Tinnewerck 25
+    text: Juli 1999
+    image: /img/tw25.jpg
 ---
