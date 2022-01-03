@@ -172,4 +172,16 @@ edities:
     titel: Tinnewerck 25
     text: Juli 1999
     image: /img/tw25.jpg
+  - nummer: 24
+    titel: Tinnewerck 24
+    text: Januari 1999
+    image: /img/tw24.jpg
+  - nummer: 23
+    titel: Tinnewerck 23
+    text: Juli 1998
+    image: /img/tw23.jpg
+  - nummer: 22
+    titel: Tinnewerck 22
+    text: Januari 1998
+    image: /img/tw22.jpg
 ---
