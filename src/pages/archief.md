@@ -91,15 +91,19 @@ edities:
   - nummer: 45
     titel: Tinnewerck 45
     image: /img/tw45.jpg
+    text: Juli 2009
   - nummer: 44
     titel: Tinnewerck 44
     image: /img/tw44.jpg
+    text: Januari 2009
   - nummer: 43
     titel: Tinnewerck 43
     image: /img/tw43.jpg
+    text: Juli 2008
   - nummer: 42
     titel: Tinnewerck 42
     image: /img/tw42.jpg
+    text: Januari 2008
   - nummer: 41
     titel: Tinnewerck 41
     image: /img/tw41.jpg
