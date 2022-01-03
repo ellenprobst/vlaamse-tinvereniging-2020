@@ -88,6 +88,7 @@ edities:
   - nummer: 46
     titel: Tinnewerck 46
     image: /img/tw46.jpg
+    text: Januari 2010
   - nummer: 45
     titel: Tinnewerck 45
     image: /img/tw45.jpg
