@@ -103,7 +103,9 @@ edities:
   - nummer: 41
     titel: Tinnewerck 41
     image: /img/tw41.jpg
+    text: Juli 2007
   - nummer: 40
     titel: Tinnewerck 40
     image: /img/tw40.jpg
+    text: Januari 2007
 ---
