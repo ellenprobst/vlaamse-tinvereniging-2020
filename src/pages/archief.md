@@ -112,4 +112,24 @@ edities:
     titel: Tinnewerck 40
     image: /img/tw40.jpg
     text: Januari 2007
+  - nummer: 39
+    titel: Tinnewerck 39
+    text: Juli 2006
+    image: /img/tw39.jpg
+  - nummer: 38
+    titel: Tinnewerck 38
+    text: Januari 2006
+    image: /img/tw38.jpg
+  - nummer: 37
+    titel: Tinnewerck 37
+    text: Juli 2005
+    image: /img/tw37.jpg
+  - nummer: 36
+    titel: Tinnewerck 36
+    text: Januari 2005
+    image: /img/tw36.jpg
+  - nummer: 35
+    titel: Tinnewerck 35
+    text: Juli 2004
+    image: /img/tw35.jpg
 ---
