@@ -132,4 +132,12 @@ edities:
     titel: Tinnewerck 35
     text: Juli 2004
     image: /img/tw35.jpg
+  - nummer: 34
+    titel: Tinnewerck 34
+    text: Januari 2004
+    image: /img/tw34.jpg
+  - nummer: 33
+    titel: Tinnewerck 33
+    text: Juli 2003
+    image: /img/tw33.jpg
 ---
