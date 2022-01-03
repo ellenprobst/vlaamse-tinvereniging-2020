@@ -193,4 +193,16 @@ edities:
     titel: Tinnewerck 20
     text: Januari 1997
     image: /img/tw20.jpg
+  - nummer: 47
+    titel: Tinnewerck 47
+    text: Juli 2010
+    image: /img/tw47.jpg
+  - nummer: 48
+    titel: Tinnewerck 48
+    text: Januari 2011
+    image: /img/tw48.jpg
+  - nummer: 49
+    titel: Tinnewerck 49
+    text: Juli 2011
+    image: /img/tw49.jpg
 ---
