@@ -97,4 +97,7 @@ edities:
   - nummer: 45
     titel: Tinnewerck 45
     image: /img/tw45.jpg
+  - nummer: 46
+    titel: Tinnewerck 46
+    image: /img/tw46.jpg
 ---
