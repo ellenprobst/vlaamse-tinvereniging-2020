@@ -64,40 +64,46 @@ edities:
   - nummer: 55
     titel: Tinnewerck 55
     image: /img/cover-tw-55.jpg
+    text: Decermber 2014
   - nummer: 54
     titel: Tinnewerck 54
     image: /img/cover-tw-54.jpg
+    text: Juni 2014
   - nummer: 53
     titel: Tinnewerck 53
     image: /img/cover-tw-53.jpg
+    text: December 2013
   - nummer: 52
     titel: Tinnewerck 52
     image: /img/cover-tw-52.jpg
+    text: Juni 2013
   - nummer: 51
     titel: Tinnewerck 51
     image: /img/cover-tw-51.jpg
+    text: December 2012
   - nummer: 50
     titel: Tinnewerck 50
     image: /img/cover-tw-50.jpg
-  - nummer: 41
-    titel: Tinnewerck 41
-    image: /img/tw41.jpg
-  - nummer: 42
-    titel: Tinnewerck 42
-    image: /img/tw42.jpg
-  - nummer: 43
-    titel: Tinnewerck 43
-    image: /img/tw43.jpg
-  - nummer: 40
-    titel: Tinnewerck 40
-    image: /img/tw40.jpg
-  - nummer: 44
-    titel: Tinnewerck 44
-    image: /img/tw44.jpg
-  - nummer: 45
-    titel: Tinnewerck 45
-    image: /img/tw45.jpg
+    text: Maart 2012
   - nummer: 46
     titel: Tinnewerck 46
     image: /img/tw46.jpg
+  - nummer: 45
+    titel: Tinnewerck 45
+    image: /img/tw45.jpg
+  - nummer: 44
+    titel: Tinnewerck 44
+    image: /img/tw44.jpg
+  - nummer: 43
+    titel: Tinnewerck 43
+    image: /img/tw43.jpg
+  - nummer: 42
+    titel: Tinnewerck 42
+    image: /img/tw42.jpg
+  - nummer: 41
+    titel: Tinnewerck 41
+    image: /img/tw41.jpg
+  - nummer: 40
+    titel: Tinnewerck 40
+    image: /img/tw40.jpg
 ---
