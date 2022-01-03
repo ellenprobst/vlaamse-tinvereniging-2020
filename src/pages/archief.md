@@ -184,4 +184,12 @@ edities:
     titel: Tinnewerck 22
     text: Januari 1998
     image: /img/tw22.jpg
+  - nummer: 21
+    titel: Tinnewerck 21
+    text: Juli 1997
+    image: /img/tw21.jpg
+  - nummer: 20
+    titel: Tinnewerck 20
+    text: Januari 1997
+    image: /img/tw20.jpg
 ---
