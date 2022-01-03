@@ -79,15 +79,6 @@ edities:
   - nummer: 50
     titel: Tinnewerck 50
     image: /img/cover-tw-50.jpg
-  - nummer: 49
-    titel: Tinnewerck 49
-    image: /img/tw49.jpg
-  - nummer: 48
-    titel: Tinnewerck 48
-    image: /img/tw48.jpg
-  - nummer: 47
-    titel: Tinnewerck 47
-    image: /img/tw47.jpg
   - nummer: 41
     titel: Tinnewerck 41
     image: /img/tw41.jpg
