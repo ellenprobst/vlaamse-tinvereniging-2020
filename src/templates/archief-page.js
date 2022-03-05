@@ -66,14 +66,14 @@ const GridLabel = styled.div`
   margin: 0 auto;
   background: var(--white);
   padding: 7px;
-  margin-top: -35px;
+  margin-top: -45px;
   position: relative;
   z-index: 1;
   color: var(--text-color);
 
   h4 {
     font-weight: bold;
-    color: var(--theme--color);
+    color: #565a4a;
     margin-bottom: 5px;
     font-size: 16px;
   }
@@ -87,7 +87,7 @@ const GridLabel = styled.div`
 const Download = styled.a`
   font-size: 12px;
   text-decoration: underline;
-  color: var(--theme--color);
+  color: #565a4a;
   font-weight: bold;
 `
 const FilterContainer = styled.div`
@@ -161,7 +161,9 @@ const ArchiefPageTemplate = ({ data }) => {
 
                 {/* hide link for first two items */}
                 {item.nummer < lastItem - 2 && item.link && (
-                  <Download href={item.link}>Download</Download>
+                  <Download href={item.link} target='_blank'>
+                    Download
+                  </Download>
                 )}
               </GridLabel>
             </GridItem>
