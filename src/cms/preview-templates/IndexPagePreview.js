@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { IndexPageTemplate } from '../../templates/index-page'
 import Layout from '../../components/Layout'
-import Footer from '../../components/Footer'
 
 const IndexPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(['data']).toJS()
@@ -18,7 +17,6 @@ const IndexPagePreview = ({ entry, getAsset }) => {
           activiteiten={data.activiteiten}
           banner={data.banner}
         />
-        <Footer contact={data.contact} />
       </Layout>
     )
   } else {

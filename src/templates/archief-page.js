@@ -1,26 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
 import { media } from '../themes'
+import Navbar from '../components/Navbar'
+import { Select } from 'antd'
+
+const { Option } = Select
 
 const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: 1550px;
   min-height: 100vh;
   background: var(--grey-bg-color);
   border: 25px solid var(--white);
-  padding: 15px;
+  padding: 25px 50px;
   @media ${media.mobile} {
     padding: 25px;
     border: 15px solid var(--white);
   }
-`
-
-const Title = styled.h1`
-  font-size: calc(16px + 8vw);
-  text-align: center;
-  margin-bottom: 50px;
-  color: var(--theme--color);
-  line-height: 1;
 `
 
 const FlexContainer = styled.div`
@@ -35,8 +33,8 @@ const BackButton = styled(Link)`
   margin-left: auto;
   margin-right: 0;
   svg {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     padding: 10px;
 
     @media ${media.mobile} {
@@ -47,15 +45,12 @@ const BackButton = styled(Link)`
 `
 
 const Grid = styled.div`
-  margin: 0 auto;
-  max-width: 1550px;
   display: grid;
   grid-gap: 5vw;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
 `
 const GridItem = styled.div`
-  box-shadow: 0 15px 30px 0 rgb(0 0 0 / 11%), 0 5px 15px 0 rgb(0 0 0 / 8%);
+  filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.1));
   @media ${media.mobile} {
     margin-top: 10px;
   }
@@ -89,14 +84,34 @@ const GridLabel = styled.div`
   }
 `
 
-const ArchiefPageTemplate = ({ data, titel }) => {
+const Download = styled.a`
+  font-size: 12px;
+  text-decoration: underline;
+  color: var(--theme--color);
+  font-weight: bold;
+`
+const FilterContainer = styled.div`
+  margin-bottom: 35px;
+`
+
+const ArchiefPageTemplate = ({ data }) => {
+  const lastItem = data.sort((a, b) => b.nummer - a.nummer)[0]?.nummer
+  const options = [...new Set(data.map(({ jaar }) => jaar))].sort().reverse()
+
+  const [filteredItems, setFilteredItems] = useState(data)
+  const handleChange = (value) => {
+    if (value === 'all') {
+      setFilteredItems(data)
+    } else {
+      setFilteredItems(data.filter((items) => items.jaar === value))
+    }
+  }
   return (
     <Wrapper>
       <FlexContainer>
         <BackButton to='/#tinnewerck'>
           <svg
             viewBox='0 0 16 16'
-            class='bi bi-x'
             fill='var(--theme--color)'
             xmlns='http://www.w3.org/2000/svg'
           >
@@ -111,10 +126,23 @@ const ArchiefPageTemplate = ({ data, titel }) => {
           </svg>
         </BackButton>
       </FlexContainer>
-      <Title>{titel}</Title>
 
+      <FilterContainer>
+        <Select
+          defaultValue='all'
+          style={{ width: 200 }}
+          onChange={handleChange}
+        >
+          <Option value='all'>Alle jaargangen</Option>
+          {options.map((option) => (
+            <Option value={option} key={option}>
+              {option}
+            </Option>
+          ))}
+        </Select>
+      </FilterContainer>
       <Grid>
-        {data
+        {filteredItems
           .sort((a, b) => b.nummer - a.nummer)
           .map((item) => (
             <GridItem key={item.nummer}>
@@ -130,6 +158,11 @@ const ArchiefPageTemplate = ({ data, titel }) => {
               <GridLabel>
                 <h4>{item.titel}</h4>
                 <p>{item.text}</p>
+
+                {/* hide link for first two items */}
+                {item.nummer < lastItem - 2 && item.link && (
+                  <Download href={item.link}>Download</Download>
+                )}
               </GridLabel>
             </GridItem>
           ))}
@@ -142,7 +175,8 @@ const ArchiefPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout hideNav>
+    <Layout>
+      <Navbar light />
       <ArchiefPageTemplate
         data={frontmatter.edities}
         title={frontmatter.title}
@@ -169,6 +203,8 @@ export const pageQuery = graphql`
           titel
           text
           nummer
+          link
+          jaar
         }
       }
     }

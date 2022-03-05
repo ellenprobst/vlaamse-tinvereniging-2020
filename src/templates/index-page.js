@@ -250,6 +250,7 @@ export const pageQuery = graphql`
           titel
           text
           nummer
+          link
         }
       }
     }

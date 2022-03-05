@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
@@ -15,24 +15,6 @@ const SubTitle = styled.h2`
   font-weight: bold;
   margin: 75px 0 20px;
   font-family: 'Montserrat', sans-serif;
-`
-
-const BackButton = styled(Link)`
-  border: none;
-  background: transparent;
-  color: var(--text-color);
-  margin-left: auto;
-  margin-right: 0;
-  svg {
-    width: 120px;
-    height: 120px;
-    padding: 10px;
-
-    @media ${media.mobile} {
-      width: 50px;
-      height: 50px;
-    }
-  }
 `
 
 const LinkList = styled.div`
@@ -62,7 +44,7 @@ const ContactDetails = styled.div`
 const FormContainer = styled.div`
   border-radius: 5px;
   width: 100%;
-  margin-bottom: -35px;
+  margin-bottom: -100px;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   display: flex;
@@ -84,10 +66,9 @@ const Fold = styled.div`
 `
 
 const Wrapper = styled.div`
-  margin-top: 65px;
   max-width: ${wrapper};
   margin: 0 auto;
-  padding: 55px 35px 10px;
+  padding: 55px 35px;
   @media ${media.mobile} {
     margin-top: 0px;
     padding: 55px 15px 10px;

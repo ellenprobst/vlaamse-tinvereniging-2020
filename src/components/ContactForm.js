@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { boxShadow, media } from '../themes'
-import { Upload, message, Button } from 'antd'
-import { UploadOutlined } from '@ant-design/icons'
-import ImgCrop from 'antd-img-crop'
+import { Button } from 'antd'
 
 const FormContainer = styled.form`
   padding: 15px 25px 35px;
@@ -14,19 +12,6 @@ const FormContainer = styled.form`
 
 const Wrapper = styled.div`
   max-width: 450px;
-`
-
-const Container = styled.div`
-  flex-grow: 1;
-  padding: 15px 25px 35px;
-  min-height: 535px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  @media ${media.mobile} {
-    padding: 15px 15px 35px;
-  }
 `
 
 const Field = styled.div`
@@ -83,12 +68,12 @@ const Submit = styled(Button)`
   }
 `
 
-function encode(data) {
-  const formData = new FormData()
-  for (const key of Object.keys(data)) {
-    formData.append(key, data[key])
-  }
-}
+// function encode(data) {
+//   const formData = new FormData()
+//   for (const key of Object.keys(data)) {
+//     formData.append(key, data[key])
+//   }
+// }
 const ContactForm = () => {
   // if (showSuccess)
   //   return (
