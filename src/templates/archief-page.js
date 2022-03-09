@@ -95,7 +95,9 @@ const FilterContainer = styled.div`
 `
 
 const ArchiefPageTemplate = ({ data }) => {
-  const lastItem = data.sort((a, b) => b.nummer - a.nummer)[0]?.nummer
+  /* allow download for items + 3 years old */
+  const allowDownload = (jaar) => jaar <= new Date().getFullYear() - 3
+
   const options = [...new Set(data.map(({ jaar }) => jaar))].sort().reverse()
 
   const [filteredItems, setFilteredItems] = useState(data)
@@ -158,9 +160,7 @@ const ArchiefPageTemplate = ({ data }) => {
               <GridLabel>
                 <h4>{item.titel}</h4>
                 <p>{item.text}</p>
-
-                {/* hide link for first two items */}
-                {item.nummer < lastItem - 2 && item.link && (
+                {allowDownload(item.jaar) && item.link && (
                   <Download href={item.link} target='_blank'>
                     Download
                   </Download>
