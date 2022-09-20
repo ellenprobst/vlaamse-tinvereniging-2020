@@ -9,3 +9,6 @@ static/admin/*.bundle.*
 yarn-error.log
 
 .env
+
+# Local Netlify folder
+.netlify
