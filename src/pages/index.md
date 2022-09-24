@@ -34,7 +34,7 @@ activiteiten:
     - image: /img/museumbezoek.jpg
       text: "Het museumbezoek 2023: locatie en datum zijn nog niet bekend"
       titel: Museumbezoek
-      datum: "2021"
+      datum: "2023"
 banner:
   text: Heb je zelf tin en ben je benieuwd naar de afkomst van het werk, stel je
     vraag aan onze experten.
