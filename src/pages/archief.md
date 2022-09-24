@@ -292,4 +292,9 @@ edities:
     image: /img/tw49.jpg
     jaar: 2011
     link: https://drive.google.com/file/d/19Lf-UQmLjJOcTGWIidoNy5F4Hi5uhNm8/view
+  - nummer: 70
+    jaar: 2022
+    titel: TINnewerck 70
+    text: juli 2022
+    image: /img/tw70.jpg
 ---
