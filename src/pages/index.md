@@ -25,12 +25,15 @@ activiteiten:
   items:
     - image: /img/ledenvergadering.jpg
       text: |-
-        Voorjaar: geannuleerd omwille van de  COVID-19 pandemie
-        Najaar : 24 oktober 2021 (onder voorbehoud)
+        Najaar : 29 oktober 2022
 
-        Deze bijeenkomsten gaan door te Lokeren in de zaal de Kievit.
+        Voorjaar 2023: datum nog niet bepaald
+        Najaar 2023: datum nog niet bepaaald
+        Museumbezoek 2023: datum en locatie nog niet bepaald 
+
+        Deze bijeenkomsten gaan door te Lokeren.
       titel: Ledenbijeenkomst
-      datum: 24 oktober 2022 en 30 oktober 2022
+      datum: 29 oktober 2022
     - image: /img/museumbezoek.jpg
       text: Het museumbezoek 2021 is geannuleerd omwille van de COVID-19 pandemie
       titel: Museumbezoek
@@ -46,5 +49,5 @@ tinnewerck:
     worden gepubliceerd. Het geheel is opgesmukt met talrijke kleurenfoto’s en
     wordt uitgegeven in glanzend A4 formaat.
   titel: Tinnewerck
-contact:
+contact: null
 ---
