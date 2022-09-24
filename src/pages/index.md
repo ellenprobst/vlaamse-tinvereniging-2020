@@ -25,13 +25,10 @@ activiteiten:
   items:
     - image: /img/ledenvergadering.jpg
       text: |-
-        Najaar : 29 oktober 2022
-
         Voorjaar 2023: datum nog niet bepaald
         Najaar 2023: datum nog niet bepaaald
-        Museumbezoek 2023: datum en locatie nog niet bepaald 
 
-        Deze bijeenkomsten gaan door te Lokeren.
+        Zonder tegenbericht gaan de bijeenkomsten door te Lokeren.
       titel: Ledenbijeenkomst
       datum: 29 oktober 2022
     - image: /img/museumbezoek.jpg
