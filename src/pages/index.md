@@ -35,7 +35,7 @@ activiteiten:
       titel: Ledenbijeenkomst
       datum: 29 oktober 2022
     - image: /img/museumbezoek.jpg
-      text: Het museumbezoek 2021 is geannuleerd omwille van de COVID-19 pandemie
+      text: "Het museumbezoek 2023: locatie en datum zijn nog niet bekend"
       titel: Museumbezoek
       datum: "2021"
 banner:
