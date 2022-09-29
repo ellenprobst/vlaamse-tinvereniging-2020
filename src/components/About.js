@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 const Wrapper = styled.div`
   max-width: ${wrapper};
   margin: 0 auto;
-  padding: 10vw 0;
+  padding: 0 20px 35px;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
