@@ -209,7 +209,7 @@ const VragenForm = () => {
 
   return (
     <FormContainer
-      name='vragen-formulier-test'
+      name='vragen-formulier'
       method='post'
       // action='/contact/thanks/'
       data-netlify='true'
