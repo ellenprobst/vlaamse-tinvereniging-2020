@@ -73,6 +73,8 @@ function encode(data) {
   for (const key of Object.keys(data)) {
     formData.append(key, data[key])
   }
+
+  return formData
 }
 const ContactForm = () => {
   const initialState = { naam: '', email: '', vraag: '' }
