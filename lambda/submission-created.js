@@ -28,8 +28,8 @@ const CREATE_ITEM = `mutation($naam: String!,$datum: Time!,$email: String!,$vraa
 exports.handler = async (event) => {
   const { payload } = JSON.parse(event.body)
   const { naam, email, vraag, images } = payload.data
-  const formName = payload.data['form-name'] || payload.form_name
-  console.log(payload, formName)
+  const formName = payload.data['form-name'] || payload.form_name // payload in production differs from local env, hence the double check
+
   if (formName === FORM.vraag) {
     const { data, errors } = await sendQuery(CREATE_ITEM, {
       naam,
@@ -40,13 +40,11 @@ exports.handler = async (event) => {
     })
 
     if (errors) {
-      console.log(errors)
       return {
         statusCode: 500,
         body: JSON.stringify(errors),
       }
     }
-    console.log('done')
     return {
       statusCode: 200,
       body: JSON.stringify({

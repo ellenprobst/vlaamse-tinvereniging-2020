@@ -90,7 +90,6 @@ function encode(data) {
   for (const key of Object.keys(data)) {
     formData.append(key, data[key])
   }
-  console.log({ formData, data })
   return formData
 }
 
@@ -124,7 +123,6 @@ const VragenForm = () => {
   // }
 
   const uploadImage = async (option) => {
-    console.log(3, 'image upload')
     const { onSuccess, onError, file } = option
     setUploading(true)
     fetch(`${BASE_URL}/image/upload`, {
@@ -133,19 +131,16 @@ const VragenForm = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response)
         onSuccess(response)
         setUploading(false)
       })
       .catch((err) => {
-        console.log(err)
         onError(err)
         setUploading(false)
       })
   }
 
   const handleAttachmentChange = async (info) => {
-    console.log(6, 'att change', info)
     if (info.file.status === 'done') {
       // const size = info.fileList.reduce((res, item) => res + item.size, 0)
       // setSize(size)
@@ -169,7 +164,6 @@ const VragenForm = () => {
   }
 
   const handleSubmit = (e) => {
-    console.log(1, e.target)
     e.preventDefault()
     setSubmitting(true)
     const form = e.target
@@ -177,7 +171,7 @@ const VragenForm = () => {
       url: file.response.secure_url,
       id: file.response.public_id,
     }))
-    console.log(2, imageList)
+
     fetch('/', {
       method: 'POST',
       body: encode({
@@ -195,7 +189,6 @@ const VragenForm = () => {
       })
       .catch((error) => {
         setSubmitting(false)
-        console.log(error)
       })
   }
 
@@ -267,6 +260,7 @@ const VragenForm = () => {
             />
           </div>
         </Field>
+        {/* Hidden input field for images needed for Netlify to pick up the form field */}
         <div>
           <label htmlFor={'images'} hidden>
             Images
