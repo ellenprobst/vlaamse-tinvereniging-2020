@@ -267,7 +267,7 @@ const VragenForm = () => {
             />
           </div>
         </Field>
-        {/* <div>
+        <div>
           <label htmlFor={'images'} hidden>
             Images
           </label>
@@ -278,7 +278,7 @@ const VragenForm = () => {
             hidden
             value={'test'}
           />
-        </div> */}
+        </div>
         <ImgCrop>
           <Upload
             fileList={images}
