@@ -23,6 +23,9 @@ const SideContainer = styled.div`
   margin-right: 55px;
   position: relative;
   white-space: pre-wrap;
+  @media ${media.tablet} {
+    margin-right: 0px;
+  }
 `
 const TitleContainer = styled.div`
   overflow: hidden;
@@ -65,7 +68,8 @@ const Card = styled.div`
   }
 
   @media ${media.mobile} {
-    margin: 10px 0;
+    margin: 10px -10px;
+    max-width: none;
   }
 `
 

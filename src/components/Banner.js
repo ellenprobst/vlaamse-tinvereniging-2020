@@ -43,7 +43,7 @@ const Title = styled.h3`
   font-family: 'Montserrat', sans-serif;
 
   @media ${media.mobile} {
-    font-size: 12px;
+    font-size: 14px;
   }
 `
 const StyledLink = styled(Link)`
@@ -68,7 +68,7 @@ const StyledLink = styled(Link)`
 
   @media ${media.tablet} {
     width: 150px;
-    font-size: 12px;
+    font-size: 14px;
     padding: 10px;
   }
 `

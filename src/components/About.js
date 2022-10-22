@@ -44,7 +44,7 @@ const RightContainer = styled.div`
 
   @media ${media.mobile} {
     width: 100%;
-    margin: 0%;
+    margin: 15px;
   }
 `
 const OverflowContainer = styled.div`

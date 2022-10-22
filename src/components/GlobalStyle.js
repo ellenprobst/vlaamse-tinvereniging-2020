@@ -25,11 +25,13 @@ ${'' /* --theme--color: #8d986e; */}
   }
 
 
-${'' /* .ril-image {
+${
+  '' /* .ril-image {
     
       transform: none !important;
 
-} */}
+} */
+}
 
 
   body {
@@ -39,7 +41,7 @@ ${'' /* .ril-image {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1.1px;
           @media ${media.mobile} {
-    font-size: ${fontSize.sm};
+    font-size: ${fontSize.md};
   }
   }
 
