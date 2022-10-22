@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   padding: 55px 35px 10px;
   @media ${media.mobile} {
     margin-top: 0px;
-    padding: 55px 15px 10px;
+    padding: 55px 0px 10px;
   }
 `
 
@@ -59,6 +59,9 @@ const Title = styled.h2`
   font-size: clamp(16px, 12vw, 35px);
   color: var(--black);
   margin-bottom: 15px;
+  @media ${media.mobile} {
+    margin-left: 15px;
+  }
 `
 const List = styled.ul`
   display: flex;

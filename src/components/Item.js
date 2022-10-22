@@ -9,6 +9,9 @@ const ListItem = styled.li`
   border-radius: 3px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   font-size: 14px;
+  @media ${media.tablet} {
+    width: 100%;
+  }
 `
 const FlexContainer = styled.div`
   display: flex;
