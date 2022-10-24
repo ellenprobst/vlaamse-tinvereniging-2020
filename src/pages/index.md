@@ -25,12 +25,12 @@ activiteiten:
   items:
     - image: /img/ledenvergadering.jpg
       text: |-
-        Voorjaar 2023: datum nog niet bepaald
-        Najaar 2023: datum nog niet bepaaald
+        Voorjaar 2023: 26 maart 2023
+        Najaar 2023: 29 oktober 2023 (locatie: Antwerpen, onder voorbehoud)
 
         Zonder tegenbericht gaan de bijeenkomsten door te Lokeren.
       titel: Ledenbijeenkomst
-      datum: 29 oktober 2022
+      datum: "2023"
     - image: /img/museumbezoek.jpg
       text: "Het museumbezoek 2023: locatie en datum zijn nog niet bekend"
       titel: Museumbezoek
