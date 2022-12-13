@@ -154,7 +154,7 @@ const Item = ({ data, index, openModal }) => {
           <ItemVraag>{data.vraag}</ItemVraag>
           <ItemAntwoord>{data.antwoord}</ItemAntwoord>
           <ItemDate>
-            {new Date(data.publicatieDatum).toLocaleDateString('en-gb')}
+            {new Date(data.datum).toLocaleDateString('en-gb')}
           </ItemDate>
         </ItemContent>
       </FlexContainer>

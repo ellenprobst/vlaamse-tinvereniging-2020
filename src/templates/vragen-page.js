@@ -157,14 +157,16 @@ const VragenPageTemplate = ({ title, description }) => {
             <Skeleton loading={status === 'loading'} active></Skeleton>
           </div>
           <List>
-            {data.map((item, index) => (
-              <Item
-                data={item}
-                key={index}
-                openModal={openModal}
-                index={index}
-              />
-            ))}
+            {data
+              .sort((a, b) => new Date(b.datum) - new Date(a.datum))
+              .map((item, index) => (
+                <Item
+                  data={item}
+                  key={index}
+                  openModal={openModal}
+                  index={index}
+                />
+              ))}
           </List>
         </Wrapper>
       </Main>
