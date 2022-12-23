@@ -60,6 +60,11 @@ const Admin = () => {
     setVisibility(true)
   }
 
+  const handleEmailAction = (item) => {
+    handleSelect(item)
+    handleEmail()
+  }
+
   const handleSubmit = (formData) => {
     setSubmitting(true)
 
@@ -78,7 +83,7 @@ const Admin = () => {
         setSubmitting(false)
         setStatus('loading')
         setSelected(formData)
-        status === 'done' ? setStep(1) : closeModal()
+        setStep(1)
       })
       .catch((e) => console.log(e))
   }
@@ -104,6 +109,7 @@ const Admin = () => {
       <Table
         handleSelect={handleSelect}
         handleDelete={handleDelete}
+        handleEmailAction={handleEmailAction}
         data={data}
         status={status}
       />
@@ -125,7 +131,7 @@ const Admin = () => {
               </p>
             </Title>
           }
-          visible={isVisible}
+          open={isVisible}
           onCancel={closeModal}
           footer={null}
           width={'1000px'}
@@ -143,7 +149,9 @@ const Admin = () => {
             <Result
               icon={<></>}
               status='success'
-              title='Het antwoord is gepubliceerd! 👍'
+              title={`Het antwoord is ${
+                selected.status === 'done' ? 'gepubliceerd' : 'opgeslagen'
+              }! 👍 `}
               extra={[
                 <Button
                   key='email'

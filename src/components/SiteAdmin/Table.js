@@ -38,7 +38,13 @@ function sortByStatus(a, b) {
   return 0
 }
 
-const Table = ({ handleSelect, handleDelete, data, status }) => {
+const Table = ({
+  handleSelect,
+  handleDelete,
+  data,
+  status,
+  handleEmailAction,
+}) => {
   const columns = [
     {
       title: 'Action',
@@ -56,6 +62,21 @@ const Table = ({ handleSelect, handleDelete, data, status }) => {
                 <path
                   fillRule='evenodd'
                   d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'
+                />
+              </svg>
+            </ActionButton>
+          </Tooltip>
+          <Tooltip title='email'>
+            <ActionButton onClick={() => handleEmailAction(record)}>
+              <svg
+                width='1em'
+                height='1em'
+                viewBox='0 0 16 16'
+                fill='currentColor'
+              >
+                <path
+                  fillRule='evenodd'
+                  d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z'
                 />
               </svg>
             </ActionButton>
