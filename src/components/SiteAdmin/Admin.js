@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Table from './Table'
-import { Modal, Result, Button, message } from 'antd'
+import { Modal, Result, Button, message, Tag } from 'antd'
 import Form from './Form'
 import EmailForm from './EmailForm'
 
@@ -11,6 +11,10 @@ const Title = styled.div`
   align-items: center;
   font-weight: bold;
   padding: 10px;
+`
+
+const Stats = styled.div`
+  margin-bottom: 10px;
 `
 
 const Admin = () => {
@@ -105,7 +109,21 @@ const Admin = () => {
   const handleEmail = () => setStep(2)
 
   return (
-    <>
+    <div>
+      <Stats>
+        <Tag>
+          gepubliceerd:{` `}
+          {data.filter((item) => item.status === 'done').length}
+        </Tag>
+        <Tag>
+          open:{` `}
+          {data.filter((item) => item.status === 'open').length}
+        </Tag>
+        <Tag>
+          new:{` `}
+          {data.filter((item) => item.status === 'new').length}
+        </Tag>
+      </Stats>
       <Table
         handleSelect={handleSelect}
         handleDelete={handleDelete}
@@ -178,7 +196,7 @@ const Admin = () => {
           )}
         </Modal>
       )}
-    </>
+    </div>
   )
 }
 
