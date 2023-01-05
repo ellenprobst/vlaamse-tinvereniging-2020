@@ -12,12 +12,12 @@ subText: >-
 
   Wenst u lid te worden van de Vlaamse Tinvereniging kan u het contactformulier invullen en doorsturen.
 links:
-  - url: www.https://nederlandsetinvereniging.nl
+  - url: https://www.nederlandsetinvereniging.nl
     text: Nederlandse Tinvereniging
   - text: Pewter Society
     url: https://www.pewtersociety.org/
   - text: Pewters Collectors' Club of America
     url: https://www.pewtercollectorsclub.org/
-  - url: www.zinnmarken.de
+  - url: https://www.zinnmarken.de
     text: Duitse Tinvereniging
 ---
