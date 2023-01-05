@@ -18,4 +18,6 @@ links:
     url: https://www.pewtersociety.org/
   - text: Pewters Collectors' Club of America
     url: https://www.pewtercollectorsclub.org/
+  - url: www.zinnmarken.de
+    text: Duitse Tinvereniging
 ---
