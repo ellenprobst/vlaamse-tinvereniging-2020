@@ -15,6 +15,7 @@ edities:
     text: December 2017
     titel: TINnewerck 61
     jaar: 2017
+    link: https://drive.google.com/file/d/1Zx9vDpP06o3L5tZSKObRepMXakxjTc9G/view?usp=share_link
   - nummer: 62
     titel: TINnewerck 62
     text: Juni 2018
