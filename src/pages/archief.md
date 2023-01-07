@@ -21,6 +21,7 @@ edities:
     text: Juni 2018
     image: /img/tw62.jpg
     jaar: 2018
+    link: https://drive.google.com/file/d/1ktddyzeH3wxAITkDVwmw5Z7lcrk2TWIE/view?usp=share_link
   - nummer: 63
     titel: TINnewerck 63
     text: December 2018
