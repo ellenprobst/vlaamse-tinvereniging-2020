@@ -115,6 +115,7 @@ edities:
     image: /img/cover-tw-50.jpg
     text: Maart 2012
     jaar: 2012
+    link: https://drive.google.com/file/d/1bFHjg-Q0Jcm9LYF5cP087N7B4FoMHOXc/view?usp=share_link
   - nummer: 46
     titel: Tinnewerck 46
     image: /img/tw46.jpg
