@@ -162,7 +162,7 @@ const ArchiefPageTemplate = ({ data }) => {
                 <p>{item.text}</p>
                 {allowDownload(item.jaar) && item.link && (
                   <Download href={item.link} target='_blank'>
-                    Download
+                    Lezen
                   </Download>
                 )}
               </GridLabel>
