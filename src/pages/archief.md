@@ -10,6 +10,7 @@ edities:
     text: Juni 2017
     image: /img/tw60.jpg
     jaar: 2017
+    link: https://drive.google.com/file/d/1jpH4we32tnqzRdHsLHMRYGogYESvoAwz/view?usp=share_link
   - nummer: 61
     image: /img/tw61.jpg
     text: December 2017
