@@ -27,11 +27,13 @@ edities:
     text: December 2018
     image: /img/tw63.jpg
     jaar: 2018
+    link: https://drive.google.com/file/d/1lPz2ojhfAsHn8Gq-rI4V7XK2d6j57UUI/view?usp=share_link
   - nummer: 64
     titel: TINnewerck 64
     text: Juli 2019
     image: /img/tw64.jpg
     jaar: 2019
+    link: https://drive.google.com/file/d/1lcmJC6fe7C3yW9l7jCdBv296LjRq-6k3/view?usp=share_link
   - nummer: 65
     titel: TINnewerck 65
     text: December 2019
