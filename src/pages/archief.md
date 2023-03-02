@@ -39,6 +39,7 @@ edities:
     text: December 2019
     image: /img/cover-tw65.jpg
     jaar: 2019
+    link: https://drive.google.com/file/d/1Dj8cbS-EnMn7hfhxDI3PlpVgPCaO92gF/view?usp=share_link
   - nummer: 66
     titel: TINnewerck 66
     image: /img/tw66.jpg
