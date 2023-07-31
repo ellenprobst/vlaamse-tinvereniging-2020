@@ -46,6 +46,7 @@ edities:
     image: /img/tw66.jpg
     text: Juli 2020
     jaar: 2020
+    link: https://drive.google.com/file/d/1YmZHCgImLQ7AFj9ozTl8HG3xyNh7-CFp/view?usp=drive_link
   - nummer: 67
     titel: TINnewerck 67
     image: /img/tw67.jpg
