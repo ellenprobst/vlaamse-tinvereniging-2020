@@ -87,7 +87,7 @@ const FormContainer = styled.div`
 const PaginationButtons = styled.div`
   display: flex;
   gap: 15px;
-  margin-bottom: 35px;
+  margin: 15px 0 35px;
 `
 
 const VragenPageTemplate = ({ title, description }) => {
