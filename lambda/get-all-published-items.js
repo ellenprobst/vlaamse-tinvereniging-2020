@@ -1,8 +1,8 @@
 const sendQuery = require('./utils/send-query')
 
 const GET_ALL_PUBLISHED_ITEMS = `
-query{
-  alleGepubliceerdeVragen(status: "done") {
+query($size: Int, $cursor: String){
+  alleGepubliceerdeVragen(status: "done",_size: $size, _cursor:$cursor) {
     data {
       _id
       status
@@ -18,12 +18,18 @@ query{
         url
       }
     }
+    before
+    after
   }
 }
 `
 
-exports.handler = async () => {
-  const { data, errors } = await sendQuery(GET_ALL_PUBLISHED_ITEMS)
+exports.handler = async (event) => {
+  const { size, cursor } = event.queryStringParameters
+  const { data, errors } = await sendQuery(GET_ALL_PUBLISHED_ITEMS, {
+    size: Number(size),
+    cursor,
+  })
 
   if (errors) {
     return {
@@ -36,6 +42,8 @@ exports.handler = async () => {
     statusCode: 200,
     body: JSON.stringify({
       vragen: data.alleGepubliceerdeVragen.data,
+      beforeIndex: data.alleGepubliceerdeVragen.before,
+      afterIndex: data.alleGepubliceerdeVragen.after,
     }),
   }
 }

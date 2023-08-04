@@ -6,7 +6,7 @@ import VragenForm from '../components/VragenForm'
 import Item from '../components/Item'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
-import { Skeleton } from 'antd'
+import { Skeleton, Button } from 'antd'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
@@ -84,36 +84,47 @@ const FormContainer = styled.div`
   }
 `
 
+const PaginationButtons = styled.div`
+  display: flex;
+  gap: 15px;
+  margin-bottom: 35px;
+`
+
 const VragenPageTemplate = ({ title, description }) => {
   const [isOpen, setOpen] = useState(false)
   const [itemIndex, setItemIndex] = useState(0)
   const [imgIndex, setImgIndex] = useState(0)
   const [data, setData] = useState([])
-  const [status, setStatus] = useState('loading')
+  const [isLoading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [queryString, setQueryString] = useState('')
+  const [pageIndex, setPageIndex] = useState({})
+  const size = 20
 
   useEffect(() => {
     let canceled = false
 
-    if (status !== 'loading') return
-
-    fetch('/api/get-all-published-items')
+    setLoading(true)
+    fetch(`/api/get-all-published-items/?size=${size}&${queryString}`)
       .then((response) => {
         if (canceled === true) return
         if (response.status !== 200) return
         return response.json()
       })
       .then((result) => {
+        setPageIndex({ before: result.beforeIndex, after: result.afterIndex })
         setData(result.vragen)
-        setStatus('loaded')
+        setLoading(false)
+        window.scrollTo(0, 0)
       })
       .catch((err) => {
-        setStatus('error')
+        setError('Foutmelding')
       })
 
     return () => {
       canceled = true
     }
-  }, [status])
+  }, [queryString])
 
   const openModal = (id) => {
     setOpen(true)
@@ -123,6 +134,14 @@ const VragenPageTemplate = ({ title, description }) => {
   const closeModal = () => {
     setOpen(false)
     setImgIndex(0)
+  }
+
+  const getNextPage = () => {
+    setQueryString(`cursor=${pageIndex.after}`)
+  }
+
+  const getPreviousPage = () => {
+    setQueryString(`cursor=${pageIndex.before}`)
   }
 
   return (
@@ -142,19 +161,16 @@ const VragenPageTemplate = ({ title, description }) => {
         <Wrapper>
           <Title>Antwoorden</Title>
           <div style={{ margin: '20px 0' }}>
-            {' '}
-            <Skeleton loading={status === 'loading'} active></Skeleton>
+            <Skeleton loading={isLoading} active></Skeleton>
           </div>
           <div style={{ margin: '20px 0' }}>
-            {' '}
-            <Skeleton loading={status === 'loading'} active></Skeleton>
+            <Skeleton loading={isLoading} active></Skeleton>
           </div>
           <div style={{ margin: '20px 0' }}>
-            {' '}
-            <Skeleton loading={status === 'loading'} active></Skeleton>
+            <Skeleton loading={isLoading} active></Skeleton>
           </div>
           <div style={{ margin: '20px 0' }}>
-            <Skeleton loading={status === 'loading'} active></Skeleton>
+            <Skeleton loading={isLoading} active></Skeleton>
           </div>
           <List>
             {data
@@ -168,6 +184,14 @@ const VragenPageTemplate = ({ title, description }) => {
                 />
               ))}
           </List>
+          <PaginationButtons>
+            <Button onClick={getPreviousPage} disabled={!pageIndex.before}>
+              ⟨ Vorige
+            </Button>
+            <Button onClick={getNextPage} disabled={!pageIndex.after}>
+              Volgende ⟩
+            </Button>
+          </PaginationButtons>
         </Wrapper>
       </Main>
 

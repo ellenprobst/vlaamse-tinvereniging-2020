@@ -1,8 +1,8 @@
 const sendQuery = require('./utils/send-query')
 
 const GET_ALL_ITEMS = `
-    query{
-      alleVragen{
+    query($size: Int){
+      alleVragen(_size: $size){
         data {
           _id
           status
@@ -12,18 +12,23 @@ const GET_ALL_ITEMS = `
           vraag
           antwoord
           titel
-    
           images {
             id
             url
           }
         }
+        after
+        before
       }
     }
 `
 
-exports.handler = async () => {
-  const { data, errors } = await sendQuery(GET_ALL_ITEMS)
+exports.handler = async (event) => {
+  const { size } = event.queryStringParameters
+
+  const { data, errors } = await sendQuery(GET_ALL_ITEMS, {
+    size: Number(size),
+  })
 
   if (errors) {
     return {

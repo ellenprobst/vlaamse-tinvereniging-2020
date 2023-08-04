@@ -16,6 +16,7 @@ const Title = styled.div`
 const Stats = styled.div`
   margin-bottom: 10px;
 `
+const size = 5000
 
 const Admin = () => {
   const [isVisible, setVisibility] = useState(false)
@@ -30,12 +31,11 @@ const Admin = () => {
 
     if (status !== 'loading') return
 
-    fetch('/api/get-all-items')
+    fetch(`/api/get-all-items/?size=${size}`)
       .then((response) => {
         if (canceled === true) return
         if (response.status !== 200) {
-          console.error('Foutmelding:', response)
-          return
+          throw new Error(response.json())
         }
         return response.json()
       })
