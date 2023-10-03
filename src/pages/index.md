@@ -26,7 +26,7 @@ activiteiten:
     - image: /img/ledenvergadering.jpg
       text: |-
         Voorjaar 2023: 26 maart 2023
-        Najaar 2023: 29 oktober 2023 (locatie: Antwerpen, onder voorbehoud)
+        Najaar 2023: 22 oktober 2023 
 
         Zonder tegenbericht gaan de bijeenkomsten door te Lokeren.
       titel: Ledenbijeenkomst
