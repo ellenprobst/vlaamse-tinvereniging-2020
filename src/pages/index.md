@@ -32,7 +32,7 @@ activiteiten:
       titel: Ledenbijeenkomst
       datum: "2023"
     - image: /img/museumbezoek.jpg
-      text: "Het museumbezoek 2023: locatie en datum zijn nog niet bekend"
+      text: Dit jaar is er geen specifiek museumbezoek geweest.
       titel: Museumbezoek
       datum: "2023"
 banner:
