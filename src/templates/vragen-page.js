@@ -6,9 +6,11 @@ import VragenForm from '../components/VragenForm'
 import Item from '../components/Item'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
-import { Skeleton, Button } from 'antd'
+import { Skeleton, Button, Pagination, Input } from 'antd'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
+import { firestore } from '../firebase'
+import useFirestoreQuery from '../hooks/useFirestoreQuery'
 
 const PageContainer = styled.div`
   @media ${media.mobile} {
@@ -27,7 +29,7 @@ const Wrapper = styled.div`
   margin-top: 65px;
   max-width: ${wrapper};
   margin: 0 auto;
-  padding: 55px 35px 10px;
+  padding: 55px 35px 25px;
   @media ${media.mobile} {
     margin-top: 0px;
     padding: 55px 0px 10px;
@@ -66,6 +68,7 @@ const Title = styled.h2`
 const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 15px;
 `
 const Description = styled.p`
   white-space: pre-wrap;
@@ -84,47 +87,47 @@ const FormContainer = styled.div`
   }
 `
 
-const PaginationButtons = styled.div`
-  display: flex;
-  gap: 15px;
-  margin: 15px 0 35px;
-`
+// const PaginationButtons = styled.div`
+//   display: flex;
+//   gap: 15px;
+//   margin: 15px 0 35px;
+// `
 
 const VragenPageTemplate = ({ title, description }) => {
   const [isOpen, setOpen] = useState(false)
   const [itemIndex, setItemIndex] = useState(0)
   const [imgIndex, setImgIndex] = useState(0)
-  const [data, setData] = useState([])
-  const [isLoading, setLoading] = useState(false)
+  // const [data, setData] = useState([])
+  // const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [queryString, setQueryString] = useState('')
-  const [pageIndex, setPageIndex] = useState({})
+  const [search, setSearch] = useState('')
+  const [pageIndex, setPageIndex] = useState(1)
   const size = 20
 
-  useEffect(() => {
-    let canceled = false
+  const onSearch = (search) => {
+    console.log('----4444---')
+    setSearch(search)
+    setPageIndex(1)
+  }
 
-    setLoading(true)
-    fetch(`/api/get-all-published-items/?size=${size}&${queryString}`)
-      .then((response) => {
-        if (canceled === true) return
-        if (response.status !== 200) return
-        return response.json()
-      })
-      .then((result) => {
-        setPageIndex({ before: result.beforeIndex, after: result.afterIndex })
-        setData(result.vragen)
-        setLoading(false)
-        window.scrollTo(0, 0)
-      })
-      .catch((err) => {
-        setError('Foutmelding')
-      })
+  const [vragen, isLoading] = useFirestoreQuery(
+    firestore
+      .collection('vragen')
+      .where('status', '==', 'done')
+      .orderBy('datum', 'desc')
+  )
 
-    return () => {
-      canceled = true
-    }
-  }, [queryString])
+  const currentPageItems =
+    vragen?.slice(size * pageIndex - size, size * pageIndex) || []
+
+  const filteredItems = currentPageItems.filter((item) => {
+    return (
+      item.vraag?.toLowerCase().includes(search?.toLowerCase()) ||
+      item.antwoord?.toLowerCase().includes(search?.toLowerCase()) ||
+      item.titel?.toLowerCase().includes(search?.toLowerCase())
+    )
+  })
 
   const openModal = (id) => {
     setOpen(true)
@@ -172,53 +175,71 @@ const VragenPageTemplate = ({ title, description }) => {
           <div style={{ margin: '20px 0' }}>
             <Skeleton loading={isLoading} active></Skeleton>
           </div>
+          <div>
+            <Input.Search
+              placeholder='zoeken'
+              onSearch={onSearch}
+              style={{ maxWidth: 450, marginBottom: 15, marginRight: 15 }}
+              allowClear
+            />
+          </div>
+
           <List>
-            {data
-              .sort((a, b) => new Date(b.datum) - new Date(a.datum))
-              .map((item, index) => (
-                <Item
-                  data={item}
-                  key={index}
-                  openModal={openModal}
-                  index={index}
-                />
-              ))}
+            {filteredItems.map((item, index) => (
+              <Item
+                data={item}
+                key={index}
+                openModal={openModal}
+                index={index}
+              />
+            ))}
           </List>
-          <PaginationButtons>
+
+          {vragen?.length > 0 && (
+            <Pagination
+              defaultCurrent={1}
+              total={search ? filteredItems.length : vragen.length}
+              defaultPageSize={size}
+              showQuickJumper={false}
+              showSizeChanger={false}
+              onChange={setPageIndex}
+            />
+          )}
+          {/* <PaginationButtons>
             <Button onClick={getPreviousPage} disabled={!pageIndex.before}>
               ⟨ Vorige
             </Button>
             <Button onClick={getNextPage} disabled={!pageIndex.after}>
               Volgende ⟩
             </Button>
-          </PaginationButtons>
+          </PaginationButtons> */}
         </Wrapper>
       </Main>
 
-      {isOpen && data && (
+      {isOpen && vragen?.length > 0 && (
         <Lightbox
           // discourageDownloads
-          mainSrc={data[itemIndex].images[imgIndex].url}
+          mainSrc={vragen[itemIndex].images[imgIndex].url}
           nextSrc={
-            data[itemIndex].images[
-              (imgIndex + 1) % data[itemIndex].images.length
+            vragen[itemIndex].images[
+              (imgIndex + 1) % vragen[itemIndex].images.length
             ].url
           }
           prevSrc={
-            data[itemIndex].images[
-              (imgIndex + data[itemIndex].images.length - 1) %
-                data[itemIndex].images.length
+            vragen[itemIndex].images[
+              (imgIndex + vragen[itemIndex].images.length - 1) %
+                vragen[itemIndex].images.length
             ].url
           }
           onCloseRequest={closeModal}
           onMovePrevRequest={() => {
             setImgIndex(
-              (imgIndex + data[itemIndex].images.length - 1) %
-                data[itemIndex].images.length
+              (imgIndex + vragen[itemIndex].images.length - 1) %
+                vragen[itemIndex].images.length
             )
           }}
           onMoveNextRequest={() => {
-            setImgIndex((imgIndex + 1) % data[itemIndex].images.length)
+            setImgIndex((imgIndex + 1) % vragen[itemIndex].images.length)
           }}
           imagePadding={50}
         />
@@ -234,7 +255,6 @@ const VragenPage = ({ data }) => {
     <Layout>
       <Navbar absolute />
       <VragenPageTemplate
-        data={frontmatter.vragen}
         title={frontmatter.title}
         description={frontmatter.description}
       />
