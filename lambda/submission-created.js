@@ -20,7 +20,11 @@ const FORM = {
 if (!admin?.apps?.length) {
   admin.initializeApp({
     ...config,
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert({
+      ...serviceAccount,
+      private_key: process.env.FIREBASE_PRIVATE_KEY,
+      private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+    }),
   })
 }
 
@@ -31,27 +35,28 @@ exports.handler = async (event) => {
   const formName = payload.data['form-name'] || payload.form_name // payload in production differs from local env, hence the double check
 
   if (formName === FORM.vraag) {
-    db.collection('vragen')
-      .doc()
-      .set({
-        naam,
-        datum: new Date(Date.now()).toISOString(),
-        email,
-        vraag,
-        images: JSON.parse(images),
-        status: 'open',
-      })
-      .then((item) => {
-        return {
-          statusCode: 200,
-        }
-      })
-      .catch((error) => {
-        return {
-          statusCode: 500,
-          body: JSON.stringify(error),
-        }
-      })
+    try {
+      await db
+        .collection('vragen')
+        .doc()
+        .set({
+          naam,
+          datum: new Date(Date.now()).toISOString(),
+          email,
+          vraag,
+          images: JSON.parse(images),
+          status: 'open',
+        })
+
+      return {
+        statusCode: 200,
+      }
+    } catch (e) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify(error),
+      }
+    }
   }
 
   if (formName === FORM.contact) {
