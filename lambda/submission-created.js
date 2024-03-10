@@ -45,7 +45,7 @@ exports.handler = async (event) => {
           email,
           vraag,
           images: JSON.parse(images),
-          status: 'open',
+          status: 'new',
         })
 
       return {
