@@ -33,9 +33,10 @@ exports.handler = async (event) => {
   const { payload } = JSON.parse(event.body)
   const { naam, email, vraag, images } = payload.data
   const formName = payload.data['form-name'] || payload.form_name // payload in production differs from local env, hence the double check
-  console.log('private key', process.env.FIREBASE_PRIVATE_KEY)
-  console.log('private_key_id', process.env.FIREBASE_PRIVATE_KEY_ID)
+
+  console.log(formName)
   if (formName === FORM.vraag) {
+    console.log('log db', db.collection('vragen'))
     try {
       await db
         .collection('vragen')
@@ -53,6 +54,7 @@ exports.handler = async (event) => {
         statusCode: 200,
       }
     } catch (error) {
+      console.log(error)
       return {
         statusCode: 500,
         body: JSON.stringify(error),
