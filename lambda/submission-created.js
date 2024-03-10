@@ -1,4 +1,3 @@
-const sendQuery = require('./utils/send-query')
 const admin = require('firebase-admin')
 const firestore = require('firebase-admin/firestore')
 var serviceAccount = require('./utils/serviceAccountKey.json')
