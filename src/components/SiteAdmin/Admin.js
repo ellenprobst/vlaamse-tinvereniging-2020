@@ -4,6 +4,8 @@ import Table from './Table'
 import { Modal, Result, Button, message, Tag } from 'antd'
 import Form from './Form'
 import EmailForm from './EmailForm'
+import { firestore } from '../../firebase'
+import useFirestoreQuery from '../../hooks/useFirestoreQuery'
 
 const Title = styled.div`
   display: flex;
@@ -16,45 +18,22 @@ const Title = styled.div`
 const Stats = styled.div`
   margin-bottom: 10px;
 `
-const size = 5000
 
 const Admin = () => {
   const [isVisible, setVisibility] = useState(false)
   const [selected, setSelected] = useState(null)
   const [submitting, setSubmitting] = useState(false)
-  const [data, setData] = useState([])
   const [status, setStatus] = useState('loading')
   const [step, setStep] = useState(0)
 
-  useEffect(() => {
-    let canceled = false
-
-    if (status !== 'loading') return
-
-    fetch(`/api/get-all-items/?size=${size}`)
-      .then((response) => {
-        if (canceled === true) return
-        if (response.status !== 200) {
-          throw new Error(response.json())
-        }
-        return response.json()
-      })
-      .then((result) => {
-        setData(result.vragen)
-        setStatus('loaded')
-      })
-      .catch((err) => {
-        console.log('Foutmelding:', err)
-        setStatus('error')
-      })
-
-    return () => {
-      canceled = true
-    }
-  }, [status])
+  const db = firestore.collection('vragen')
+  const [vragen, isLoading, error] = useFirestoreQuery(
+    firestore.collection('vragen').orderBy('datum', 'desc')
+  )
 
   const closeModal = () => {
     setSelected(null)
+    setSubmitting(false)
     setStep(0)
     setVisibility(false)
   }
@@ -73,37 +52,30 @@ const Admin = () => {
     setSubmitting(true)
 
     const status = formData.publiceer ? 'done' : 'open'
-    fetch('/api/edit-item', {
-      method: 'POST',
-      body: JSON.stringify({
-        ...formData,
-        id: formData._id,
+    db.doc(selected?._id)
+      .update({
+        vraag: formData.vraag || '',
+        titel: formData.titel || '',
+        antwoord: formData.antwoord || '',
         status: status,
         publicatieDatum: formData.publiceer ? new Date(Date.now()) : null,
-        imagesToDelete: formData.imagesToDelete,
-      }),
-    })
+        imagesToDelete: formData.imagesToDelete || [],
+      })
       .then(() => {
         setSubmitting(false)
         setStatus('loading')
         setSelected(formData)
         setStep(1)
       })
-      .catch((e) => console.log(e))
+      .catch((e) => {
+        setSubmitting(false)
+        setStatus('loading')
+        console.log(e)
+      })
   }
 
   const handleDelete = (item) => {
-    const loadingMessage = message.loading('👩‍💻 Even geduld...', 0)
-    fetch('/api/delete-item', {
-      method: 'POST',
-      body: JSON.stringify({
-        id: item._id,
-        images: item.images,
-      }),
-    }).then(() => {
-      loadingMessage() // hide loading message
-      setStatus('loading')
-    })
+    db.doc(item._id).delete()
   }
 
   const handleEmail = () => setStep(2)
@@ -113,23 +85,23 @@ const Admin = () => {
       <Stats>
         <Tag>
           gepubliceerd:{` `}
-          {data.filter((item) => item.status === 'done').length}
+          {vragen.filter((item) => item.status === 'done').length}
         </Tag>
         <Tag>
           open:{` `}
-          {data.filter((item) => item.status === 'open').length}
+          {vragen.filter((item) => item.status === 'open').length}
         </Tag>
         <Tag>
           new:{` `}
-          {data.filter((item) => item.status === 'new').length}
+          {vragen.filter((item) => item.status === 'new').length}
         </Tag>
       </Stats>
       <Table
         handleSelect={handleSelect}
         handleDelete={handleDelete}
         handleEmailAction={handleEmailAction}
-        data={data}
-        status={status}
+        data={vragen}
+        status={isLoading ? 'loading' : error ? 'error' : 'ready'}
       />
 
       {selected && (

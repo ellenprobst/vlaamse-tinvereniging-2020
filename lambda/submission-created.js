@@ -1,56 +1,58 @@
 const sendQuery = require('./utils/send-query')
+const admin = require('firebase-admin')
+const firestore = require('firebase-admin/firestore')
+var serviceAccount = require('./utils/serviceAccountKey.json')
+
+const config = {
+  apiKey: 'AIzaSyBnlComeqdyiDtP_Y00VucjhPRuGZfEkGE',
+  authDomain: 'tinvereniging.firebaseapp.com',
+  projectId: 'tinvereniging',
+  storageBucket: 'tinvereniging.appspot.com',
+  messagingSenderId: '767327320354',
+  appId: '1:767327320354:web:77f2f1bc9f66be72fb0d7b',
+  measurementId: 'G-19PJT88BX1',
+}
+
 const FORM = {
   vraag: 'vragen-formulier',
   contact: 'contact',
 }
 
-const CREATE_ITEM = `mutation($naam: String!,$datum: Time!,$email: String!,$vraag: String!, $images: [ImageInput]) {
-  createVraag(data:{
-    naam: $naam,
-    datum: $datum,
-    vraag: $vraag,
-    email: $email,
-    status: "new",
-    titel: "",
-    images:$images }){
-    _id
-    vraag
-    naam
-    images {
-      id
-      url
-    }
-    datum
-    status
-  }
-}`
+if (!admin?.apps?.length) {
+  admin.initializeApp({
+    ...config,
+    credential: admin.credential.cert(serviceAccount),
+  })
+}
 
 exports.handler = async (event) => {
+  const db = firestore.getFirestore()
   const { payload } = JSON.parse(event.body)
   const { naam, email, vraag, images } = payload.data
   const formName = payload.data['form-name'] || payload.form_name // payload in production differs from local env, hence the double check
 
   if (formName === FORM.vraag) {
-    const { data, errors } = await sendQuery(CREATE_ITEM, {
-      naam,
-      datum: new Date(Date.now()),
-      email,
-      vraag,
-      images: JSON.parse(images),
-    })
-
-    if (errors) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify(errors),
-      }
-    }
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        nieuweVraag: data.createItem,
-      }),
-    }
+    db.collection('vragen')
+      .doc()
+      .set({
+        naam,
+        datum: new Date(Date.now()).toISOString(),
+        email,
+        vraag,
+        images: JSON.parse(images),
+        status: 'open',
+      })
+      .then((item) => {
+        return {
+          statusCode: 200,
+        }
+      })
+      .catch((error) => {
+        return {
+          statusCode: 500,
+          body: JSON.stringify(error),
+        }
+      })
   }
 
   if (formName === FORM.contact) {

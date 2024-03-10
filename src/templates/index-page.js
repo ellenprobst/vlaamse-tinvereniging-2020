@@ -120,7 +120,7 @@ export const IndexPageTemplate = ({
         <About
           titel={overOns.titel}
           text={overOns.text}
-          image={overOns.image}
+          image={overOns?.image}
         />
         <TeaserContainer ref={triggerRef}>
           <Teaser ref={imageRef}>
@@ -154,10 +154,11 @@ export const IndexPageTemplate = ({
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.main
+
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
+        image={frontmatter?.image}
         titel={frontmatter.titel}
         overOns={frontmatter.overOns}
         activiteiten={frontmatter.activiteiten}

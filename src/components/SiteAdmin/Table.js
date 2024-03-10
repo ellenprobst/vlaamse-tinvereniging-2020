@@ -113,7 +113,7 @@ const Table = ({
         if (status === 'new') color = '#e33371'
         return (
           <Tag color={color} key={status}>
-            {status.toUpperCase()}
+            {status?.toUpperCase()}
           </Tag>
         )
       },

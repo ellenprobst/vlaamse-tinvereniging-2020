@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
@@ -6,7 +6,7 @@ import VragenForm from '../components/VragenForm'
 import Item from '../components/Item'
 import styled from 'styled-components'
 import { media, wrapper } from '../themes'
-import { Skeleton, Button, Pagination, Input } from 'antd'
+import { Skeleton, Pagination, Input } from 'antd'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 import { firestore } from '../firebase'
@@ -97,16 +97,11 @@ const VragenPageTemplate = ({ title, description }) => {
   const [isOpen, setOpen] = useState(false)
   const [itemIndex, setItemIndex] = useState(0)
   const [imgIndex, setImgIndex] = useState(0)
-  // const [data, setData] = useState([])
-  // const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [queryString, setQueryString] = useState('')
   const [search, setSearch] = useState('')
   const [pageIndex, setPageIndex] = useState(1)
   const size = 20
 
   const onSearch = (search) => {
-    console.log('----4444---')
     setSearch(search)
     setPageIndex(1)
   }
@@ -137,14 +132,6 @@ const VragenPageTemplate = ({ title, description }) => {
   const closeModal = () => {
     setOpen(false)
     setImgIndex(0)
-  }
-
-  const getNextPage = () => {
-    setQueryString(`cursor=${pageIndex.after}`)
-  }
-
-  const getPreviousPage = () => {
-    setQueryString(`cursor=${pageIndex.before}`)
   }
 
   return (
@@ -205,14 +192,6 @@ const VragenPageTemplate = ({ title, description }) => {
               onChange={setPageIndex}
             />
           )}
-          {/* <PaginationButtons>
-            <Button onClick={getPreviousPage} disabled={!pageIndex.before}>
-              ⟨ Vorige
-            </Button>
-            <Button onClick={getNextPage} disabled={!pageIndex.after}>
-              Volgende ⟩
-            </Button>
-          </PaginationButtons> */}
         </Wrapper>
       </Main>
 
