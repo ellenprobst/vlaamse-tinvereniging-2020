@@ -316,4 +316,9 @@ edities:
     titel: TINnewerck 72
     text: juli 2023
     image: /img/tw72.jpg
+  - nummer: 73
+    jaar: 2023
+    titel: TINnewerck 73
+    text: december 2023
+    image: /img/tw73.jpg
 ---
