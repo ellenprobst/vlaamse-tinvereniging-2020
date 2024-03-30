@@ -52,6 +52,7 @@ edities:
     image: /img/tw67.jpg
     text: December 2020
     jaar: 2020
+    link: https://drive.google.com/file/d/1ycDn8zldGCg18XijsKVU31lmjTwKKP4W/view?usp=drive_link
   - nummer: 68
     titel: TINnewerck 68
     image: /img/tw68.jpg
