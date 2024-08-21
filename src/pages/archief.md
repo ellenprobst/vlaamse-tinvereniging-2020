@@ -58,6 +58,7 @@ edities:
     image: /img/tw68.jpg
     text: Juli 2021
     jaar: 2021
+    link: https://drive.google.com/file/d/1-pp4ViiohKzfDrWa2zJHZI-ycfnzGCC1/view?usp=drive_link
   - nummer: 69
     titel: TINnewerck 69
     image: /img/tw69.jpg
