@@ -327,4 +327,9 @@ edities:
     titel: TINnewerck 74
     text: juli 2024
     image: /img/tw74.jpg
+  - nummer: 75
+    jaar: 2024
+    titel: TINnewerck 75
+    text: december 2024
+    image: /img/tw75.jpg.jpg
 ---
