@@ -64,6 +64,7 @@ edities:
     image: /img/tw69.jpg
     text: December 2021
     jaar: 2021
+    link: https://drive.google.com/file/d/132P4CbZ5_xY3LYpmUZAdV40MbBXi3pjX/view?usp=drive_link
   - nummer: 59
     titel: Tinnewerck 59
     image: /img/tw-59.jpg
