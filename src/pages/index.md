@@ -25,16 +25,16 @@ activiteiten:
   items:
     - image: /img/ledenvergadering.jpg
       text: |-
-        Voorjaar 2024: 17 maart 2024
-        Najaar 2024: 27 oktober 2024 
+        Voorjaar 2025: 23 maart 2025
+        Najaar 2024: 26 oktober 2025 
 
         Zonder tegenbericht gaan de bijeenkomsten door te Lokeren.
       titel: Ledenbijeenkomst
-      datum: "2024"
+      datum: "2025"
     - image: /img/museumbezoek.jpg
       text: Datum en plaats is nog niet bepaald.
       titel: Museumbezoek
-      datum: "2024"
+      datum: "2025"
 banner:
   text: Heb je zelf tin en ben je benieuwd naar de afkomst van het werk, stel je
     vraag aan onze experten.

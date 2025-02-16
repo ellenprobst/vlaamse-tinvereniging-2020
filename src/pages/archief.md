@@ -52,16 +52,19 @@ edities:
     image: /img/tw67.jpg
     text: December 2020
     jaar: 2020
+    link: https://drive.google.com/file/d/1ycDn8zldGCg18XijsKVU31lmjTwKKP4W/view?usp=drive_link
   - nummer: 68
     titel: TINnewerck 68
     image: /img/tw68.jpg
     text: Juli 2021
     jaar: 2021
+    link: https://drive.google.com/file/d/1-pp4ViiohKzfDrWa2zJHZI-ycfnzGCC1/view?usp=drive_link
   - nummer: 69
     titel: TINnewerck 69
     image: /img/tw69.jpg
     text: December 2021
     jaar: 2021
+    link: https://drive.google.com/file/d/132P4CbZ5_xY3LYpmUZAdV40MbBXi3pjX/view?usp=drive_link
   - nummer: 59
     titel: Tinnewerck 59
     image: /img/tw-59.jpg
@@ -315,4 +318,19 @@ edities:
     titel: TINnewerck 72
     text: juli 2023
     image: /img/tw72.jpg
+  - nummer: 73
+    jaar: 2023
+    titel: TINnewerck 73
+    text: december 2023
+    image: /img/tw73.jpg
+  - nummer: 74
+    jaar: 2024
+    titel: TINnewerck 74
+    text: juli 2024
+    image: /img/tw74.jpg
+  - nummer: 75
+    jaar: 2024
+    titel: TINnewerck 75
+    text: december 2024
+    image: /img/tw75.jpg.jpg
 ---
