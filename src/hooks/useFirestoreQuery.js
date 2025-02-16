@@ -22,7 +22,7 @@ const useFirestoreQuery = (query) => {
     )
 
     return () => unsubscribe()
-  }, [])
+  }, [query])
 
   return [docs, isLoading, error]
 }

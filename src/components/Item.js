@@ -76,11 +76,13 @@ const IconContainer = styled.div`
   opacity: 0.8;
 `
 
-const Item = ({ data, index, openModal }) => {
+const Item = ({ data, openModal }) => {
   return (
     <ListItem>
       <FlexContainer>
-        <ImageContainer onClick={() => data.images.length && openModal(index)}>
+        <ImageContainer
+          onClick={() => data.images.length && openModal(data._id)}
+        >
           <Image>
             {data.images && data.images[0] ? (
               <img

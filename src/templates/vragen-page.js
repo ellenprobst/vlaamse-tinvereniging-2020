@@ -95,7 +95,7 @@ const FormContainer = styled.div`
 
 const VragenPageTemplate = ({ title, description }) => {
   const [isOpen, setOpen] = useState(false)
-  const [itemIndex, setItemIndex] = useState(0)
+  const [itemIndex, setItemIndex] = useState(null)
   const [imgIndex, setImgIndex] = useState(0)
   const [search, setSearch] = useState('')
   const [pageIndex, setPageIndex] = useState(1)
@@ -134,6 +134,9 @@ const VragenPageTemplate = ({ title, description }) => {
     setImgIndex(0)
   }
 
+  const selectedImages = currentPageItems.find(
+    (item) => item._id === itemIndex
+  )?.images
   return (
     <PageContainer>
       <Fold>
@@ -172,13 +175,8 @@ const VragenPageTemplate = ({ title, description }) => {
           </div>
 
           <List>
-            {filteredItems.map((item, index) => (
-              <Item
-                data={item}
-                key={index}
-                openModal={openModal}
-                index={index}
-              />
+            {filteredItems.map((item) => (
+              <Item data={item} key={item._id} openModal={openModal} />
             ))}
           </List>
 
@@ -198,27 +196,21 @@ const VragenPageTemplate = ({ title, description }) => {
       {isOpen && vragen?.length > 0 && (
         <Lightbox
           // discourageDownloads
-          mainSrc={vragen[itemIndex].images[imgIndex].url}
-          nextSrc={
-            vragen[itemIndex].images[
-              (imgIndex + 1) % vragen[itemIndex].images.length
-            ].url
-          }
+          mainSrc={selectedImages?.[imgIndex].url}
+          nextSrc={selectedImages?.[(imgIndex + 1) % selectedImages.length].url}
           prevSrc={
-            vragen[itemIndex].images[
-              (imgIndex + vragen[itemIndex].images.length - 1) %
-                vragen[itemIndex].images.length
+            selectedImages[
+              (imgIndex + selectedImages?.length - 1) % selectedImages.length
             ].url
           }
           onCloseRequest={closeModal}
           onMovePrevRequest={() => {
             setImgIndex(
-              (imgIndex + vragen[itemIndex].images.length - 1) %
-                vragen[itemIndex].images.length
+              (imgIndex + selectedImages.length - 1) % selectedImages.length
             )
           }}
           onMoveNextRequest={() => {
-            setImgIndex((imgIndex + 1) % vragen[itemIndex].images.length)
+            setImgIndex((imgIndex + 1) % selectedImages.length)
           }}
           imagePadding={50}
         />
