@@ -193,15 +193,16 @@ const VragenPageTemplate = ({ title, description }) => {
         </Wrapper>
       </Main>
 
-      {isOpen && vragen?.length > 0 && (
+      {isOpen && selectedImages && selectedImages.length > 0 && (
         <Lightbox
-          // discourageDownloads
-          mainSrc={selectedImages?.[imgIndex].url}
-          nextSrc={selectedImages?.[(imgIndex + 1) % selectedImages.length].url}
+          mainSrc={selectedImages?.[imgIndex]?.url}
+          nextSrc={
+            selectedImages?.[(imgIndex + 1) % selectedImages.length]?.url
+          }
           prevSrc={
-            selectedImages[
-              (imgIndex + selectedImages?.length - 1) % selectedImages.length
-            ].url
+            selectedImages?.[
+              (imgIndex + selectedImages.length - 1) % selectedImages.length
+            ]?.url
           }
           onCloseRequest={closeModal}
           onMovePrevRequest={() => {
