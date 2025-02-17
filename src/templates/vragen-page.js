@@ -105,14 +105,16 @@ const VragenPageTemplate = ({ title, description }) => {
     setSearch(search)
     setPageIndex(1)
   }
-
-  const [vragen, isLoading] = useFirestoreQuery(
-    firestore
-      .collection('vragen')
-      .where('status', '==', 'done')
-      .orderBy('datum', 'desc')
+  const vragenQuery = React.useMemo(
+    () =>
+      firestore
+        .collection('vragen')
+        .where('status', '==', 'done')
+        .orderBy('datum', 'desc'),
+    []
   )
 
+  const [vragen, isLoading] = useFirestoreQuery(vragenQuery)
   const currentPageItems =
     vragen?.slice(size * pageIndex - size, size * pageIndex) || []
 
@@ -134,9 +136,9 @@ const VragenPageTemplate = ({ title, description }) => {
     setImgIndex(0)
   }
 
-  const selectedImages = currentPageItems.find(
-    (item) => item._id === itemIndex
-  )?.images
+  const selectedImages = React.useMemo(() => {
+    return currentPageItems.find((item) => item._id === itemIndex)?.images
+  }, [currentPageItems, itemIndex])
   return (
     <PageContainer>
       <Fold>
@@ -211,6 +213,7 @@ const VragenPageTemplate = ({ title, description }) => {
             )
           }}
           onMoveNextRequest={() => {
+            // console.log({ imgIndex, selectedImages })
             setImgIndex((imgIndex + 1) % selectedImages.length)
           }}
           imagePadding={50}
