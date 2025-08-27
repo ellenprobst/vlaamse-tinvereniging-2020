@@ -332,7 +332,7 @@ edities:
     jaar: 2024
     titel: TINnewerck 75
     text: december 2024
-    image: /img/tw75.jpg.jpg
+    image: /img/tw76.jpg
   - nummer: 76
     jaar: 2025
     titel: TINnewerck 76
