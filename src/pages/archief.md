@@ -308,6 +308,7 @@ edities:
     titel: TINnewerck 70
     text: juli 2022
     image: /img/tw70.jpg
+    link: https://drive.google.com/file/d/1V8uhMQNewwbSHKoQ5Eg9uNMh213313qV/view?usp=drive_link
   - nummer: 71
     jaar: 2022
     titel: TINnewerck 71
