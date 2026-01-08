@@ -339,4 +339,9 @@ edities:
     titel: TINnewerck 76
     text: juli 2025
     image: /img/tw76.jpg
+  - nummer: 77
+    jaar: 2025
+    titel: TINnewerck 77
+    text: december 2025
+    image: /img/tw77.jpg
 ---
